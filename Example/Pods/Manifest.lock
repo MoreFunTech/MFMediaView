@@ -10,8 +10,9 @@ PODS:
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
   - libpag (4.0.5.25)
-  - MFMediaView (0.0.1):
+  - MFMediaView (0.0.2):
     - libpag (~> 4.0)
+    - SVGAPlayer (~> 2.5)
   - Protobuf (3.21.4)
   - Specta (1.0.7)
   - SSZipArchive (2.4.3)
@@ -30,7 +31,6 @@ DEPENDENCIES:
   - FBSnapshotTestCase
   - MFMediaView (from `../`)
   - Specta
-  - SVGAPlayer
 
 SPEC REPOS:
   trunk:
@@ -52,12 +52,12 @@ SPEC CHECKSUMS:
   "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   libpag: 2c6abf04c3eb8afd0bffb1cd5f1dd023741300d5
-  MFMediaView: f333fc958c04bc99087cde006e7a0ba241dcefe5
+  MFMediaView: 693ad6df4c1a00185b98fa6e94e1832217dbf9af
   Protobuf: 85a48c73d708782e2869564c0438e211aae98e7a
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   SVGAPlayer: 318b85a78b61292d6ae9dfcd651f3f0d1cdadd86
 
-PODFILE CHECKSUM: d5ac8cbaab1bddc99891d14f8160b385d86a241e
+PODFILE CHECKSUM: 4f1db743274819d402bf3727fa1fde1ab1082ac7
 
 COCOAPODS: 1.11.3

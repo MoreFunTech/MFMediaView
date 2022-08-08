@@ -5,6 +5,9 @@
 #import <Foundation/Foundation.h>
 
 
+#import "MFMediaViewModelPAGConfig.h"
+#import "MFMediaViewModelSVGAConfig.h"
+
 typedef NS_ENUM(NSInteger, MFMediaViewModelStyle) {
     /**
      * 空类型
@@ -70,6 +73,8 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelStyle) {
  */
 @property(nonatomic, assign) CGFloat imageHeight;
 
+@property (nonatomic, strong) MFMediaViewModelPAGConfig *pagConfig;
+@property (nonatomic, strong) MFMediaViewModelSVGAConfig *svgaConfig;
 
 /**
  * 构造方法
