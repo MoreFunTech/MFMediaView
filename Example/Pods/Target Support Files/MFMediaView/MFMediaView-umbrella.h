@@ -11,6 +11,13 @@
 #endif
 
 #import "MFMediaView.h"
+#import "MFMediaViewAudioView.h"
+#import "MFMediaViewGifView.h"
+#import "MFMediaViewImageView.h"
+#import "MFMediaViewModel.h"
+#import "MFMediaViewPAGView.h"
+#import "MFMediaViewSVGAView.h"
+#import "MFMediaViewVideoView.h"
 
 FOUNDATION_EXPORT double MFMediaViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char MFMediaViewVersionString[];
