@@ -37,7 +37,7 @@ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), di
     self.mediaView.model = mediaViewModel;
 });
 ```
-
+<img src = @"https://github.com/NealWills/MFMediaView/blob/main/ReadMeAssets/ezgif.com-gif-maker.gif?raw=true" width = 30% height = 30%/>
 ![image](https://github.com/NealWills/MFMediaView/blob/main/ReadMeAssets/ezgif.com-gif-maker.gif?raw=true)
 
 ## Author
