@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "MFMediaView.h"
 
 FOUNDATION_EXPORT double MFMediaViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char MFMediaViewVersionString[];
