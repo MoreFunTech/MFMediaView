@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MFMediaView'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'A Common Display View For Media'
 
 # This description is used to generate tags and improve search results.
@@ -46,4 +46,5 @@ We Use This To Show Common Media File
   s.frameworks = 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'libpag', '~> 4.0'
+  s.dependency 'SVGAPlayer', '~> 2.5'
 end

@@ -81,4 +81,18 @@
 }
 
 
+- (MFMediaViewModelPAGConfig *)pagConfig {
+    if (!_pagConfig) {
+        _pagConfig = [MFMediaViewModelPAGConfig defaultConfigure];
+    }
+    return _pagConfig;
+}
+
+- (MFMediaViewModelSVGAConfig *)svgaConfig {
+    if (!_svgaConfig) {
+        _svgaConfig = [MFMediaViewModelSVGAConfig defaultConfigure];
+    }
+    return _svgaConfig;
+}
+
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08C00BD928A11E15003465DF /* 神仙伴侣2.pag in Resources */ = {isa = PBXBuildFile; fileRef = 08C00BD828A11E15003465DF /* 神仙伴侣2.pag */; };
+		08C00BDB28A11E1C003465DF /* 神仙伴侣内侧用的.svga in Resources */ = {isa = PBXBuildFile; fileRef = 08C00BDA28A11E1C003465DF /* 神仙伴侣内侧用的.svga */; };
 		205220FCBD58A2ACE20B3382 /* Pods_MFMediaView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA809D4A915676CA92DD7 /* Pods_MFMediaView_Tests.framework */; };
 		3388203B702CFEB36497F5FD /* 2_0080.pag in Resources */ = {isa = PBXBuildFile; fileRef = 33882E34FD68A076672B7C2C /* 2_0080.pag */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		050BB1A6EB6999E33620904C /* Pods_MFMediaView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MFMediaView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08C00BD828A11E15003465DF /* 神仙伴侣2.pag */ = {isa = PBXFileReference; lastKnownFileType = file; name = "神仙伴侣2.pag"; path = "../../../../../Library/Containers/com.tencent.WeWorkMac/Data/Documents/Profiles/2F6D6E51CFF2EA8BA4AC3A4097D702CA/Caches/Files/2022-08/b46d1ed3bd75d1fa1853aba49d5fbaa5/神仙伴侣2.pag"; sourceTree = "<group>"; };
+		08C00BDA28A11E1C003465DF /* 神仙伴侣内侧用的.svga */ = {isa = PBXFileReference; lastKnownFileType = file; name = "神仙伴侣内侧用的.svga"; path = "../../../../../Library/Containers/com.tencent.WeWorkMac/Data/Documents/Profiles/2F6D6E51CFF2EA8BA4AC3A4097D702CA/Caches/Files/2022-08/59d6866d83398ed54b5305356ab8c6e1/神仙伴侣内侧用的.svga"; sourceTree = "<group>"; };
 		33882E34FD68A076672B7C2C /* 2_0080.pag */ = {isa = PBXFileReference; lastKnownFileType = file.pag; path = 2_0080.pag; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* MFMediaView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFMediaView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -152,6 +156,8 @@
 				6003F5A6195388D20070C39A /* MFViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
+				08C00BD828A11E15003465DF /* 神仙伴侣2.pag */,
+				08C00BDA28A11E1C003465DF /* 神仙伴侣内侧用的.svga */,
 				6003F594195388D20070C39A /* Supporting Files */,
 				33882E34FD68A076672B7C2C /* 2_0080.pag */,
 			);
@@ -251,6 +257,10 @@
 				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = NealWills;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = K534XERP6Y;
+						ProvisioningStyle = Manual;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -284,7 +294,9 @@
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				08C00BDB28A11E1C003465DF /* 神仙伴侣内侧用的.svga in Resources */,
 				3388203B702CFEB36497F5FD /* 2_0080.pag in Resources */,
+				08C00BD928A11E15003465DF /* 神仙伴侣2.pag in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +497,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -541,7 +553,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -562,13 +574,16 @@
 			baseConfigurationReference = DA43D953608852DE0361FEE7 /* Pods-MFMediaView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = K534XERP6Y;
 				EXCLUDED_ARCHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MFMediaView/MFMediaView-Prefix.pch";
 				INFOPLIST_FILE = "MFMediaView/MFMediaView-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neal.normal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Normal Total Develope";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
@@ -579,13 +594,16 @@
 			baseConfigurationReference = C241B6665715F49BA3C84B57 /* Pods-MFMediaView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = K534XERP6Y;
 				EXCLUDED_ARCHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MFMediaView/MFMediaView-Prefix.pch";
 				INFOPLIST_FILE = "MFMediaView/MFMediaView-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neal.normal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Normal Total Develope";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};

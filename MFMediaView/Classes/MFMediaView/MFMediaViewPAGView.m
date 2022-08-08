@@ -27,6 +27,22 @@
 - (void)configureDefaultView:(MFMediaViewModel *)model {
     if (!_pagView) {
         _pagView = [[PAGView alloc] initWithFrame:self.bounds];
+        _pagView.maxFrameRate = model.pagConfig.maxFrameRate;
+        [_pagView setRepeatCount:(int) model.pagConfig.repeatCount];
+        switch (model.pagConfig.scaleMode) {
+            case MFMediaViewModelPAGConfigStyleScaleModeNone:
+                _pagView.scaleMode = PAGScaleModeNone;
+                break;
+            case MFMediaViewModelPAGConfigStyleScaleModeFill:
+                _pagView.scaleMode = PAGScaleModeStretch;
+                break;
+            case MFMediaViewModelPAGConfigStyleScaleModeAspectToFit:
+                _pagView.scaleMode = PAGScaleModeLetterBox;
+                break;
+            case MFMediaViewModelPAGConfigStyleScaleModeAspectToFill:
+                _pagView.scaleMode = PAGScaleModeZoom;
+                break;
+        }
         [self addSubview:_pagView];
     }
     [self configureView:model];
