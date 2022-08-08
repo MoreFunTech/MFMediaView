@@ -1,0 +1,6 @@
+framework module MFMediaView {
+  umbrella header "MFMediaView-umbrella.h"
+
+  export *
+  module * { export * }
+}
