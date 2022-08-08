@@ -6,11 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "MFMediaViewModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@interface MFMediaView : UIView
 
-@interface MFMediaView : NSObject
+/**
+ * 通用媒体模型
+ */
+@property (nonatomic, strong) MFMediaViewModel *model;
 
 @end
-
-NS_ASSUME_NONNULL_END

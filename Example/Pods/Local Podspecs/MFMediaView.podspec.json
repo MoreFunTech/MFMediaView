@@ -18,5 +18,11 @@
   "platforms": {
     "ios": "10.0"
   },
-  "source_files": "MFMediaView/Classes/**/*"
+  "source_files": "MFMediaView/Classes/**/*",
+  "frameworks": "UIKit",
+  "dependencies": {
+    "libpag": [
+      "~> 4.0"
+    ]
+  }
 }

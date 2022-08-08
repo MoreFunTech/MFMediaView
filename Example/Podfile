@@ -5,6 +5,11 @@ platform :ios, '10.0'
 target 'MFMediaView_Example' do
   pod 'MFMediaView', :path => '../'
 
+  pod 'SVGAPlayer'
+  # pod 'libpag'
+
+  # pod 'Reveal-SDK', '24', :configurations => ['Debug']
+
   target 'MFMediaView_Tests' do
     inherit! :search_paths
 

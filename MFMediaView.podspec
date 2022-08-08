@@ -37,12 +37,13 @@ We Use This To Show Common Media File
   s.ios.deployment_target = '10.0'
 
   s.source_files = 'MFMediaView/Classes/**/*'
-  
+
   # s.resource_bundles = {
   #   'MFMediaView' => ['MFMediaView/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'libpag', '~> 4.0'
 end

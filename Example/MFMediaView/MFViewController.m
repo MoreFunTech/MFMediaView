@@ -8,6 +8,8 @@
 
 #import "MFViewController.h"
 
+#import <MFMediaView/MFMediaView.h>
+
 @interface MFViewController ()
 
 @end
@@ -17,7 +19,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+
+//    "https://ruiqu-1304540262.sutanapp.com/0ae374225118bdb137f7d7e23206b5cf.pag"
+
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080" ofType:@"pag"];
+    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
+
+    MFMediaView *mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(60, 100, 250, 250)];
+    [self.view addSubview:mediaView];
+    mediaView.model = mediaViewModel;
+
 }
 
 - (void)didReceiveMemoryWarning
