@@ -9,7 +9,7 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - MFMediaView (0.1.0)
+  - MFMediaView (0.0.1)
   - Specta (1.0.7)
 
 DEPENDENCIES:
@@ -34,7 +34,7 @@ SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  MFMediaView: 70cbd93e53f0ac2b65263519a61971da3c27ef8c
+  MFMediaView: e7512a8e73906835165934614c30d71390eee092
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
 PODFILE CHECKSUM: 4e4fd33e42ef6d93b5a69978ba6d1f35dc818785
