@@ -20,7 +20,9 @@ it, simply add the following line to your Podfile:
 pod 'MFMediaView'
 ```
 
-For pag player 
+## Using
+
+#### For pag player 
 
 ```objectivec
 NSString *localPath =[NSBundle.mainBundle pathForResource:@"2_0080" ofType:@"pag"];
@@ -37,6 +39,8 @@ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), di
     self.mediaView.model = mediaViewModel;
 });
 ```
+
+
 
 ![image](https://github.com/NealWills/MFMediaView/blob/main/ReadMeAssets/ezgif.com-gif-maker.gif?raw=true)
 
