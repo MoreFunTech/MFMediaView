@@ -115,6 +115,13 @@
     _pagView.model = model;
 }
 
+
+- (void)destroyView {
+    MFMediaViewModel *viewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStyleNone localPath:@""];
+    [self clearViewWithout:nil];
+}
+
+
 - (void)clearViewWithout:(MFMediaViewModel *)model {
     if (_imageView && model.style != MFMediaViewModelStyleImage) {
         [_imageView clear];

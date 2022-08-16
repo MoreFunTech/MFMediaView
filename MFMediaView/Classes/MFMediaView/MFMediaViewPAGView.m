@@ -6,7 +6,7 @@
 #import "MFMediaViewModel.h"
 #include <libpag/PAGView.h>
 
-@interface MFMediaViewPAGView ()
+@interface MFMediaViewPAGView ()  <PAGViewListener>
 
 /**
  * pag文件加载视图
@@ -28,6 +28,7 @@
     if (!_pagView) {
         _pagView = [[PAGView alloc] initWithFrame:self.bounds];
         _pagView.maxFrameRate = model.pagConfig.maxFrameRate;
+        [_pagView addListener:self];
         [_pagView setRepeatCount:(int) model.pagConfig.repeatCount];
         switch (model.pagConfig.scaleMode) {
             case MFMediaViewModelPAGConfigStyleScaleModeNone:
@@ -68,7 +69,16 @@
 }
 
 - (void)clear {
+    [_pagView removeListener:self];
+}
 
+/**
+ * Notifies the end of the animation.
+ */
+- (void)onAnimationEnd:(PAGView*)pagView {
+    if (self.model.pagConfig.onAnimateStopAction) {
+        self.model.pagConfig.onAnimateStopAction();
+    }
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {

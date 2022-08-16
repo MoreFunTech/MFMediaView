@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) BOOL clearsAfterStop;
 
+@property (nonatomic, copy) void(^svgaPlayerDidFinishedAnimation)(void);
+
 + (instancetype)defaultConfigure;
 
 @end

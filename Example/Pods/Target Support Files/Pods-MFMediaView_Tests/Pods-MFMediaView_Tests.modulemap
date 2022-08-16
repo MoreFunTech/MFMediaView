@@ -1,0 +1,6 @@
+framework module Pods_MFMediaView_Tests {
+  umbrella header "Pods-MFMediaView_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
