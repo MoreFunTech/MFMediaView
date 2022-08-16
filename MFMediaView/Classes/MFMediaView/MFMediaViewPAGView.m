@@ -6,7 +6,7 @@
 #import "MFMediaViewModel.h"
 #include <libpag/PAGView.h>
 
-@interface MFMediaViewPAGView ()
+@interface MFMediaViewPAGView ()  <PAGViewListener>
 
 /**
  * pag文件加载视图
@@ -69,6 +69,15 @@
 
 - (void)clear {
 
+}
+
+/**
+ * Notifies the end of the animation.
+ */
+- (void)onAnimationEnd:(PAGView*)pagView {
+    if (self.model.pagConfig.onAnimateStopAction) {
+        self.model.pagConfig.onAnimateStopAction();
+    }
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {

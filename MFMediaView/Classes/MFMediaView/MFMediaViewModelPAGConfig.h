@@ -41,6 +41,8 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigStyleScaleMode) {
  */
 @property (nonatomic, assign) NSUInteger maxFrameRate;
 
+@property (nonatomic, copy) void(^onAnimateStopAction)(void);
+
 + (instancetype)defaultConfigure;
 
 @end

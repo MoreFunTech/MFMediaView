@@ -16,4 +16,6 @@
  */
 @property (nonatomic, strong) MFMediaViewModel *model;
 
+- (void)destroyView;
+
 @end

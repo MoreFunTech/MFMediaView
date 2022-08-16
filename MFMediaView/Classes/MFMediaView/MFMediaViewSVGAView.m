@@ -7,7 +7,7 @@
 #include <SVGAPlayer/SVGA.h>
 
 
-@interface MFMediaViewSVGAView ()
+@interface MFMediaViewSVGAView () <SVGAPlayerDelegate>
 
 @property(nonatomic, strong) SVGAPlayer *svgaPlayer;
 @property(nonatomic, strong) SVGAParser *svgaParser;
@@ -66,6 +66,12 @@
 
 - (void)clear {
 
+}
+
+- (void)svgaPlayerDidFinishedAnimation:(SVGAPlayer *)player {
+    if (self.model.svgaConfig.svgaPlayerDidFinishedAnimation) {
+        self.model.svgaConfig.svgaPlayerDidFinishedAnimation();
+    }
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
