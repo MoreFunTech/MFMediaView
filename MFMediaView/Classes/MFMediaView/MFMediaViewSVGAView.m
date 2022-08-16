@@ -25,6 +25,7 @@
         _svgaPlayer.contentMode = model.svgaConfig.contentMode;
         _svgaPlayer.loops = (int) model.svgaConfig.repeatCount;
         _svgaPlayer.clearsAfterStop = model.svgaConfig.clearsAfterStop;
+        _svgaPlayer.delegate = self;
         [self addSubview:_svgaPlayer];
     }
     [self configureView:model];
@@ -65,7 +66,7 @@
 }
 
 - (void)clear {
-
+    self.svgaPlayer.delegate = nil;
 }
 
 - (void)svgaPlayerDidFinishedAnimation:(SVGAPlayer *)player {

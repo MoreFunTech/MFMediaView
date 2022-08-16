@@ -28,6 +28,7 @@
     if (!_pagView) {
         _pagView = [[PAGView alloc] initWithFrame:self.bounds];
         _pagView.maxFrameRate = model.pagConfig.maxFrameRate;
+        [_pagView addListener:self];
         [_pagView setRepeatCount:(int) model.pagConfig.repeatCount];
         switch (model.pagConfig.scaleMode) {
             case MFMediaViewModelPAGConfigStyleScaleModeNone:
@@ -68,7 +69,7 @@
 }
 
 - (void)clear {
-
+    [_pagView removeListener:self];
 }
 
 /**
