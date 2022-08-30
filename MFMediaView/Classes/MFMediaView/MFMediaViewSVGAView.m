@@ -33,11 +33,11 @@
 
 - (void)setModel:(MFMediaViewModel *)model {
     _model = model;
-    if (!model) {
-        [self configureView:model];
-    } else {
-        [self configureDefaultView:model];
-    }
+//    if (!model) {
+//        [self configureView:model];
+//    } else {
+    [self configureDefaultView:model];
+//    }
 }
 
 - (void)configureView:(MFMediaViewModel *)model {
@@ -55,14 +55,22 @@
         return;
     }
     __weak typeof(self) weakSelf = self;
-    [self.svgaParser parseWithURL:url completionBlock:^(SVGAVideoEntity *videoItem) {
-        if (videoItem) {
-            weakSelf.svgaPlayer.videoItem = videoItem;
-            [weakSelf.svgaPlayer startAnimation];
-        }
-    }                failureBlock:^(NSError *error) {
+    [self.svgaParser parseWithURL:url
+                  completionBlock:^(SVGAVideoEntity *videoItem) {
+                      if (videoItem) {
+                          weakSelf.svgaPlayer.videoItem = videoItem;
+                          [weakSelf.svgaPlayer startAnimation];
+                          model.imageWidth = videoItem.videoSize.width;
+                          model.imageHeight = videoItem.videoSize.height;
+                          model.during = @(videoItem.frames).floatValue / @(videoItem.FPS).floatValue;
+                          if (weakSelf.mediaLoadFinishBlock) {
+                              weakSelf.mediaLoadFinishBlock(model);
+                          }
+                      }
+                  }
+                     failureBlock:^(NSError *error) {
 
-    }];
+                     }];
 }
 
 - (void)clear {

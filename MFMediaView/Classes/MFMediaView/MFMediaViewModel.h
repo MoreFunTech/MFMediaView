@@ -73,8 +73,15 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelStyle) {
  */
 @property(nonatomic, assign) CGFloat imageHeight;
 
+/**
+ * 单遍时间 静态图一直为1
+ */
+@property(nonatomic, assign) CGFloat during;
+
 @property (nonatomic, strong) MFMediaViewModelPAGConfig *pagConfig;
 @property (nonatomic, strong) MFMediaViewModelSVGAConfig *svgaConfig;
+
+- (NSString *)description;
 
 /**
  * 构造方法

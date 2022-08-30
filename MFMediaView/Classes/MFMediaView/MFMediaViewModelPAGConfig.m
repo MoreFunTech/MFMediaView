@@ -26,4 +26,15 @@
     return configure;
 }
 
+- (NSString *)description {
+    NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+    [description appendFormat:@"self.repeatCount=%lu", self.repeatCount];
+    [description appendFormat:@", self.scaleMode=%d", self.scaleMode];
+    [description appendFormat:@", self.maxFrameRate=%lu", self.maxFrameRate];
+    [description appendFormat:@", self.onAnimateStopAction=%p", self.onAnimateStopAction];
+    [description appendString:@">"];
+    return description;
+}
+
+
 @end

@@ -113,8 +113,8 @@
         [self addSubview:_pagView];
     }
     _pagView.model = model;
+    _pagView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
 }
-
 
 - (void)destroyView {
     MFMediaViewModel *viewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStyleNone localPath:@""];
@@ -123,6 +123,7 @@
 
 
 - (void)clearViewWithout:(MFMediaViewModel *)model {
+    _mediaLoadFinishBlock = nil;
     if (_imageView && model.style != MFMediaViewModelStyleImage) {
         [_imageView clear];
         _imageView.model = nil;
