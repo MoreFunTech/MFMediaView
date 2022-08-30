@@ -6,17 +6,17 @@
 #import "MFMediaViewModel.h"
 #include <libpag/PAGView.h>
 
-@interface MFMediaViewPAGView ()  <PAGViewListener>
+@interface MFMediaViewPAGView () <PAGViewListener>
 
 /**
  * pag文件加载视图
  */
-@property (nonatomic, strong) PAGView *pagView;
+@property(nonatomic, strong) PAGView *pagView;
 
 /**
  * pag文件资源文件
  */
-@property (nonatomic, strong) PAGFile *pagFile;
+@property(nonatomic, strong) PAGFile *pagFile;
 
 @end
 
@@ -26,25 +26,27 @@
 
 - (void)configureDefaultView:(MFMediaViewModel *)model {
     if (!_pagView) {
-        _pagView = [[PAGView alloc] initWithFrame:self.bounds];
-        _pagView.maxFrameRate = model.pagConfig.maxFrameRate;
-        [_pagView addListener:self];
-        [_pagView setRepeatCount:(int) model.pagConfig.repeatCount];
-        switch (model.pagConfig.scaleMode) {
-            case MFMediaViewModelPAGConfigStyleScaleModeNone:
-                _pagView.scaleMode = PAGScaleModeNone;
-                break;
-            case MFMediaViewModelPAGConfigStyleScaleModeFill:
-                _pagView.scaleMode = PAGScaleModeStretch;
-                break;
-            case MFMediaViewModelPAGConfigStyleScaleModeAspectToFit:
-                _pagView.scaleMode = PAGScaleModeLetterBox;
-                break;
-            case MFMediaViewModelPAGConfigStyleScaleModeAspectToFill:
-                _pagView.scaleMode = PAGScaleModeZoom;
-                break;
-        }
-        [self addSubview:_pagView];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _pagView = [[PAGView alloc] initWithFrame:self.bounds];
+            _pagView.maxFrameRate = model.pagConfig.maxFrameRate;
+            [_pagView addListener:self];
+            [_pagView setRepeatCount:(int) model.pagConfig.repeatCount];
+            switch (model.pagConfig.scaleMode) {
+                case MFMediaViewModelPAGConfigStyleScaleModeNone:
+                    _pagView.scaleMode = PAGScaleModeNone;
+                    break;
+                case MFMediaViewModelPAGConfigStyleScaleModeFill:
+                    _pagView.scaleMode = PAGScaleModeStretch;
+                    break;
+                case MFMediaViewModelPAGConfigStyleScaleModeAspectToFit:
+                    _pagView.scaleMode = PAGScaleModeLetterBox;
+                    break;
+                case MFMediaViewModelPAGConfigStyleScaleModeAspectToFill:
+                    _pagView.scaleMode = PAGScaleModeZoom;
+                    break;
+            }
+            [self addSubview:_pagView];
+        });
     }
     [self configureView:model];
 }
@@ -65,6 +67,12 @@
     if (_pagFile) {
         [self.pagView setComposition:self.pagFile];
         [self.pagView play];
+        model.imageWidth = self.pagFile.width;
+        model.imageHeight = self.pagFile.height;
+        model.during = self.pagFile.duration;
+        if (self.mediaLoadFinishBlock) {
+            self.mediaLoadFinishBlock(model);
+        }
     }
 }
 
@@ -75,7 +83,7 @@
 /**
  * Notifies the end of the animation.
  */
-- (void)onAnimationEnd:(PAGView*)pagView {
+- (void)onAnimationEnd:(PAGView *)pagView {
     if (self.model.pagConfig.onAnimateStopAction) {
         self.model.pagConfig.onAnimateStopAction();
     }

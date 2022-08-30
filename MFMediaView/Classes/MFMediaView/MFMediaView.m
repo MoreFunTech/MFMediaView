@@ -67,6 +67,7 @@
         _imageView = [[MFMediaViewImageView alloc] initWithFrame:self.bounds];
         [self addSubview:_imageView];
     }
+    _imageView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _imageView.model = model;
 }
 
@@ -76,6 +77,7 @@
         _videoView = [[MFMediaViewVideoView alloc] initWithFrame:self.bounds];
         [self addSubview:_videoView];
     }
+    _videoView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _videoView.model = model;
 }
 
@@ -85,6 +87,7 @@
         _gifView = [[MFMediaViewGifView alloc] initWithFrame:self.bounds];
         [self addSubview:_gifView];
     }
+    _gifView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _gifView.model = model;
 }
 
@@ -94,6 +97,7 @@
         _audioView = [[MFMediaViewAudioView alloc] initWithFrame:self.bounds];
         [self addSubview:_audioView];
     }
+    _audioView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _audioView.model = model;
 }
 
@@ -103,6 +107,7 @@
         _svgaView = [[MFMediaViewSVGAView alloc] initWithFrame:self.bounds];
         [self addSubview:_svgaView];
     }
+    _svgaView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _svgaView.model = model;
 }
 
@@ -112,9 +117,9 @@
         _pagView = [[MFMediaViewPAGView alloc] initWithFrame:self.bounds];
         [self addSubview:_pagView];
     }
+    _pagView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _pagView.model = model;
 }
-
 
 - (void)destroyView {
     MFMediaViewModel *viewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStyleNone localPath:@""];
@@ -123,6 +128,7 @@
 
 
 - (void)clearViewWithout:(MFMediaViewModel *)model {
+    _mediaLoadFinishBlock = nil;
     if (_imageView && model.style != MFMediaViewModelStyleImage) {
         [_imageView clear];
         _imageView.model = nil;

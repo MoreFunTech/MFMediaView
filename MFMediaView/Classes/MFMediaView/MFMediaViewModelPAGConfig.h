@@ -45,4 +45,6 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigStyleScaleMode) {
 
 + (instancetype)defaultConfigure;
 
+- (NSString *)description;
+
 @end
