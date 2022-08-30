@@ -122,46 +122,52 @@
 }
 
 - (void)destroyView {
-    MFMediaViewModel *viewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStyleNone localPath:@""];
+//    MFMediaViewModel *viewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStyleNone localPath:@""];
     [self clearViewWithout:nil];
 }
 
 
 - (void)clearViewWithout:(MFMediaViewModel *)model {
-    _mediaLoadFinishBlock = nil;
+    
     if (_imageView && model.style != MFMediaViewModelStyleImage) {
         [_imageView clear];
         _imageView.model = nil;
+        _imageView.mediaLoadFinishBlock = nil;
         [_imageView removeFromSuperview];
         _imageView = nil;
     }
     if (_videoView && model.style != MFMediaViewModelStyleVideo) {
         [_videoView clear];
         _videoView.model = nil;
+        _videoView.mediaLoadFinishBlock = nil;
         [_videoView removeFromSuperview];
         _videoView = nil;
     }
     if (_gifView && model.style != MFMediaViewModelStyleGif) {
         [_gifView clear];
         _gifView.model = nil;
+        _gifView.mediaLoadFinishBlock = nil;
         [_gifView removeFromSuperview];
         _gifView = nil;
     }
     if (_audioView && model.style != MFMediaViewModelStyleAudio) {
         [_audioView clear];
         _audioView.model = nil;
+        _audioView.mediaLoadFinishBlock = nil;
         [_audioView removeFromSuperview];
         _audioView = nil;
     }
     if (_svgaView && model.style != MFMediaViewModelStyleSvga) {
         [_svgaView clear];
         _svgaView.model = nil;
+        _svgaView.mediaLoadFinishBlock = nil;
         [_svgaView removeFromSuperview];
         _svgaView = nil;
     }
     if (_pagView && model.style != MFMediaViewModelStylePag) {
         [_pagView clear];
         _pagView.model = nil;
+        _pagView.mediaLoadFinishBlock = nil;
         [_pagView removeFromSuperview];
         _pagView = nil;
     }

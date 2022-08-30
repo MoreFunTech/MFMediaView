@@ -24,8 +24,8 @@
 
 //    "https://ruiqu-1304540262.sutanapp.com/0ae374225118bdb137f7d7e23206b5cf.pag"
 
-    NSString *localPath = [NSBundle.mainBundle pathForResource:@"神仙伴侣内侧用的" ofType:@"svga"];
-//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"神仙伴侣2" ofType:@"pag"];
+//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"神仙伴侣内侧用的" ofType:@"svga"];
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"神仙伴侣2" ofType:@"pag"];
     MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
 //    mediaViewModel.pagConfig.repeatCount = 1;
 //    mediaViewModel.pagConfig.scaleMode = MFMediaViewModelPAGConfigStyleScaleModeAspectToFit;
