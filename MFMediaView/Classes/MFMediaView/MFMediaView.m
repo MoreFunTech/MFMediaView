@@ -67,6 +67,7 @@
         _imageView = [[MFMediaViewImageView alloc] initWithFrame:self.bounds];
         [self addSubview:_imageView];
     }
+    _imageView.frame = self.bounds;
     _imageView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _imageView.model = model;
 }
@@ -77,6 +78,7 @@
         _videoView = [[MFMediaViewVideoView alloc] initWithFrame:self.bounds];
         [self addSubview:_videoView];
     }
+    _videoView.frame = self.bounds;
     _videoView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _videoView.model = model;
 }
@@ -87,6 +89,7 @@
         _gifView = [[MFMediaViewGifView alloc] initWithFrame:self.bounds];
         [self addSubview:_gifView];
     }
+    _gifView.frame = self.bounds;
     _gifView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _gifView.model = model;
 }
@@ -97,6 +100,7 @@
         _audioView = [[MFMediaViewAudioView alloc] initWithFrame:self.bounds];
         [self addSubview:_audioView];
     }
+    _audioView.frame = self.bounds;
     _audioView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _audioView.model = model;
 }
@@ -107,6 +111,7 @@
         _svgaView = [[MFMediaViewSVGAView alloc] initWithFrame:self.bounds];
         [self addSubview:_svgaView];
     }
+    _svgaView.frame = self.bounds;
     _svgaView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _svgaView.model = model;
 }
@@ -117,8 +122,42 @@
         _pagView = [[MFMediaViewPAGView alloc] initWithFrame:self.bounds];
         [self addSubview:_pagView];
     }
+    _pagView.frame = self.bounds;
     _pagView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _pagView.model = model;
+}
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    [self resetSubviews];
+}
+
+- (void)resetSubviews {
+    if (_imageView) {
+        _imageView.frame = self.bounds;
+        [_imageView resetSubviews];
+    }
+    if (_videoView) {
+        _videoView.frame = self.bounds;
+        [_videoView resetSubviews];
+    }
+    if (_gifView) {
+        _gifView.frame = self.bounds;
+        [_gifView resetSubviews];
+    }
+    if (_audioView) {
+        _audioView.frame = self.bounds;
+        [_audioView resetSubviews];
+    }
+    if (_pagView) {
+        _pagView.frame = self.bounds;
+        [_pagView resetSubviews];
+    }
+    if (_svgaView) {
+        _svgaView.frame = self.bounds;
+        [_svgaView resetSubviews];
+    }
+
 }
 
 - (void)destroyView {

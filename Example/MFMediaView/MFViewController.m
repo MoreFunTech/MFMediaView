@@ -12,7 +12,7 @@
 
 @interface MFViewController ()
 
-@property (nonatomic, strong) MFMediaView *mediaView;
+@property(nonatomic, strong) MFMediaView *mediaView;
 
 @end
 
@@ -43,10 +43,9 @@
         NSLog(@"%@", model);
     };
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.mediaView.model = mediaViewModel;
     });
-    
 
 
 }

@@ -73,6 +73,10 @@
                      }];
 }
 
+- (void)resetSubviews {
+    self.svgaPlayer.frame = self.bounds;
+}
+
 - (void)clear {
     self.svgaPlayer.delegate = nil;
 }

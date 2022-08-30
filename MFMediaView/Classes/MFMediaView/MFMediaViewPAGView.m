@@ -25,8 +25,9 @@
 }
 
 - (void)configureDefaultView:(MFMediaViewModel *)model {
-    if (!_pagView) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (!_pagView) {
+
             _pagView = [[PAGView alloc] initWithFrame:self.bounds];
             _pagView.maxFrameRate = model.pagConfig.maxFrameRate;
             [_pagView addListener:self];
@@ -46,12 +47,9 @@
                     break;
             }
             [self addSubview:_pagView];
-        });
-    }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        }
         [self configureView:model];
     });
-    
 }
 
 - (void)setModel:(MFMediaViewModel *)model {
@@ -77,6 +75,10 @@
             self.mediaLoadFinishBlock(model);
         }
     }
+}
+
+- (void)resetSubviews {
+    self.pagView.frame = self.bounds;
 }
 
 - (void)clear {
