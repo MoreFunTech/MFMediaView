@@ -7,6 +7,7 @@
 
 #import "MFMediaViewModelPAGConfig.h"
 #import "MFMediaViewModelSVGAConfig.h"
+#import "MFMediaViewModelImageConfig.h"
 
 typedef NS_ENUM(NSInteger, MFMediaViewModelStyle) {
     /**
@@ -80,6 +81,7 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelStyle) {
 
 @property (nonatomic, strong) MFMediaViewModelPAGConfig *pagConfig;
 @property (nonatomic, strong) MFMediaViewModelSVGAConfig *svgaConfig;
+@property (nonatomic, strong) MFMediaViewModelImageConfig *imageConfig;
 
 - (NSString *)description;
 

@@ -34,6 +34,9 @@
     ],
     "SVGAPlayer": [
       "~> 2.5"
+    ],
+    "MFFileDownloader": [
+
     ]
   }
 }

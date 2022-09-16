@@ -95,6 +95,13 @@
     return _svgaConfig;
 }
 
+- (MFMediaViewModelImageConfig *)imageConfig {
+    if (!_imageConfig) {
+        _imageConfig = [MFMediaViewModelImageConfig defaultConfigure];
+    }
+    return _imageConfig;
+}
+
 - (NSString *)description {
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@"self.style=%d", self.style];
