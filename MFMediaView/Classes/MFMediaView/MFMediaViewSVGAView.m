@@ -45,11 +45,11 @@
         _svgaParser = [[SVGAParser alloc] init];
     }
     NSURL *url;
+    if ([self isStringNotNull:model.url]) {
+        url = [NSURL URLWithString:model.url];
+    }
     if ([self isStringNotNull:model.localPath]) {
         url = [NSURL fileURLWithPath:model.localPath];
-    }
-    if ([self isStringNotNull:model.url]) {
-        url = [NSURL fileURLWithPath:model.url];
     }
     if (!url) {
         return;
