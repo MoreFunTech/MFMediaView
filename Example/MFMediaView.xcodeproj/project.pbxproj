@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08C00BD928A11E15003465DF /* 神仙伴侣2.pag in Resources */ = {isa = PBXBuildFile; fileRef = 08C00BD828A11E15003465DF /* 神仙伴侣2.pag */; };
-		08C00BDB28A11E1C003465DF /* 神仙伴侣内侧用的.svga in Resources */ = {isa = PBXBuildFile; fileRef = 08C00BDA28A11E1C003465DF /* 神仙伴侣内侧用的.svga */; };
 		205220FCBD58A2ACE20B3382 /* Pods_MFMediaView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA809D4A915676CA92DD7 /* Pods_MFMediaView_Tests.framework */; };
 		3388203B702CFEB36497F5FD /* 2_0080.pag in Resources */ = {isa = PBXBuildFile; fileRef = 33882E34FD68A076672B7C2C /* 2_0080.pag */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -41,8 +39,6 @@
 
 /* Begin PBXFileReference section */
 		050BB1A6EB6999E33620904C /* Pods_MFMediaView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MFMediaView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		08C00BD828A11E15003465DF /* 神仙伴侣2.pag */ = {isa = PBXFileReference; lastKnownFileType = file; name = "神仙伴侣2.pag"; path = "../../../../../Library/Containers/com.tencent.WeWorkMac/Data/Documents/Profiles/2F6D6E51CFF2EA8BA4AC3A4097D702CA/Caches/Files/2022-08/b46d1ed3bd75d1fa1853aba49d5fbaa5/神仙伴侣2.pag"; sourceTree = "<group>"; };
-		08C00BDA28A11E1C003465DF /* 神仙伴侣内侧用的.svga */ = {isa = PBXFileReference; lastKnownFileType = file; name = "神仙伴侣内侧用的.svga"; path = "../../../../../Library/Containers/com.tencent.WeWorkMac/Data/Documents/Profiles/2F6D6E51CFF2EA8BA4AC3A4097D702CA/Caches/Files/2022-08/59d6866d83398ed54b5305356ab8c6e1/神仙伴侣内侧用的.svga"; sourceTree = "<group>"; };
 		33882E34FD68A076672B7C2C /* 2_0080.pag */ = {isa = PBXFileReference; lastKnownFileType = file.pag; path = 2_0080.pag; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* MFMediaView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFMediaView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -72,7 +68,7 @@
 		C4B62D8EA1EC966EA25290FE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		CF7EA809D4A915676CA92DD7 /* Pods_MFMediaView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MFMediaView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA43D953608852DE0361FEE7 /* Pods-MFMediaView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFMediaView_Example.debug.xcconfig"; path = "Target Support Files/Pods-MFMediaView_Example/Pods-MFMediaView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		E569E0E3C5046794534A457E /* MFMediaView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MFMediaView.podspec; path = ../MFMediaView.podspec; sourceTree = "<group>"; };
+		E569E0E3C5046794534A457E /* MFMediaView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MFMediaView.podspec; path = ../MFMediaView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,8 +152,6 @@
 				6003F5A6195388D20070C39A /* MFViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
-				08C00BD828A11E15003465DF /* 神仙伴侣2.pag */,
-				08C00BDA28A11E1C003465DF /* 神仙伴侣内侧用的.svga */,
 				6003F594195388D20070C39A /* Supporting Files */,
 				33882E34FD68A076672B7C2C /* 2_0080.pag */,
 			);
@@ -294,9 +288,7 @@
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
-				08C00BDB28A11E1C003465DF /* 神仙伴侣内侧用的.svga in Resources */,
 				3388203B702CFEB36497F5FD /* 2_0080.pag in Resources */,
-				08C00BD928A11E15003465DF /* 神仙伴侣2.pag in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +380,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-MFMediaView_Example/Pods-MFMediaView_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MFMediaView/MFMediaView.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGAPlayer/SVGAPlayer.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/libpag/libpag.framework/libpag",
@@ -396,6 +389,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MFMediaView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGAPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libpag.framework",
