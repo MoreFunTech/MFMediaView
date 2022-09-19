@@ -38,9 +38,9 @@ We Use This To Show Common Media File
 
   s.source_files = 'MFMediaView/Classes/**/*'
 
-  s.resource_bundles = {
-    'MFMediaView' => ['MFMediaView/Assets/*.png']
-  }
+#  s.resource_bundles = {
+#    'MFMediaView' => ['MFMediaView/Assets/*.png']
+#  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'

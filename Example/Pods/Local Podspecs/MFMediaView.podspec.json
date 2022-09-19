@@ -19,11 +19,6 @@
     "ios": "10.0"
   },
   "source_files": "MFMediaView/Classes/**/*",
-  "resource_bundles": {
-    "MFMediaView": [
-      "MFMediaView/Assets/*.png"
-    ]
-  },
   "frameworks": "UIKit",
   "dependencies": {
     "SDWebImage": [
