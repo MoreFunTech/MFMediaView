@@ -49,7 +49,7 @@
 //    @property (nonatomic, copy) void(^setNetImageBlock)(NSString *netImageUrl, UIImageView *imageView);
     
     configure.contentMode = UIViewContentModeScaleAspectFill;
-    configure.placeHolderImage = [UIImage imageNamed:@""];
+//    configure.placeHolderImage = [UIImage imageNamed:@""];
     configure.localImage = nil;
     configure.tintColor = nil;
     configure.renderMode = UIImageRenderingModeAlwaysOriginal;
