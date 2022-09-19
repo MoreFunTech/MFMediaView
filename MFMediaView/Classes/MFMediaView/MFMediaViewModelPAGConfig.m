@@ -31,7 +31,6 @@
     [description appendFormat:@"self.repeatCount=%lu", self.repeatCount];
     [description appendFormat:@", self.scaleMode=%ld", (long)self.scaleMode];
     [description appendFormat:@", self.maxFrameRate=%lu", self.maxFrameRate];
-    [description appendFormat:@", self.onAnimateStopAction=%p", self.onAnimateStopAction];
     [description appendString:@">"];
     return description;
 }

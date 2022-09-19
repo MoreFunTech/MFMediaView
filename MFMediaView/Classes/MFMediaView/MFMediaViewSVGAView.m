@@ -49,7 +49,7 @@
     fileModel.localPath = model.localPath;
     
     if ([self isStringNotNull:fileModel.localPath]) {
-        [self configureViewStartPlayWith:fileModel];
+        [self configureViewStartPlayWith:fileModel.localPath];
     } else if ([self isStringNotNull:fileModel.url]) {
         [self configureViewStartDownload:fileModel];
     }
@@ -145,8 +145,8 @@
 }
 
 - (void)svgaPlayerDidFinishedAnimation:(SVGAPlayer *)player {
-    if (self.model.svgaConfig.onAnimationStartAction) {
-        self.model.svgaConfig.onAnimationStartAction();
+    if (self.model.svgaConfig.onAnimationEndAction) {
+        self.model.svgaConfig.onAnimationEndAction();
     }
 }
 

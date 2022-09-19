@@ -156,8 +156,8 @@
  * Notifies the end of the animation.
  */
 - (void)onAnimationEnd:(PAGView *)pagView {
-    if (self.model.pagConfig.onAnimateStopAction) {
-        self.model.pagConfig.onAnimateStopAction();
+    if (self.model.pagConfig.onAnimationEndAction) {
+        self.model.pagConfig.onAnimationEndAction();
     }
 }
 
