@@ -23,8 +23,8 @@
 
     
 //    [self configureSvga];
-//    [self configurePag];
-    [self configureImage];
+    [self configurePag];
+//    [self configureImage];
     
 //
     
@@ -72,9 +72,10 @@
     //    "https://ruiqu-1304540262.sutanapp.com/0ae374225118bdb137f7d7e23206b5cf.pag"
 
     //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"神仙伴侣内侧用的" ofType:@"svga"];
-//        NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080" ofType:@"pag"];
-    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/40b82ce094db24f0c68dec790264e9a0.pag";
-    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:netUrl];
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080" ofType:@"pag"];
+//    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/40b82ce094db24f0c68dec790264e9a0.pag";
+//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:netUrl];
+    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
     mediaViewModel.pagConfig.repeatCount = 40;
     mediaViewModel.pagConfig.scaleMode = MFMediaViewModelPAGConfigStyleScaleModeAspectToFit;
     mediaViewModel.pagConfig.maxFrameRate = 60;

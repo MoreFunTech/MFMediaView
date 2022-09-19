@@ -71,8 +71,8 @@
     fileModel.url = model.url;
     fileModel.localPath = model.localPath;
     
-    if ([self isStringNotNull:fileModel.localPath]) {
-        [self configureViewStartPlayWith:fileModel];
+    if ([self isStringNotNull:model.localPath]) {
+        [self configureViewStartPlayWith:model.localPath];
     } else if ([self isStringNotNull:fileModel.url]) {
         [self configureViewStartDownload:fileModel];
     }
@@ -99,7 +99,7 @@
                 if (weakSelf.model.pagConfig.onFileLoadSuccessAction) {
                     weakSelf.model.pagConfig.onFileLoadSuccessAction();
                 }
-                [weakSelf configureViewStartPlayWith:resultModel.fileModel];
+                [weakSelf configureViewStartPlayWith:resultModel.fileModel.fullLocalPath];
             } else if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloadError) {
                 if (weakSelf.model.pagConfig.onFileLoadFailureAction) {
                     weakSelf.model.pagConfig.onFileLoadFailureAction(resultModel.error);
@@ -112,7 +112,11 @@
                 if (self.model.pagConfig.onFileLoadSuccessAction) {
                     self.model.pagConfig.onFileLoadSuccessAction();
                 }
-                [self configureViewStartPlayWith:fileDownloadModel.data];
+                if ([fileDownloadModel.data isKindOfClass:[MFFileDownloaderFileModel class]]) {
+                    MFFileDownloaderFileModel *modelL = fileDownloadModel.data;
+                    [self configureViewStartPlayWith:modelL.fullLocalPath];
+                }
+                
             }
         } else if (fileDownloadModel.status < 0) {
             if (self.model.pagConfig.onFileLoadFailureAction) {
@@ -123,16 +127,17 @@
     });
 }
 
-- (void)configureViewStartPlayWith:(MFFileDownloaderFileModel *)model {
-    if (!_pagFile && [self isStringNotNull:model.fullLocalPath]) {
-        _pagFile = [PAGFile Load:model.fullLocalPath];
+
+- (void)configureViewStartPlayWith:(NSString *)localPath {
+    if (!_pagFile && [self isStringNotNull:localPath]) {
+        _pagFile = [PAGFile Load:localPath];
     }
     if (_pagFile) {
         [self.pagView setComposition:self.pagFile];
         [self.pagView play];
-        model.imageWidth = self.pagFile.width;
-        model.imageHeight = self.pagFile.height;
-        model.during = self.pagFile.duration;
+        self.model.imageWidth = self.pagFile.width;
+        self.model.imageHeight = self.pagFile.height;
+        self.model.during = self.pagFile.duration;
         if (self.mediaLoadFinishBlock) {
             self.mediaLoadFinishBlock(self.model);
         }

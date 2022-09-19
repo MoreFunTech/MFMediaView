@@ -76,7 +76,7 @@
                 if (weakSelf.model.pagConfig.onFileLoadSuccessAction) {
                     weakSelf.model.pagConfig.onFileLoadSuccessAction();
                 }
-                [weakSelf configureViewStartPlayWith:resultModel.fileModel];
+                [weakSelf configureViewStartPlayWith:resultModel.fileModel.fullLocalPath];
             } else if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloadError) {
                 if (weakSelf.model.pagConfig.onFileLoadFailureAction) {
                     weakSelf.model.pagConfig.onFileLoadFailureAction(resultModel.error);
@@ -89,7 +89,10 @@
                 if (self.model.pagConfig.onFileLoadSuccessAction) {
                     self.model.pagConfig.onFileLoadSuccessAction();
                 }
-                [self configureViewStartPlayWith:fileDownloadModel.data];
+                if ([fileDownloadModel.data isKindOfClass:[MFFileDownloaderFileModel class]]) {
+                    MFFileDownloaderFileModel *modelL = fileDownloadModel.data;
+                    [self configureViewStartPlayWith:modelL.fullLocalPath];
+                }
             }
         } else if (fileDownloadModel.status < 0) {
             if (self.model.pagConfig.onFileLoadFailureAction) {
@@ -100,13 +103,13 @@
     });
 }
 
-- (void)configureViewStartPlayWith:(MFFileDownloaderFileModel *)model {
+- (void)configureViewStartPlayWith:(NSString *)localPath {
     if (!_svgaParser) {
         _svgaParser = [[SVGAParser alloc] init];
     }
     NSURL *url;
-    if ([self isStringNotNull:model.fullLocalPath]) {
-        url = [NSURL fileURLWithPath:model.fullLocalPath];
+    if ([self isStringNotNull:localPath]) {
+        url = [NSURL fileURLWithPath:localPath];
     }
     if (!url) {
         return;
@@ -117,9 +120,9 @@
                       if (videoItem) {
                           weakSelf.svgaPlayer.videoItem = videoItem;
                           [weakSelf.svgaPlayer startAnimation];
-                          model.imageWidth = videoItem.videoSize.width;
-                          model.imageHeight = videoItem.videoSize.height;
-                          model.during = @(videoItem.frames).floatValue / @(videoItem.FPS).floatValue;
+                          weakSelf.model.imageWidth = videoItem.videoSize.width;
+                          weakSelf.model.imageHeight = videoItem.videoSize.height;
+                          weakSelf.model.during = @(videoItem.frames).floatValue / @(videoItem.FPS).floatValue;
                           if (weakSelf.mediaLoadFinishBlock) {
                               weakSelf.mediaLoadFinishBlock(self.model);
                           }
