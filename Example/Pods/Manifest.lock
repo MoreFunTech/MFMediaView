@@ -28,7 +28,7 @@ PODS:
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - libpag (4.1.7)
-  - MFFileDownloader (0.0.5):
+  - MFFileDownloader (0.0.6):
     - AFNetworking (~> 4.0)
     - FMDB (~> 2.7)
   - MFMediaView (0.0.3):
@@ -84,7 +84,7 @@ SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   libpag: ac1d5fd505fd9ee8e51c0b8c57a7beb0fbb01f3e
-  MFFileDownloader: 9a3a53260b657d68ed311a2241ab35865fa0c4e0
+  MFFileDownloader: 5933b7b8c462e5b0ac924c788fbc280e06bdb51c
   MFMediaView: 8665c4123b1c151654c689e61c60157f37c6069c
   Protobuf: e7846f61e8542750cf311385fc633c1d00928f9f
   SDWebImage: 72f86271a6f3139cc7e4a89220946489d4b9a866
