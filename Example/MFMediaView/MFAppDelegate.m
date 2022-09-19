@@ -7,12 +7,20 @@
 //
 
 #import "MFAppDelegate.h"
+#import <MFFileDownloader/MFFileDownloader.h>
 
 @implementation MFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    
+    MFFileDownloaderLog.setModuleName(@"MFKit");
+    MFFileDownloaderLog.setMinLogLevel(MFFileDownloaderLogLevelNormal);
+    [MFFileDownloaderFMDBManager defaultConfigure];
+    
+    
     return YES;
 }
 
