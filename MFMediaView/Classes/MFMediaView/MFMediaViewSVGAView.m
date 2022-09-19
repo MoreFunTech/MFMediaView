@@ -5,6 +5,7 @@
 #import "MFMediaViewSVGAView.h"
 #import "MFMediaViewModel.h"
 #include <SVGAPlayer/SVGA.h>
+#include <MFFileDownloader/MFFileDownloader.h>
 
 
 @interface MFMediaViewSVGAView () <SVGAPlayerDelegate>
@@ -41,15 +42,71 @@
 }
 
 - (void)configureView:(MFMediaViewModel *)model {
+    
+    MFFileDownloaderFileModel *fileModel = [[MFFileDownloaderFileModel alloc] init];
+    fileModel.mediaType = 5;
+    fileModel.url = model.url;
+    fileModel.localPath = model.localPath;
+    
+    if ([self isStringNotNull:fileModel.localPath]) {
+        [self configureViewStartPlayWith:fileModel];
+    } else if ([self isStringNotNull:fileModel.url]) {
+        [self configureViewStartDownload:fileModel];
+    }
+    
+}
+
+- (void)configureViewStartDownload:(MFFileDownloaderFileModel *)model {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MFFileDownloaderFMDBManager defaultConfigure];
+        __weak typeof(self) weakSelf = self;
+        MFFileDownloaderCommonResultModel *fileDownloadModel = [MFFileDownloader addDownloadFile:model resultBlock:^(MFFileDownloaderDownloadResultModel * _Nonnull resultModel) {
+            if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloading) {
+                if (weakSelf.model.pagConfig.onFileLoadingAction) {
+                    double completeCount = 0;
+                    double totalCount = 1;
+                    completeCount = @(resultModel.progress.completedUnitCount).doubleValue;
+                    totalCount = @(resultModel.progress.totalUnitCount).doubleValue;
+                    if (totalCount < 1) {
+                        totalCount = 1;
+                    }
+                    weakSelf.model.pagConfig.onFileLoadingAction(completeCount / totalCount);
+                }
+            } else if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloadFinish) {
+                if (weakSelf.model.pagConfig.onFileLoadSuccessAction) {
+                    weakSelf.model.pagConfig.onFileLoadSuccessAction();
+                }
+                [weakSelf configureViewStartPlayWith:resultModel.fileModel];
+            } else if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloadError) {
+                if (weakSelf.model.pagConfig.onFileLoadFailureAction) {
+                    weakSelf.model.pagConfig.onFileLoadFailureAction(resultModel.error);
+                }
+            }
+        }];
+        
+        if (fileDownloadModel.status == -3) {
+            if ([fileDownloadModel.data isKindOfClass:[MFFileDownloaderFileModel class]]) {
+                if (self.model.pagConfig.onFileLoadSuccessAction) {
+                    self.model.pagConfig.onFileLoadSuccessAction();
+                }
+                [self configureViewStartPlayWith:fileDownloadModel.data];
+            }
+        } else if (fileDownloadModel.status < 0) {
+            if (self.model.pagConfig.onFileLoadFailureAction) {
+                self.model.pagConfig.onFileLoadFailureAction([NSError errorWithDomain:@"MFFileDownloaderPagError" code:fileDownloadModel.status userInfo:@{NSURLLocalizedLabelKey: fileDownloadModel.msg}]);
+            }
+        }
+        
+    });
+}
+
+- (void)configureViewStartPlayWith:(MFFileDownloaderFileModel *)model {
     if (!_svgaParser) {
         _svgaParser = [[SVGAParser alloc] init];
     }
     NSURL *url;
-    if ([self isStringNotNull:model.url]) {
-        url = [NSURL URLWithString:model.url];
-    }
-    if ([self isStringNotNull:model.localPath]) {
-        url = [NSURL fileURLWithPath:model.localPath];
+    if ([self isStringNotNull:model.fullLocalPath]) {
+        url = [NSURL fileURLWithPath:model.fullLocalPath];
     }
     if (!url) {
         return;
@@ -64,7 +121,10 @@
                           model.imageHeight = videoItem.videoSize.height;
                           model.during = @(videoItem.frames).floatValue / @(videoItem.FPS).floatValue;
                           if (weakSelf.mediaLoadFinishBlock) {
-                              weakSelf.mediaLoadFinishBlock(model);
+                              weakSelf.mediaLoadFinishBlock(self.model);
+                          }
+                          if (weakSelf.model.svgaConfig.onAnimationStartAction) {
+                              weakSelf.model.svgaConfig.onAnimationStartAction();
                           }
                       }
                   }
@@ -82,8 +142,8 @@
 }
 
 - (void)svgaPlayerDidFinishedAnimation:(SVGAPlayer *)player {
-    if (self.model.svgaConfig.svgaPlayerDidFinishedAnimation) {
-        self.model.svgaConfig.svgaPlayerDidFinishedAnimation();
+    if (self.model.svgaConfig.onAnimationStartAction) {
+        self.model.svgaConfig.onAnimationStartAction();
     }
 }
 

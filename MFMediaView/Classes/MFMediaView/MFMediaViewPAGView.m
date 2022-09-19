@@ -5,6 +5,7 @@
 #import "MFMediaViewPAGView.h"
 #import "MFMediaViewModel.h"
 #include <libpag/PAGView.h>
+#include <MFFileDownloader/MFFileDownloader.h>
 
 @interface MFMediaViewPAGView () <PAGViewListener>
 
@@ -26,30 +27,32 @@
 
 - (void)configureDefaultView:(MFMediaViewModel *)model {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (!_pagView) {
+        if (!self.pagView) {
 
-            _pagView = [[PAGView alloc] initWithFrame:self.bounds];
-            _pagView.maxFrameRate = model.pagConfig.maxFrameRate;
-            [_pagView addListener:self];
-            [_pagView setRepeatCount:(int) model.pagConfig.repeatCount];
+            self.pagView = [[PAGView alloc] initWithFrame:self.bounds];
+            self.pagView.maxFrameRate = model.pagConfig.maxFrameRate;
+            [self.pagView addListener:self];
+            [self.pagView setRepeatCount:(int) model.pagConfig.repeatCount];
             switch (model.pagConfig.scaleMode) {
                 case MFMediaViewModelPAGConfigStyleScaleModeNone:
-                    _pagView.scaleMode = PAGScaleModeNone;
+                    self.pagView.scaleMode = PAGScaleModeNone;
                     break;
                 case MFMediaViewModelPAGConfigStyleScaleModeFill:
-                    _pagView.scaleMode = PAGScaleModeStretch;
+                    self.pagView.scaleMode = PAGScaleModeStretch;
                     break;
                 case MFMediaViewModelPAGConfigStyleScaleModeAspectToFit:
-                    _pagView.scaleMode = PAGScaleModeLetterBox;
+                    self.pagView.scaleMode = PAGScaleModeLetterBox;
                     break;
                 case MFMediaViewModelPAGConfigStyleScaleModeAspectToFill:
-                    _pagView.scaleMode = PAGScaleModeZoom;
+                    self.pagView.scaleMode = PAGScaleModeZoom;
                     break;
             }
-            [self addSubview:_pagView];
+            [self addSubview:self.pagView];
         }
         [self configureView:model];
     });
+    
+    
 }
 
 - (void)setModel:(MFMediaViewModel *)model {
@@ -62,8 +65,67 @@
 }
 
 - (void)configureView:(MFMediaViewModel *)model {
-    if (!_pagFile && [self isStringNotNull:model.localPath]) {
-        _pagFile = [PAGFile Load:model.localPath];
+    
+    MFFileDownloaderFileModel *fileModel = [[MFFileDownloaderFileModel alloc] init];
+    fileModel.mediaType = 6;
+    fileModel.url = model.url;
+    fileModel.localPath = model.localPath;
+    
+    if ([self isStringNotNull:fileModel.localPath]) {
+        [self configureViewStartPlayWith:fileModel];
+    } else if ([self isStringNotNull:fileModel.url]) {
+        [self configureViewStartDownload:fileModel];
+    }
+    
+}
+
+- (void)configureViewStartDownload:(MFFileDownloaderFileModel *)model {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MFFileDownloaderFMDBManager defaultConfigure];
+        __weak typeof(self) weakSelf = self;
+        MFFileDownloaderCommonResultModel *fileDownloadModel = [MFFileDownloader addDownloadFile:model resultBlock:^(MFFileDownloaderDownloadResultModel * _Nonnull resultModel) {
+            if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloading) {
+                if (weakSelf.model.pagConfig.onFileLoadingAction) {
+                    double completeCount = 0;
+                    double totalCount = 1;
+                    completeCount = @(resultModel.progress.completedUnitCount).doubleValue;
+                    totalCount = @(resultModel.progress.totalUnitCount).doubleValue;
+                    if (totalCount < 1) {
+                        totalCount = 1;
+                    }
+                    weakSelf.model.pagConfig.onFileLoadingAction(completeCount / totalCount);
+                }
+            } else if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloadFinish) {
+                if (weakSelf.model.pagConfig.onFileLoadSuccessAction) {
+                    weakSelf.model.pagConfig.onFileLoadSuccessAction();
+                }
+                [weakSelf configureViewStartPlayWith:resultModel.fileModel];
+            } else if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloadError) {
+                if (weakSelf.model.pagConfig.onFileLoadFailureAction) {
+                    weakSelf.model.pagConfig.onFileLoadFailureAction(resultModel.error);
+                }
+            }
+        }];
+        
+        if (fileDownloadModel.status == -3) {
+            if ([fileDownloadModel.data isKindOfClass:[MFFileDownloaderFileModel class]]) {
+                if (self.model.pagConfig.onFileLoadSuccessAction) {
+                    self.model.pagConfig.onFileLoadSuccessAction();
+                }
+                [self configureViewStartPlayWith:fileDownloadModel.data];
+            }
+        } else if (fileDownloadModel.status < 0) {
+            if (self.model.pagConfig.onFileLoadFailureAction) {
+                self.model.pagConfig.onFileLoadFailureAction([NSError errorWithDomain:@"MFFileDownloaderPagError" code:fileDownloadModel.status userInfo:@{NSURLLocalizedLabelKey: fileDownloadModel.msg}]);
+            }
+        }
+        
+    });
+}
+
+- (void)configureViewStartPlayWith:(MFFileDownloaderFileModel *)model {
+    if (!_pagFile && [self isStringNotNull:model.fullLocalPath]) {
+        _pagFile = [PAGFile Load:model.fullLocalPath];
     }
     if (_pagFile) {
         [self.pagView setComposition:self.pagFile];
@@ -72,7 +134,7 @@
         model.imageHeight = self.pagFile.height;
         model.during = self.pagFile.duration;
         if (self.mediaLoadFinishBlock) {
-            self.mediaLoadFinishBlock(model);
+            self.mediaLoadFinishBlock(self.model);
         }
     }
 }
@@ -91,6 +153,12 @@
 - (void)onAnimationEnd:(PAGView *)pagView {
     if (self.model.pagConfig.onAnimateStopAction) {
         self.model.pagConfig.onAnimateStopAction();
+    }
+}
+
+- (void)onAnimationStart:(PAGView *)pagView {
+    if (self.model.pagConfig.onAnimationStartAction) {
+        self.model.pagConfig.onAnimationStartAction();
     }
 }
 

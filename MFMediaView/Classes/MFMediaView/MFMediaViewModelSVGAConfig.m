@@ -21,10 +21,9 @@
 
 - (NSString *)description {
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [description appendFormat:@"self.contentMode=%d", self.contentMode];
+    [description appendFormat:@"self.contentMode=%ld", (long)self.contentMode];
     [description appendFormat:@", self.repeatCount=%lu", self.repeatCount];
     [description appendFormat:@", self.clearsAfterStop=%d", self.clearsAfterStop];
-    [description appendFormat:@", self.svgaPlayerDidFinishedAnimation=%p", self.svgaPlayerDidFinishedAnimation];
     [description appendString:@">"];
     return description;
 }
