@@ -4,8 +4,8 @@
 
 #import "MFMediaViewPAGView.h"
 #import "MFMediaViewModel.h"
-#include <libpag/PAGView.h>
-#include <MFFileDownloader/MFFileDownloader.h>
+#import <libpag/PAGView.h>
+#import <MFFileDownloader/MFFileDownloader.h>
 
 @interface MFMediaViewPAGView () <PAGViewListener>
 

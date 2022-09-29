@@ -4,8 +4,8 @@
 
 #import "MFMediaViewSVGAView.h"
 #import "MFMediaViewModel.h"
-#include <SVGAPlayer/SVGA.h>
-#include <MFFileDownloader/MFFileDownloader.h>
+#import <SVGAPlayer/SVGA.h>
+#import <MFFileDownloader/MFFileDownloader.h>
 
 
 @interface MFMediaViewSVGAView () <SVGAPlayerDelegate>
