@@ -45,7 +45,7 @@ We Use This To Show Common Media File
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
   s.dependency 'SDWebImage', '~> 5.0'
-  s.dependency 'libpag', '~> 4.0'
+  s.dependency 'libpag', '< 4.1'
   s.dependency 'SVGAPlayer', '~> 2.5'
   s.dependency 'MFFileDownloader'
   

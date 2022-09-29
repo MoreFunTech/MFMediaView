@@ -27,19 +27,19 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - libpag (4.1.7)
+  - libpag (4.0.5.81)
   - MFFileDownloader (0.0.6):
     - AFNetworking (~> 4.0)
     - FMDB (~> 2.7)
-  - MFMediaView (0.0.3):
-    - libpag (~> 4.0)
+  - MFMediaView (0.0.7):
+    - libpag (< 4.1)
     - MFFileDownloader
     - SDWebImage (~> 5.0)
     - SVGAPlayer (~> 2.5)
   - Protobuf (3.21.6)
-  - SDWebImage (5.13.2):
-    - SDWebImage/Core (= 5.13.2)
-  - SDWebImage/Core (5.13.2)
+  - SDWebImage (5.13.4):
+    - SDWebImage/Core (= 5.13.4)
+  - SDWebImage/Core (5.13.4)
   - Specta (1.0.7)
   - SSZipArchive (2.4.3)
   - SVGAPlayer (2.5.7):
@@ -83,11 +83,11 @@ SPEC CHECKSUMS:
   "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  libpag: ac1d5fd505fd9ee8e51c0b8c57a7beb0fbb01f3e
+  libpag: b1c75dcb9c71623478b3a0f31b1c8894683cb9d9
   MFFileDownloader: 5933b7b8c462e5b0ac924c788fbc280e06bdb51c
-  MFMediaView: 8665c4123b1c151654c689e61c60157f37c6069c
+  MFMediaView: bddcfbb4752c1dbe4f3b7564bd7480171b890226
   Protobuf: e7846f61e8542750cf311385fc633c1d00928f9f
-  SDWebImage: 72f86271a6f3139cc7e4a89220946489d4b9a866
+  SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   SVGAPlayer: 318b85a78b61292d6ae9dfcd651f3f0d1cdadd86
