@@ -49,4 +49,7 @@ We Use This To Show Common Media File
   s.dependency 'SVGAPlayer', '~> 2.5'
   s.dependency 'MFFileDownloader'
   
+  s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO' }
+  s.xcconfig = { 'VALID_ARCHS' =>  'arm64 armv7 x86_64' }
+  
 end
