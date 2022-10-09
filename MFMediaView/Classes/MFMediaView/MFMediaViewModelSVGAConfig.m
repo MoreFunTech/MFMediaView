@@ -16,7 +16,7 @@
     svgaConfigure.contentMode = UIViewContentModeScaleAspectFit;
     svgaConfigure.repeatCount = 0;
     svgaConfigure.clearsAfterStop = NO;
-    configure.isAutoPlay = YES;
+    svgaConfigure.isAutoPlay = YES;
     return svgaConfigure;
 }
 

@@ -116,6 +116,7 @@
     MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStyleGif url:urlStr];
     mediaViewModel.gifConfig.contentMode = UIViewContentModeScaleAspectFill;
     mediaViewModel.gifConfig.repeatCount = 1;
+    mediaViewModel.gifConfig.isAutoPlay = NO;
     mediaViewModel.gifConfig.onFileLoadingAction = ^ (CGFloat progress) {
         NSLog(@"onFileLoadingAction : %f", progress);
     };
@@ -129,6 +130,8 @@
         NSLog(@"onAnimationEndAction");
     };
     
+    
+    
     self.mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(60, 100, 250, 250)];
     [self.view addSubview:self.mediaView];
 
@@ -136,6 +139,16 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.mediaView.model = mediaViewModel;
     });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.mediaView startPlayAnimate];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.mediaView stopPlayAnimate];
+    });
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

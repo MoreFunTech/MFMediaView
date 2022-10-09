@@ -30,10 +30,32 @@
 
 - (void)startPlayAnimate {
     
+    if (_gifView) {
+        [_gifView startPlayAnimate];
+    }
+    
+    if (_svgaView) {
+        [_svgaView startPlayAnimate];
+    }
+    
+    if (_pagView) {
+        [_pagView startPlayAnimate];
+    }
     
 }
 
 - (void)stopPlayAnimate {
+    if (_gifView) {
+        [_gifView stopPlayAnimate];
+    }
+    
+    if (_svgaView) {
+        [_svgaView stopPlayAnimate];
+    }
+    
+    if (_pagView) {
+        [_pagView stopPlayAnimate];
+    }
     
 }
 
