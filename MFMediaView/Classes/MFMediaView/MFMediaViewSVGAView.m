@@ -19,6 +19,14 @@
 
 }
 
+- (void)startPlayAnimate {
+    [self.svgaPlayer startAnimation];
+}
+
+- (void)stopPlayAnimate {
+    [self.svgaPlayer stopAnimation];
+}
+
 
 - (void)configureDefaultView:(MFMediaViewModel *)model {
     if (!_svgaPlayer) {
@@ -119,7 +127,9 @@
                   completionBlock:^(SVGAVideoEntity *videoItem) {
                       if (videoItem) {
                           weakSelf.svgaPlayer.videoItem = videoItem;
-                          [weakSelf.svgaPlayer startAnimation];
+                          if (weakSelf.model.svgaConfig.isAutoPlay) {
+                              [weakSelf.svgaPlayer startAnimation];
+                          }
                           weakSelf.model.imageWidth = videoItem.videoSize.width;
                           weakSelf.model.imageHeight = videoItem.videoSize.height;
                           weakSelf.model.during = @(videoItem.frames).floatValue / @(videoItem.FPS).floatValue;

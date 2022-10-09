@@ -53,6 +53,15 @@
 
 }
 
+
+- (void)startPlayAnimate {
+    [self.imageView startAnimating];
+}
+
+- (void)stopPlayAnimate {
+    [self.imageView stopAnimating];
+}
+
 - (void)configureDefaultView {
     
     if (!_imageView) {
@@ -109,7 +118,7 @@
 
 - (void)configureView:(MFMediaViewModel *)model {
     
-    self.imageView.autoPlayAnimatedImage = YES;
+    self.imageView.autoPlayAnimatedImage = model.gifConfig.isAutoPlay;
     if (model.gifConfig.repeatCount > 0) {
         self.imageView.shouldCustomLoopCount = YES;
         self.imageView.animationRepeatCount = model.gifConfig.repeatCount;

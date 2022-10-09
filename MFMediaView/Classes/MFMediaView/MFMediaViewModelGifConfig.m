@@ -17,6 +17,7 @@
 //    configure.placeHolderImage = [UIImage imageNamed:@""];
     configure.localImage = nil;
     configure.repeatCount = 0;
+    configure.isAutoPlay = YES;
     __weak typeof(configure) weakConfigure = configure;
     configure.setNetImageBlock = ^(NSString * _Nonnull netImageUrl, UIImageView * _Nonnull imageView) {
         [weakConfigure netImageAction:netImageUrl imageView:imageView];

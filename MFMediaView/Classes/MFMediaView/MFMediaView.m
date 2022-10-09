@@ -27,6 +27,16 @@
 
 @implementation MFMediaView
 
+
+- (void)startPlayAnimate {
+    
+    
+}
+
+- (void)stopPlayAnimate {
+    
+}
+
 - (void)setModel:(MFMediaViewModel *)model {
     _model = model;
     

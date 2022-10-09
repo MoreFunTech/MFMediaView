@@ -5,9 +5,9 @@
 #import "MFMediaViewModelPAGConfig.h"
 
 
-@implementation MFMediaViewModelPAGConfig {
+@implementation MFMediaViewModelPAGConfig { }
 
-}
+
 + (instancetype)defaultConfigure {
     MFMediaViewModelPAGConfig *configure = [[MFMediaViewModelPAGConfig alloc] init];
 //    @property (nonatomic, assign) NSUInteger repeatCount;
@@ -22,6 +22,7 @@
     configure.repeatCount = 0;
     configure.scaleMode = MFMediaViewModelPAGConfigStyleScaleModeAspectToFit;
     configure.maxFrameRate = 60;
+    configure.isAutoPlay = YES;
 
     return configure;
 }

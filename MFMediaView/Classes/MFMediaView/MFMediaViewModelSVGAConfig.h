@@ -24,6 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) BOOL clearsAfterStop;
 
+/**
+ * 自动播放
+ */
+@property (nonatomic) BOOL isAutoPlay;
+
 @property (nonatomic, copy) void(^onAnimationStartAction)(void);
 @property (nonatomic, copy) void(^onAnimationEndAction)(void);
 

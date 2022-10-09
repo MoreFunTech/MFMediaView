@@ -13,6 +13,10 @@
 
 @property (nonatomic, copy) void(^mediaLoadFinishBlock)(MFMediaViewModel *model);
 
+- (void)startPlayAnimate;
+
+- (void)stopPlayAnimate;
+
 - (void)resetSubviews;
 
 - (void)clear;

@@ -41,6 +41,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) NSUInteger repeatCount;
 
+/**
+ * 自动播放
+ */
+@property (nonatomic) BOOL isAutoPlay;
+
 
 /**
  * 设置网络图片方案 (默认SD)

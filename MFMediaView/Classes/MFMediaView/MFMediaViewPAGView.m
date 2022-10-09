@@ -25,6 +25,14 @@
 
 }
 
+- (void)startPlayAnimate {
+    [self.pagView play];
+}
+
+- (void)stopPlayAnimate {
+    [self.pagView stop];
+}
+
 - (void)configureDefaultView:(MFMediaViewModel *)model {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (!self.pagView) {
@@ -133,8 +141,11 @@
         _pagFile = [PAGFile Load:localPath];
     }
     if (_pagFile) {
+        
         [self.pagView setComposition:self.pagFile];
-        [self.pagView play];
+        if (self.model.pagConfig.isAutoPlay) {
+            [self.pagView play];
+        }
         self.model.imageWidth = self.pagFile.width;
         self.model.imageHeight = self.pagFile.height;
         self.model.during = self.pagFile.duration;

@@ -20,6 +20,10 @@
 
 @property (nonatomic, weak) id<MFMediaViewFileTypeJudgerProtocol>mediaTypeEncoderDelegate;
 
+- (void)startPlayAnimate;
+
+- (void)stopPlayAnimate;
+
 - (void)destroyView;
 
 @end

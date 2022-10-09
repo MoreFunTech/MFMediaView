@@ -34,6 +34,12 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigStyleScaleMode) {
  * 文件的展示方式 默认 MFMediaViewModelPAGConfigStyleScaleModeAspectToFit ，比例压缩
  */
 @property (nonatomic, assign) MFMediaViewModelPAGConfigStyleScaleMode scaleMode;
+
+/**
+ * 自动播放
+ */
+@property (nonatomic) BOOL isAutoPlay;
+
 /**
  * 最大渲染的帧率，默认60帧
  * 若该帧数低于文件帧数，会丢失部分画面，
