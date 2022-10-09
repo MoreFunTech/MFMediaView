@@ -27,12 +27,12 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - libpag (4.0.5.81)
+  - libpag (4.1.12)
   - MFFileDownloader (0.0.6):
     - AFNetworking (~> 4.0)
     - FMDB (~> 2.7)
-  - MFMediaView (0.0.8):
-    - libpag (< 4.1)
+  - MFMediaView (0.1.0):
+    - libpag (~> 4.1)
     - MFFileDownloader
     - SDWebImage (~> 5.0)
     - SVGAPlayer (~> 2.5)
@@ -83,9 +83,9 @@ SPEC CHECKSUMS:
   "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  libpag: b1c75dcb9c71623478b3a0f31b1c8894683cb9d9
+  libpag: 37701b0f26208f440635273e9b227021fa960614
   MFFileDownloader: 5933b7b8c462e5b0ac924c788fbc280e06bdb51c
-  MFMediaView: cd25c255860188a4e42fc7859112b833146d85ec
+  MFMediaView: 558600532b2acd979e48e56b95c12ccbab46d420
   Protobuf: e7846f61e8542750cf311385fc633c1d00928f9f
   SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66

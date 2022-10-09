@@ -102,17 +102,22 @@
     return _imageConfig;
 }
 
+- (MFMediaViewModelGifConfig *)gifConfig {
+    if (!_gifConfig) {
+        _gifConfig = [MFMediaViewModelGifConfig defaultConfigure];
+    }
+    return _gifConfig;
+}
+
 - (NSString *)description {
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [description appendFormat:@"self.style=%d", self.style];
+    [description appendFormat:@" self.style=%ld", (long)self.style];
     [description appendFormat:@", self.localPath=%@", self.localPath];
     [description appendFormat:@", self.url=%@", self.url];
     [description appendFormat:@", self.furUrl=%@", self.furUrl];
     [description appendFormat:@", self.imageWidth=%lf", self.imageWidth];
     [description appendFormat:@", self.imageHeight=%lf", self.imageHeight];
     [description appendFormat:@", self.during=%lf", self.during];
-    [description appendFormat:@", self.pagConfig=%@", self.pagConfig];
-    [description appendFormat:@", self.svgaConfig=%@", self.svgaConfig];
     [description appendString:@">"];
     return description;
 }

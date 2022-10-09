@@ -12,42 +12,6 @@
 
 + (instancetype)defaultConfigure {
     MFMediaViewModelImageConfig *configure = [[MFMediaViewModelImageConfig alloc] init];
-
-//    /**
-//     * 展示方式
-//     */
-//    @property (nonatomic) UIViewContentMode contentMode;
-//
-//    /**
-//     * 占位图片
-//     */
-//    @property (nonatomic, strong) UIImage *placeHolderImage;
-//
-//    /**
-//     * 图片
-//     */
-//    @property (nonatomic, strong) UIImage *localImage;
-//
-//    /**
-//     * 图片渲染颜色
-//     */
-//    @property (nonatomic, strong) UIColor *tintColor;
-//
-//    /**
-//     * 图片渲染方式
-//     */
-//    @property (nonatomic) UIImageRenderingMode renderMode;
-//
-//    /**
-//     * 图片地址
-//     */
-//    @property (nonatomic, copy) NSString *netImageUrl;
-//
-//    /**
-//     * 设置网络图片方案 (默认SD)
-//     */
-//    @property (nonatomic, copy) void(^setNetImageBlock)(NSString *netImageUrl, UIImageView *imageView);
-    
     configure.contentMode = UIViewContentModeScaleAspectFill;
 //    configure.placeHolderImage = [UIImage imageNamed:@""];
     configure.localImage = nil;

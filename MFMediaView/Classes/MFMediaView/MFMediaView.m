@@ -29,7 +29,22 @@
 
 - (void)setModel:(MFMediaViewModel *)model {
     _model = model;
-
+    
+    if ([self isStringNotNull:model.localPath]) {
+        if (self.mediaTypeEncoderDelegate &&
+            [self.mediaTypeEncoderDelegate respondsToSelector:@selector(encodeMediaTypeByTypeCode:)]) {
+            int typeCode = [MFMediaViewFileTypeJudger getTypeCodeWithFilePath:model.localPath];
+            MFMediaViewModelStyle style = [self.mediaTypeEncoderDelegate encodeMediaTypeByTypeCode:typeCode];
+            model.style = style;
+        } else if (MFMediaViewFileTypeJudger.mediaTypeEncoder &&
+                   [MFMediaViewFileTypeJudger.mediaTypeEncoder respondsToSelector:@selector(encodeMediaTypeByTypeCode:)]) {
+            int typeCode = [MFMediaViewFileTypeJudger getTypeCodeWithFilePath:model.localPath];
+            MFMediaViewModelStyle style = [MFMediaViewFileTypeJudger.mediaTypeEncoder encodeMediaTypeByTypeCode:typeCode];
+            model.style = style;
+        }
+        
+    }
+    
     switch (model.style) {
 
         case MFMediaViewModelStyleNone:
@@ -210,6 +225,20 @@
         [_pagView removeFromSuperview];
         _pagView = nil;
     }
+}
+
+
+- (BOOL)isStringNotNull:(NSString *)string {
+    if ([string isKindOfClass:[NSNull class]]) {
+        return NO;
+    }
+    if (![string isKindOfClass:[NSString class]]) {
+        return NO;
+    }
+    if (string.length <= 0) {
+        return NO;
+    }
+    return YES;
 }
 
 @end

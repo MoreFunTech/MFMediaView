@@ -6,8 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import "MFMediaViewModel.h"
+
+#import "MFMediaViewHeader.h"
 
 @interface MFMediaView : UIView
 
@@ -17,6 +17,8 @@
 @property (nonatomic, strong) MFMediaViewModel *model;
 
 @property (nonatomic, copy) void(^mediaLoadFinishBlock)(MFMediaViewModel *model);
+
+@property (nonatomic, weak) id<MFMediaViewFileTypeJudgerProtocol>mediaTypeEncoderDelegate;
 
 - (void)destroyView;
 

@@ -1,6 +1,6 @@
 {
   "name": "MFMediaView",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "summary": "A Common Display View For Media",
   "description": "We Use This To Show Common Media File\n1 for jpg、png\n2 for mp4\n3 for gif\n4 for avi\n5 for svga\n6 for pag",
   "homepage": "https://github.com/MoreFunTech/MFMediaView",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/MoreFunTech/MFMediaView.git",
-    "tag": "0.0.8"
+    "tag": "0.1.0"
   },
   "platforms": {
     "ios": "10.0"
@@ -25,7 +25,7 @@
       "~> 5.0"
     ],
     "libpag": [
-      "< 4.1"
+      "~> 4.1"
     ],
     "SVGAPlayer": [
       "~> 2.5"

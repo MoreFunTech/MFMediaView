@@ -6,9 +6,45 @@
 #import <SDWebImage/SDWebImage.h>
 #import "MFMediaViewModel.h"
 
+
+@interface SDAnimatedImageView (MFMediaGiftView)
+
+- (void)setCurrentFrameIndex:(NSUInteger)currentFrameIndex;
+
+@end
+
+@interface MFMediaViewAnimateView: SDAnimatedImageView
+
+@property (nonatomic, copy) void(^onAnimationStartAction)(void);
+@property (nonatomic, copy) void(^onAnimationEndAction)(void);
+
+@end
+
+@implementation MFMediaViewAnimateView
+
+//currentFrameIndex
+
+//@property (nonatomic, assign, readwrite) NSUInteger currentFrameIndex;
+
+- (void)setCurrentFrameIndex:(NSUInteger)currentFrameIndex {
+    [super setCurrentFrameIndex:currentFrameIndex];
+    if (currentFrameIndex == 1) {
+        if (self.onAnimationStartAction) {
+            self.onAnimationStartAction();
+        }
+    }
+    if (currentFrameIndex == self.player.totalFrameCount - 1) {
+        if (self.onAnimationEndAction) {
+            self.onAnimationEndAction();
+        }
+    }
+}
+
+@end
+ 
 @interface MFMediaViewGifView ()
 
-@property (nonatomic, strong) SDAnimatedImageView *imageView;
+@property (nonatomic, strong) MFMediaViewAnimateView *imageView;
 
 @end
 
@@ -20,7 +56,8 @@
 - (void)configureDefaultView {
     
     if (!_imageView) {
-        _imageView = [[SDAnimatedImageView alloc] initWithFrame:self.bounds];
+        _imageView = [[MFMediaViewAnimateView alloc] initWithFrame:self.bounds];
+        [self addImageViewObserve];
     }
 
 }
@@ -28,17 +65,35 @@
 - (void)resetSubviews {
     
     if (!_imageView) {
-        _imageView = [[SDAnimatedImageView alloc] initWithFrame:self.bounds];
+        _imageView = [[MFMediaViewAnimateView alloc] initWithFrame:self.bounds];
+        [self addImageViewObserve];
     }
     
     self.imageView.frame = self.bounds;
 }
 
+- (void)addImageViewObserve {
+    
+    __weak typeof(self) weakSelf = self;
+    self.imageView.onAnimationEndAction = ^{
+        if (weakSelf.model.gifConfig.onAnimationEndAction) {
+            weakSelf.model.gifConfig.onAnimationEndAction();
+        }
+    };
+    
+    self.imageView.onAnimationStartAction = ^{
+        if (weakSelf.model.gifConfig.onAnimationStartAction) {
+            weakSelf.model.gifConfig.onAnimationStartAction();
+        }
+    };
+}
+
 - (void)configureDefaultView:(MFMediaViewModel *)model {
     if (!_imageView) {
-        _imageView = [[SDAnimatedImageView alloc] initWithFrame:self.bounds];
-        _imageView.contentMode = model.imageConfig.contentMode;
+        _imageView = [[MFMediaViewAnimateView alloc] initWithFrame:self.bounds];
+        _imageView.contentMode = model.gifConfig.contentMode;
         [self addSubview:_imageView];
+        [self addImageViewObserve];
     }
     [self configureView:model];
 }
@@ -54,25 +109,37 @@
 
 - (void)configureView:(MFMediaViewModel *)model {
     
-    self.imageView.contentMode = model.imageConfig.contentMode;
-    if (model.imageConfig.setNetImageBlock && [self isStringNotNull:model.url]) {
-        model.imageConfig.setNetImageBlock(model.url, self.imageView);
-    } else if (model.imageConfig.localImage) {
-        self.imageView.image = [model.imageConfig.localImage imageWithRenderingMode:model.imageConfig.renderMode];
-        self.imageView.tintColor = model.imageConfig.tintColor;
+    self.imageView.autoPlayAnimatedImage = YES;
+    if (model.gifConfig.repeatCount > 0) {
+        self.imageView.shouldCustomLoopCount = YES;
+        self.imageView.animationRepeatCount = model.gifConfig.repeatCount;
+    } else {
+        self.imageView.shouldCustomLoopCount = NO;
+    }
+    
+    
+    self.imageView.contentMode = model.gifConfig.contentMode;
+    if (model.gifConfig.setNetImageBlock && [self isStringNotNull:model.url]) {
+        model.gifConfig.setNetImageBlock(model.url, self.imageView);
+    } else if (model.gifConfig.localImage) {
+        self.imageView.image = [model.gifConfig.localImage imageWithRenderingMode:model.gifConfig.renderMode];
+        self.imageView.tintColor = model.gifConfig.tintColor;
     } else if ([self isStringNotNull:model.localPath]) {
         NSError *error;
         NSData *imageData = [NSData dataWithContentsOfFile:model.localPath options:NSDataReadingMappedIfSafe error:&error];
         if (!error && imageData) {
             UIImage *image = [UIImage imageWithData:imageData scale:UIScreen.mainScreen.scale];
-            self.imageView.image = [image imageWithRenderingMode:model.imageConfig.renderMode];
-            self.imageView.tintColor = model.imageConfig.tintColor;
+            self.imageView.image = [image imageWithRenderingMode:model.gifConfig.renderMode];
+            self.imageView.tintColor = model.gifConfig.tintColor;
         } else {
-            self.imageView.image = model.imageConfig.placeHolderImage;
+            self.imageView.image = model.gifConfig.placeHolderImage;
         }
     } else {
-        self.imageView.image = model.imageConfig.placeHolderImage;
+        self.imageView.image = model.gifConfig.placeHolderImage;
     }
+    
+    
+    
 }
 
 - (BOOL)isStringNotNull:(NSString *)string {

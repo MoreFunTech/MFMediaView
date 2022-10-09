@@ -12,9 +12,13 @@
 
 #import "MFMediaView.h"
 #import "MFMediaViewAudioView.h"
+#import "MFMediaViewEnum.h"
+#import "MFMediaViewFileTypeJudger.h"
 #import "MFMediaViewGifView.h"
+#import "MFMediaViewHeader.h"
 #import "MFMediaViewImageView.h"
 #import "MFMediaViewModel.h"
+#import "MFMediaViewModelGifConfig.h"
 #import "MFMediaViewModelImageConfig.h"
 #import "MFMediaViewModelPAGConfig.h"
 #import "MFMediaViewModelSVGAConfig.h"

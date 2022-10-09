@@ -23,8 +23,8 @@
 
     
 //    [self configureSvga];
-    [self configurePag];
-//    [self configureImage];
+//    [self configurePag];
+    [self configureImage];
     
 //
     
@@ -111,9 +111,24 @@
 
 
 - (void)configureImage {
-    NSString *urlStr = @"https://lmg.jj20.com/up/allimg/4k/s/02/2109242332225H9-0-lp.jpg";
+//    NSString *urlStr = @"https://lmg.jj20.com/up/allimg/4k/s/02/2109242332225H9-0-lp.jpg";
+    NSString *urlStr = @"https://img.zcool.cn/community/0197d259ccc891a8012053f8cb26e3.gif";
     MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStyleGif url:urlStr];
-    mediaViewModel.imageConfig.contentMode = UIViewContentModeScaleAspectFill;
+    mediaViewModel.gifConfig.contentMode = UIViewContentModeScaleAspectFill;
+    mediaViewModel.gifConfig.repeatCount = 1;
+    mediaViewModel.gifConfig.onFileLoadingAction = ^ (CGFloat progress) {
+        NSLog(@"onFileLoadingAction : %f", progress);
+    };
+    mediaViewModel.gifConfig.onFileLoadSuccessAction = ^ {
+        NSLog(@"onFileLoadSuccessAction");
+    };
+    mediaViewModel.gifConfig.onAnimationStartAction = ^ {
+        NSLog(@"onAnimationStartAction");
+    };
+    mediaViewModel.gifConfig.onAnimationEndAction = ^ {
+        NSLog(@"onAnimationEndAction");
+    };
+    
     self.mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(60, 100, 250, 250)];
     [self.view addSubview:self.mediaView];
 
