@@ -24,6 +24,63 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigStyleScaleMode) {
 
 };
 
+typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
+    /**
+     * 替换类型 - 图片
+     */
+    MFMediaViewModelPAGConfigReplaceLayerModelStyleImage = 0,
+    /**
+     * 替换类型 - 文字
+     */
+    MFMediaViewModelPAGConfigReplaceLayerModelStyleText = 1,
+};
+
+@interface MFMediaViewModelPAGConfigReplaceLayerModel : NSObject
+
+/**
+ * 替换类型
+ */
+@property (nonatomic, assign) MFMediaViewModelPAGConfigReplaceLayerModelStyle style;
+
+/**
+ * 替换文字
+ */
+@property (nonatomic, copy) NSString *text;
+
+/**
+ * 替换图片
+ */
+@property (nonatomic, strong) UIImage *image;
+
+/**
+ * 替换图层
+ */
+@property (nonatomic, copy) NSString *layerName;
+
+/**
+ * 快速构建 文字替换
+ *
+ * @param text 替换文字
+ * @param layerName 替换图层名字
+ *
+ * @return 构建模型
+ */
++ (instancetype)modelWithText:(NSString *)text
+                    layerName:(NSString *)layerName;
+
+/**
+ * 快速构建 图片替换
+ *
+ * @param image 替换图片
+ * @param layerName 替换图层名字
+ *
+ * @return 构建模型
+ */
++ (instancetype)modelWithImage:(UIImage *)image
+                     layerName:(NSString *)layerName;
+
+@end
+
 @interface MFMediaViewModelPAGConfig : NSObject
 /**
  * Pag循环的次数， 0无限循环， 默认0
@@ -39,6 +96,8 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigStyleScaleMode) {
  * 自动播放
  */
 @property (nonatomic) BOOL isAutoPlay;
+
+@property (nonatomic, strong) NSMutableArray <MFMediaViewModelPAGConfigReplaceLayerModel *>*replaceLayerList;
 
 /**
  * 最大渲染的帧率，默认60帧

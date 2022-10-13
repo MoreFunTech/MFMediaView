@@ -27,6 +27,7 @@
 
 - (void)startPlayAnimate {
     [self.pagView play];
+    [self replaceLayerAction];
 }
 
 - (void)stopPlayAnimate {
@@ -142,9 +143,11 @@
     }
     if (_pagFile) {
         
+        
         [self.pagView setComposition:self.pagFile];
         if (self.model.pagConfig.isAutoPlay) {
             [self.pagView play];
+            [self replaceLayerAction];
         }
         self.model.imageWidth = self.pagFile.width;
         self.model.imageHeight = self.pagFile.height;
@@ -153,6 +156,23 @@
             self.mediaLoadFinishBlock(self.model);
         }
     }
+}
+
+- (void)replaceLayerAction {
+    
+    NSMutableArray *originList = [NSMutableArray array];
+    
+    [self.model.pagConfig.replaceLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigReplaceLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSArray * layerList = [self.pagFile getLayersByName:obj.layerName];
+        if (layerList.count > 0) {
+            PAGLayer *layer = layerList[0];
+            if (layer.layerType == PAGLayerTypeImage && obj.style == MFMediaViewModelPAGConfigReplaceLayerModelStyleImage) {
+                PAGImage *pagImage = [PAGImage FromCGImage:obj.image.CGImage];
+                [self.pagFile replaceImage:@(layer.editableIndex).intValue data:pagImage];
+            }
+        }
+    }];
+
 }
 
 - (void)resetSubviews {

@@ -4,6 +4,57 @@
 
 #import "MFMediaViewModelPAGConfig.h"
 
+@interface MFMediaViewModelPAGConfigReplaceLayerModel ()
+
+@end
+
+@implementation MFMediaViewModelPAGConfigReplaceLayerModel {}
+
+- (void)setImage:(UIImage *)image {
+    if (!image) {
+        
+        CGRect rect = CGRectMake(0.0f, 0.0f, 100, 100);
+        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
+        CGContextFillRect(context, rect);
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        _image = image;
+    } else {
+        CGImageRef cgImag = image.CGImage;
+        _image = [UIImage imageWithCGImage:cgImag];
+    }
+}
+
+- (instancetype)initWithStyle:(MFMediaViewModelPAGConfigReplaceLayerModelStyle)style
+                         text:(NSString *)text
+                        image:(UIImage *)image
+                    layerName:(NSString *)layerName {
+    self = [super init];
+    if (self) {
+        self.style = style;
+        self.text = text;
+        self.image = image;
+        self.layerName = layerName;
+    }
+    return self;
+}
+
+
++ (instancetype)modelWithText:(NSString *)text
+                    layerName:(NSString *)layerName {
+    return [[self alloc] initWithStyle:(MFMediaViewModelPAGConfigReplaceLayerModelStyleText) text:text image:nil layerName:layerName];
+}
+
+
++ (instancetype)modelWithImage:(UIImage *)image
+                     layerName:(NSString *)layerName {
+    return [[self alloc] initWithStyle:(MFMediaViewModelPAGConfigReplaceLayerModelStyleImage) text:@"" image:image layerName:layerName];
+}
+
+@end
+
 
 @implementation MFMediaViewModelPAGConfig { }
 
@@ -36,5 +87,11 @@
     return description;
 }
 
+- (NSMutableArray<MFMediaViewModelPAGConfigReplaceLayerModel *> *)replaceLayerList {
+    if (!_replaceLayerList) {
+        _replaceLayerList = [NSMutableArray array];
+    }
+    return _replaceLayerList;
+}
 
 @end

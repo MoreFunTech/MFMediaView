@@ -23,7 +23,8 @@
 
     
 //    [self configureSvga];
-    [self configurePag];
+//    [self configurePag];
+    [self configureFileHeaderCodePag];
 //    [self configureImage];
     
 //
@@ -78,7 +79,57 @@
 //    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/40b82ce094db24f0c68dec790264e9a0.pag";
 //    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:netUrl];
     
-    NSString *localPath = [NSBundle.mainBundle pathForResource:@"maskPagNotCode" ofType:@""];
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
+   
+    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
+    
+    
+//    mediaViewModel.pagConfig.repeatCount = 1;
+    mediaViewModel.pagConfig.scaleMode = MFMediaViewModelPAGConfigStyleScaleModeAspectToFit;
+    mediaViewModel.pagConfig.maxFrameRate = 60;
+    [mediaViewModel.pagConfig setOnAnimationStartAction:^{
+        NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  动画开始播放\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+    }];
+    [mediaViewModel.pagConfig setOnAnimationEndAction:^{
+        NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  动画结束播放\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+    }];
+    
+    [mediaViewModel.pagConfig setOnFileLoadingAction:^(CGFloat progress) {
+        NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  文件下载中: %f\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", progress);
+    }];
+    [mediaViewModel.pagConfig setOnFileLoadFailureAction:^(NSError *error) {
+        NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  文件下载失败: %@\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", error.localizedDescription);
+    }];
+    [mediaViewModel.pagConfig setOnFileLoadSuccessAction:^{
+        NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  文件下载成功\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+    }];
+    
+    
+    [mediaViewModel.pagConfig.replaceLayerList addObject:
+         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:nil layerName:@""]
+    ];
+    
+
+    self.mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(60, 100, 250, 250)];
+    [self.view addSubview:self.mediaView];
+    
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.mediaView.model = mediaViewModel;
+    });
+}
+
+- (void)configureFileHeaderCodePag {
+    
+    //    "https://ruiqu-1304540262.sutanapp.com/0ae374225118bdb137f7d7e23206b5cf.pag"
+
+    //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"神仙伴侣内侧用的" ofType:@"svga"];
+    
+//    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/40b82ce094db24f0c68dec790264e9a0.pag";
+//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:netUrl];
+    
+//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"test_replace_file.pag" ofType:@""];
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"每日任务-仙狐-幼年期.pag" ofType:@""];
    
     
     NSData *fileData = [NSData dataWithContentsOfFile:localPath];
@@ -146,6 +197,10 @@
     [mediaViewModel.pagConfig setOnFileLoadSuccessAction:^{
         NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  文件下载成功\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
     }];
+    
+    [mediaViewModel.pagConfig.replaceLayerList addObject:
+         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:nil layerName:@"mask_changebale.png"]
+    ];
 
     self.mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(60, 100, 250, 250)];
     [self.view addSubview:self.mediaView];
@@ -155,6 +210,7 @@
         self.mediaView.model = mediaViewModel;
     });
 }
+
 
 
 - (void)configureImage {
