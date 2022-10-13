@@ -159,10 +159,10 @@
 
 - (void)replaceLayerAction {
     
-    for (int i = 0; i < self.pagFile.numChildren; i++) {
-        PAGLayer *layer = [self.pagFile getLayerAt:i];
-        NSLog(@"%d - %ld - %@", i, layer.layerType, layer.layerName);
-    }
+//    for (int i = 0; i < self.pagFile.numChildren; i++) {
+//        PAGLayer *layer = [self.pagFile getLayerAt:i];
+//        NSLog(@"%d - %ld - %@", i, layer.layerType, layer.layerName);
+//    }
     
     [self.model.pagConfig.replaceLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigReplaceLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSArray * layerList = [self.pagFile getLayersByName:obj.layerName];
