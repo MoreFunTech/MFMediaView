@@ -23,8 +23,8 @@
 
     
 //    [self configureSvga];
-//    [self configurePag];
-    [self configureImage];
+    [self configurePag];
+//    [self configureImage];
     
 //
     
@@ -75,12 +75,59 @@
 
     //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"神仙伴侣内侧用的" ofType:@"svga"];
     
-    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/40b82ce094db24f0c68dec790264e9a0.pag";
-    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:netUrl];
+//    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/40b82ce094db24f0c68dec790264e9a0.pag";
+//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:netUrl];
     
-//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080" ofType:@"pag"];
-//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
-    mediaViewModel.pagConfig.repeatCount = 1;
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"maskPagNotCode" ofType:@""];
+   
+    
+    NSData *fileData = [NSData dataWithContentsOfFile:localPath];
+    
+    int char1 = 0, char2 = 0;
+    [fileData getBytes:&char1 range:NSMakeRange(0, 1)];
+    [fileData getBytes:&char2 range:NSMakeRange(1, 1)];
+    NSString *numCode = [NSString stringWithFormat:@"%d%d", char1, char2];
+    NSLog(@"%@", numCode);
+    
+    NSMutableData *mutableData = [NSMutableData dataWithData:fileData];
+    
+    [mutableData replaceBytesInRange:NSMakeRange(0, 1) withBytes:"1"];
+    [mutableData replaceBytesInRange:NSMakeRange(1, 1) withBytes:"1"];
+
+    int char3 = 0, char4 = 0;
+    [mutableData getBytes:&char3 range:NSMakeRange(0, 1)];
+    [mutableData getBytes:&char4 range:NSMakeRange(1, 1)];
+    NSString *numCode2 = [NSString stringWithFormat:@"%d%d", char3, char4];
+    NSLog(@"%@", numCode2);
+    
+    NSString *path0 = [NSString stringWithFormat:@"%@/file0", [MFViewController documentBaseDirection]];
+    if ([NSFileManager.defaultManager fileExistsAtPath:path0]) {
+        NSError *error;
+        [NSFileManager.defaultManager removeItemAtPath:path0 error:&error];
+    }
+    [mutableData writeToFile:path0 atomically:YES];
+    
+    [mutableData replaceBytesInRange:NSMakeRange(0, 1) withBytes:"P"];
+    [mutableData replaceBytesInRange:NSMakeRange(1, 1) withBytes:"A"];
+
+    int char5 = 0, char6 = 0;
+    [mutableData getBytes:&char5 range:NSMakeRange(0, 1)];
+    [mutableData getBytes:&char6 range:NSMakeRange(1, 1)];
+    NSString *numCode3 = [NSString stringWithFormat:@"%d%d", char5, char6];
+    NSLog(@"%@", numCode3);
+    
+    NSString *path = [NSString stringWithFormat:@"%@/file", [MFViewController documentBaseDirection]];
+    if ([NSFileManager.defaultManager fileExistsAtPath:path]) {
+        NSError *error;
+        [NSFileManager.defaultManager removeItemAtPath:path error:&error];
+    }
+    [mutableData writeToFile:path atomically:YES];
+    NSLog(@"%@", path);
+    
+    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:path];
+    
+    
+//    mediaViewModel.pagConfig.repeatCount = 1;
     mediaViewModel.pagConfig.scaleMode = MFMediaViewModelPAGConfigStyleScaleModeAspectToFit;
     mediaViewModel.pagConfig.maxFrameRate = 60;
     [mediaViewModel.pagConfig setOnAnimationStartAction:^{
@@ -149,6 +196,20 @@
     });
     
     
+}
+
+
+
++ (NSString *)dataBaseDirection {
+//    NSString *rootDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    NSString *rootDirectory = @"";
+    rootDirectory = [rootDirectory stringByAppendingPathComponent:@"MFPodFiles"];
+    rootDirectory = [rootDirectory stringByAppendingPathComponent:@"MediaView"];
+    return rootDirectory;
+}
+
++ (NSString *)documentBaseDirection {
+    return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
 }
 
 - (void)didReceiveMemoryWarning {

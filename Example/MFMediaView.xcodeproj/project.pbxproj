@@ -24,6 +24,9 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		AEFC3D6E28F7BF25005F9D2C /* pet_rankList_cell_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D6C28F7BF25005F9D2C /* pet_rankList_cell_bg@3x.png */; };
+		AEFC3D7128F7C16E005F9D2C /* pet_rankList_cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D7028F7C16E005F9D2C /* pet_rankList_cell_bg.png */; };
+		AEFC3D7D28F7E725005F9D2C /* maskPagNotCode in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D7B28F7E725005F9D2C /* maskPagNotCode */; };
 		FFE7F88753A2240486B62319 /* Pods_MFMediaView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 050BB1A6EB6999E33620904C /* Pods_MFMediaView_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +67,9 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D088A66A6779D8F84419C92 /* Pods-MFMediaView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFMediaView_Tests.debug.xcconfig"; path = "Target Support Files/Pods-MFMediaView_Tests/Pods-MFMediaView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		AEFC3D6C28F7BF25005F9D2C /* pet_rankList_cell_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pet_rankList_cell_bg@3x.png"; sourceTree = "<group>"; };
+		AEFC3D7028F7C16E005F9D2C /* pet_rankList_cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pet_rankList_cell_bg.png; sourceTree = "<group>"; };
+		AEFC3D7B28F7E725005F9D2C /* maskPagNotCode */ = {isa = PBXFileReference; lastKnownFileType = file; path = maskPagNotCode; sourceTree = "<group>"; };
 		C241B6665715F49BA3C84B57 /* Pods-MFMediaView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFMediaView_Example.release.xcconfig"; path = "Target Support Files/Pods-MFMediaView_Example/Pods-MFMediaView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C4B62D8EA1EC966EA25290FE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		CF7EA809D4A915676CA92DD7 /* Pods_MFMediaView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MFMediaView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,10 +156,13 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* MFViewController.h */,
 				6003F5A6195388D20070C39A /* MFViewController.m */,
+				AEFC3D7B28F7E725005F9D2C /* maskPagNotCode */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
+				AEFC3D6C28F7BF25005F9D2C /* pet_rankList_cell_bg@3x.png */,
 				6003F594195388D20070C39A /* Supporting Files */,
 				33882E34FD68A076672B7C2C /* 2_0080.pag */,
+				AEFC3D7028F7C16E005F9D2C /* pet_rankList_cell_bg.png */,
 			);
 			name = "Example for MFMediaView";
 			path = MFMediaView;
@@ -284,9 +293,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEFC3D6E28F7BF25005F9D2C /* pet_rankList_cell_bg@3x.png in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				AEFC3D7128F7C16E005F9D2C /* pet_rankList_cell_bg.png in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				AEFC3D7D28F7E725005F9D2C /* maskPagNotCode in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				3388203B702CFEB36497F5FD /* 2_0080.pag in Resources */,
 			);
