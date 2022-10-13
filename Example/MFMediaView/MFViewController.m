@@ -23,8 +23,8 @@
 
     
 //    [self configureSvga];
-//    [self configurePag];
-    [self configureFileHeaderCodePag];
+    [self configurePag];
+//    [self configureFileHeaderCodePag];
 //    [self configureImage];
     
 //
@@ -79,7 +79,8 @@
 //    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/40b82ce094db24f0c68dec790264e9a0.pag";
 //    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:netUrl];
     
-    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
+//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"text3.pag" ofType:@""];
    
     MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
     
@@ -109,7 +110,10 @@
          [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:nil layerName:@""]
     ];
     
-
+    [mediaViewModel.pagConfig.replaceLayerList addObject:
+         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithText:@"芜湖" layerName:@"测试"]
+    ];
+    
     self.mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(60, 100, 250, 250)];
     [self.view addSubview:self.mediaView];
     

@@ -31,6 +31,7 @@
 		AEFC3D8128F7FF92005F9D2C /* test_replace_file2.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8028F7FF8F005F9D2C /* test_replace_file2.pag */; };
 		AEFC3D8328F80379005F9D2C /* test_replace_file.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8228F80379005F9D2C /* test_replace_file.pag */; };
 		AEFC3D8528F80535005F9D2C /* 每日任务-仙狐-幼年期.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8428F80535005F9D2C /* 每日任务-仙狐-幼年期.pag */; };
+		AEFC3D8728F80AAE005F9D2C /* text3.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8628F80AAE005F9D2C /* text3.pag */; };
 		FFE7F88753A2240486B62319 /* Pods_MFMediaView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 050BB1A6EB6999E33620904C /* Pods_MFMediaView_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		AEFC3D8028F7FF8F005F9D2C /* test_replace_file2.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_replace_file2.pag; sourceTree = "<group>"; };
 		AEFC3D8228F80379005F9D2C /* test_replace_file.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_replace_file.pag; sourceTree = "<group>"; };
 		AEFC3D8428F80535005F9D2C /* 每日任务-仙狐-幼年期.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = "每日任务-仙狐-幼年期.pag"; sourceTree = "<group>"; };
+		AEFC3D8628F80AAE005F9D2C /* text3.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = text3.pag; sourceTree = "<group>"; };
 		C241B6665715F49BA3C84B57 /* Pods-MFMediaView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFMediaView_Example.release.xcconfig"; path = "Target Support Files/Pods-MFMediaView_Example/Pods-MFMediaView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C4B62D8EA1EC966EA25290FE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		CF7EA809D4A915676CA92DD7 /* Pods_MFMediaView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MFMediaView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 				AEFC3D8028F7FF8F005F9D2C /* test_replace_file2.pag */,
 				AEFC3D8228F80379005F9D2C /* test_replace_file.pag */,
 				AEFC3D8428F80535005F9D2C /* 每日任务-仙狐-幼年期.pag */,
+				AEFC3D8628F80AAE005F9D2C /* text3.pag */,
 			);
 			name = "Example for MFMediaView";
 			path = MFMediaView;
@@ -313,6 +316,7 @@
 				AEFC3D8128F7FF92005F9D2C /* test_replace_file2.pag in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				AEFC3D8728F80AAE005F9D2C /* text3.pag in Resources */,
 				AEFC3D7F28F7FF82005F9D2C /* test_replace_file1.pag in Resources */,
 				AEFC3D7D28F7E725005F9D2C /* maskPagNotCode in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
