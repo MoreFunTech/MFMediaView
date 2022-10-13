@@ -70,7 +70,16 @@
     });
 }
 
+- (void)playNextPag {
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"每日任务-仙狐-幼年期.pag" ofType:@""];
+    MFMediaViewModel *mediaViewModel = self.mediaView.model;
+    mediaViewModel.localPath = localPath;
+    self.mediaView.model = mediaViewModel;
+}
+
 - (void)configurePag {
+    
+    __weak typeof(self) weakSelf = self;
     
     //    "https://ruiqu-1304540262.sutanapp.com/0ae374225118bdb137f7d7e23206b5cf.pag"
 
@@ -81,18 +90,21 @@
     
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
     NSString *localPath = [NSBundle.mainBundle pathForResource:@"text3.pag" ofType:@""];
+    
    
     MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
     
     
-//    mediaViewModel.pagConfig.repeatCount = 1;
+    mediaViewModel.pagConfig.repeatCount = 1;
     mediaViewModel.pagConfig.scaleMode = MFMediaViewModelPAGConfigStyleScaleModeAspectToFit;
     mediaViewModel.pagConfig.maxFrameRate = 60;
+    
     [mediaViewModel.pagConfig setOnAnimationStartAction:^{
         NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  动画开始播放\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
     }];
     [mediaViewModel.pagConfig setOnAnimationEndAction:^{
         NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  动画结束播放\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+        [weakSelf playNextPag];
     }];
     
     [mediaViewModel.pagConfig setOnFileLoadingAction:^(CGFloat progress) {
@@ -107,7 +119,7 @@
     
     
     [mediaViewModel.pagConfig.replaceLayerList addObject:
-         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:nil layerName:@""]
+         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:nil layerName:@"mask_changebale.png"]
     ];
     
     [mediaViewModel.pagConfig.replaceLayerList addObject:
@@ -185,13 +197,14 @@
 //    mediaViewModel.pagConfig.repeatCount = 1;
     mediaViewModel.pagConfig.scaleMode = MFMediaViewModelPAGConfigStyleScaleModeAspectToFit;
     mediaViewModel.pagConfig.maxFrameRate = 60;
+    mediaViewModel.pagConfig.repeatCount = 1;
     [mediaViewModel.pagConfig setOnAnimationStartAction:^{
         NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  动画开始播放\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
     }];
     [mediaViewModel.pagConfig setOnAnimationEndAction:^{
         NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  动画结束播放\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+        
     }];
-    
     [mediaViewModel.pagConfig setOnFileLoadingAction:^(CGFloat progress) {
         NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  文件下载中: %f\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", progress);
     }];
