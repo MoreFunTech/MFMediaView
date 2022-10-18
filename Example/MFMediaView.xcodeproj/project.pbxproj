@@ -32,6 +32,19 @@
 		AEFC3D8328F80379005F9D2C /* test_replace_file.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8228F80379005F9D2C /* test_replace_file.pag */; };
 		AEFC3D8528F80535005F9D2C /* 每日任务-仙狐-幼年期.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8428F80535005F9D2C /* 每日任务-仙狐-幼年期.pag */; };
 		AEFC3D8728F80AAE005F9D2C /* text3.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8628F80AAE005F9D2C /* text3.pag */; };
+		AEFC3D8928F939DF005F9D2C /* 弹窗.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8828F939DF005F9D2C /* 弹窗.pag */; };
+		AEFC3D8B28F939E5005F9D2C /* 升级-幼年期-成长期.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8A28F939E5005F9D2C /* 升级-幼年期-成长期.pag */; };
+		AEFC3D9328FE376C005F9D2C /* animate004.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8E28FE376A005F9D2C /* animate004.pag */; };
+		AEFC3D9428FE376C005F9D2C /* animate002.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8F28FE376B005F9D2C /* animate002.pag */; };
+		AEFC3D9528FE376C005F9D2C /* animate003.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D9028FE376B005F9D2C /* animate003.pag */; };
+		AEFC3D9628FE376C005F9D2C /* animate005.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D9128FE376B005F9D2C /* animate005.pag */; };
+		AEFC3D9728FE376C005F9D2C /* animate001.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D9228FE376B005F9D2C /* animate001.pag */; };
+		AEFC3D9928FE429A005F9D2C /* animate006.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D9828FE4299005F9D2C /* animate006.pag */; };
+		AEFC3D9B28FE4399005F9D2C /* animate007.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D9A28FE4399005F9D2C /* animate007.pag */; };
+		AEFC3D9D28FE45A5005F9D2C /* animate008.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D9C28FE45A5005F9D2C /* animate008.pag */; };
+		AEFC3D9F28FE466D005F9D2C /* animate009.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D9E28FE466D005F9D2C /* animate009.pag */; };
+		AEFC3DA128FE472A005F9D2C /* animate010.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3DA028FE472A005F9D2C /* animate010.pag */; };
+		AEFC3DA328FE4DAC005F9D2C /* animate011.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3DA228FE4DAB005F9D2C /* animate011.pag */; };
 		FFE7F88753A2240486B62319 /* Pods_MFMediaView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 050BB1A6EB6999E33620904C /* Pods_MFMediaView_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +93,19 @@
 		AEFC3D8228F80379005F9D2C /* test_replace_file.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_replace_file.pag; sourceTree = "<group>"; };
 		AEFC3D8428F80535005F9D2C /* 每日任务-仙狐-幼年期.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = "每日任务-仙狐-幼年期.pag"; sourceTree = "<group>"; };
 		AEFC3D8628F80AAE005F9D2C /* text3.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = text3.pag; sourceTree = "<group>"; };
+		AEFC3D8828F939DF005F9D2C /* 弹窗.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = "弹窗.pag"; sourceTree = "<group>"; };
+		AEFC3D8A28F939E5005F9D2C /* 升级-幼年期-成长期.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = "升级-幼年期-成长期.pag"; sourceTree = "<group>"; };
+		AEFC3D8E28FE376A005F9D2C /* animate004.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate004.pag; sourceTree = "<group>"; };
+		AEFC3D8F28FE376B005F9D2C /* animate002.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate002.pag; sourceTree = "<group>"; };
+		AEFC3D9028FE376B005F9D2C /* animate003.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate003.pag; sourceTree = "<group>"; };
+		AEFC3D9128FE376B005F9D2C /* animate005.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate005.pag; sourceTree = "<group>"; };
+		AEFC3D9228FE376B005F9D2C /* animate001.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate001.pag; sourceTree = "<group>"; };
+		AEFC3D9828FE4299005F9D2C /* animate006.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate006.pag; sourceTree = "<group>"; };
+		AEFC3D9A28FE4399005F9D2C /* animate007.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate007.pag; sourceTree = "<group>"; };
+		AEFC3D9C28FE45A5005F9D2C /* animate008.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate008.pag; sourceTree = "<group>"; };
+		AEFC3D9E28FE466D005F9D2C /* animate009.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate009.pag; sourceTree = "<group>"; };
+		AEFC3DA028FE472A005F9D2C /* animate010.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate010.pag; sourceTree = "<group>"; };
+		AEFC3DA228FE4DAB005F9D2C /* animate011.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate011.pag; sourceTree = "<group>"; };
 		C241B6665715F49BA3C84B57 /* Pods-MFMediaView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFMediaView_Example.release.xcconfig"; path = "Target Support Files/Pods-MFMediaView_Example/Pods-MFMediaView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C4B62D8EA1EC966EA25290FE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		CF7EA809D4A915676CA92DD7 /* Pods_MFMediaView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MFMediaView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +204,19 @@
 				AEFC3D8228F80379005F9D2C /* test_replace_file.pag */,
 				AEFC3D8428F80535005F9D2C /* 每日任务-仙狐-幼年期.pag */,
 				AEFC3D8628F80AAE005F9D2C /* text3.pag */,
+				AEFC3D8828F939DF005F9D2C /* 弹窗.pag */,
+				AEFC3D8A28F939E5005F9D2C /* 升级-幼年期-成长期.pag */,
+				AEFC3D9228FE376B005F9D2C /* animate001.pag */,
+				AEFC3D8F28FE376B005F9D2C /* animate002.pag */,
+				AEFC3D9028FE376B005F9D2C /* animate003.pag */,
+				AEFC3D8E28FE376A005F9D2C /* animate004.pag */,
+				AEFC3D9128FE376B005F9D2C /* animate005.pag */,
+				AEFC3D9828FE4299005F9D2C /* animate006.pag */,
+				AEFC3D9A28FE4399005F9D2C /* animate007.pag */,
+				AEFC3D9C28FE45A5005F9D2C /* animate008.pag */,
+				AEFC3D9E28FE466D005F9D2C /* animate009.pag */,
+				AEFC3DA028FE472A005F9D2C /* animate010.pag */,
+				AEFC3DA228FE4DAB005F9D2C /* animate011.pag */,
 			);
 			name = "Example for MFMediaView";
 			path = MFMediaView;
@@ -308,19 +347,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEFC3D8928F939DF005F9D2C /* 弹窗.pag in Resources */,
 				AEFC3D6E28F7BF25005F9D2C /* whiteBG.png in Resources */,
 				AEFC3D8328F80379005F9D2C /* test_replace_file.pag in Resources */,
+				AEFC3D9628FE376C005F9D2C /* animate005.pag in Resources */,
+				AEFC3D8B28F939E5005F9D2C /* 升级-幼年期-成长期.pag in Resources */,
+				AEFC3D9428FE376C005F9D2C /* animate002.pag in Resources */,
+				AEFC3D9D28FE45A5005F9D2C /* animate008.pag in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				AEFC3D8528F80535005F9D2C /* 每日任务-仙狐-幼年期.pag in Resources */,
 				AEFC3D7128F7C16E005F9D2C /* pet_rankList_cell_bg.png in Resources */,
+				AEFC3D9728FE376C005F9D2C /* animate001.pag in Resources */,
+				AEFC3D9528FE376C005F9D2C /* animate003.pag in Resources */,
+				AEFC3D9328FE376C005F9D2C /* animate004.pag in Resources */,
 				AEFC3D8128F7FF92005F9D2C /* test_replace_file2.pag in Resources */,
+				AEFC3DA128FE472A005F9D2C /* animate010.pag in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				AEFC3D9928FE429A005F9D2C /* animate006.pag in Resources */,
 				AEFC3D8728F80AAE005F9D2C /* text3.pag in Resources */,
+				AEFC3D9F28FE466D005F9D2C /* animate009.pag in Resources */,
+				AEFC3DA328FE4DAC005F9D2C /* animate011.pag in Resources */,
 				AEFC3D7F28F7FF82005F9D2C /* test_replace_file1.pag in Resources */,
 				AEFC3D7D28F7E725005F9D2C /* maskPagNotCode in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				3388203B702CFEB36497F5FD /* 2_0080.pag in Resources */,
+				AEFC3D9B28FE4399005F9D2C /* animate007.pag in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

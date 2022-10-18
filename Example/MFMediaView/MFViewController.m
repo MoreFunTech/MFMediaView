@@ -89,7 +89,8 @@
 //    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:netUrl];
     
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
-    NSString *localPath = [NSBundle.mainBundle pathForResource:@"text3.pag" ofType:@""];
+//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"text3.pag" ofType:@""];
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"animate011.pag" ofType:@""];
     
    
     MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
@@ -104,7 +105,7 @@
     }];
     [mediaViewModel.pagConfig setOnAnimationEndAction:^{
         NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  动画结束播放\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-        [weakSelf playNextPag];
+//        [weakSelf playNextPag];
     }];
     
     [mediaViewModel.pagConfig setOnFileLoadingAction:^(CGFloat progress) {
@@ -123,7 +124,7 @@
     ];
     
     [mediaViewModel.pagConfig.replaceLayerList addObject:
-         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithText:@"芜湖" layerName:@"测试"]
+         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithText:@"芜湖的" layerName:@"测试"]
     ];
     
     self.mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(60, 100, 250, 250)];
@@ -145,7 +146,12 @@
 //    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:netUrl];
     
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"test_replace_file.pag" ofType:@""];
-    NSString *localPath = [NSBundle.mainBundle pathForResource:@"每日任务-仙狐-幼年期.pag" ofType:@""];
+//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"升级-幼年期-成长期.pag" ofType:@""];
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"弹窗.pag" ofType:@""];
+    
+//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"升级-幼年期-成长期.pag" ofType:@""];
+//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"每日任务-仙狐-幼年期.pag" ofType:@""];
+    
    
     
     NSData *fileData = [NSData dataWithContentsOfFile:localPath];
@@ -216,7 +222,7 @@
     }];
     
     [mediaViewModel.pagConfig.replaceLayerList addObject:
-         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:nil layerName:@"mask_changebale.png"]
+         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:nil layerName:@"mask_changeable.png"]
     ];
 
     self.mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(60, 100, 250, 250)];
