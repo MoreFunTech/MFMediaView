@@ -3,6 +3,7 @@
 //
 
 #import "MFMediaViewModelPAGConfig.h"
+#import <libpag/PAGView.h>
 
 @interface MFMediaViewModelPAGConfigReplaceLayerModel ()
 
@@ -56,6 +57,13 @@
 @end
 
 
+@interface MFMediaViewModelPAGConfig ()
+
+@property (nonatomic, assign) float aniamteDuring;
+
+@end
+
+
 @implementation MFMediaViewModelPAGConfig { }
 
 
@@ -76,6 +84,11 @@
     configure.isAutoPlay = YES;
 
     return configure;
+}
+
+
+- (void)configModelWithFile:(PAGFile *)file {
+    self.aniamteDuring = file.duration;
 }
 
 - (NSString *)description {

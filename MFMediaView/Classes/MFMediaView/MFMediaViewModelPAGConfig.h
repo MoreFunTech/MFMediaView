@@ -4,6 +4,9 @@
 
 #import <Foundation/Foundation.h>
 
+
+@class PAGFile;
+
 typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigStyleScaleMode) {
     /**
      * 无缩放
@@ -83,9 +86,30 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
 
 @interface MFMediaViewModelPAGConfig : NSObject
 /**
- * Pag循环的次数， 0无限循环， 默认0
+ * Pag循环的次数， 0无限循环， 默认0 ,  -2 首次播放完后之后片段循环 衔接下面的属性
  */
 @property (nonatomic, assign) NSUInteger repeatCount;
+
+/**
+ * 片段循环区间 开始时间 循环次数 -2 时生效 设置 0 从头开始
+ */
+@property (nonatomic, assign) float repeatStartTime;
+
+/**
+ * 片段循环区间 结束时间 循环次数 -2 时生效 设置0 到尾结束
+ */
+@property (nonatomic, assign) float repeatEndTime;
+
+/**
+ * pag文件动画时长 动画加载完自动获取 请不要调用set方法 和下面的configure方法
+ */
+@property (nonatomic, readonly) float aniamteDuring;
+
+/**
+ * pag加载完毕后自动调用这个，请勿使用
+ * file PAGFile
+ */
+- (void)configModelWithFile:(PAGFile *)file;
 
 /**
  * 文件的展示方式 默认 MFMediaViewModelPAGConfigStyleScaleModeAspectToFit ，比例压缩

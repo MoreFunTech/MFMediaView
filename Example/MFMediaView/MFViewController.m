@@ -90,13 +90,15 @@
     
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"text3.pag" ofType:@""];
-    NSString *localPath = [NSBundle.mainBundle pathForResource:@"animate011.pag" ofType:@""];
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"pet_levelUp_animate.pag" ofType:@""];
     
    
     MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
     
     
-    mediaViewModel.pagConfig.repeatCount = 1;
+    mediaViewModel.pagConfig.repeatCount = -2;
+    mediaViewModel.pagConfig.repeatStartTime = 1;
+    mediaViewModel.pagConfig.repeatEndTime = 0;
     mediaViewModel.pagConfig.scaleMode = MFMediaViewModelPAGConfigStyleScaleModeAspectToFit;
     mediaViewModel.pagConfig.maxFrameRate = 60;
     
@@ -126,8 +128,21 @@
     [mediaViewModel.pagConfig.replaceLayerList addObject:
          [MFMediaViewModelPAGConfigReplaceLayerModel modelWithText:@"芜湖的" layerName:@"测试"]
     ];
+    [mediaViewModel.pagConfig.replaceLayerList addObject:
+         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithText:@"323123123" layerName:@"text_pet_levelUp_changeable"]
+    ];
+    [mediaViewModel.pagConfig.replaceLayerList addObject:
+         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:[UIImage imageNamed:@"pet_levelUp_image_age1"] layerName:@"image_pet_origin_changeable"]
+    ];
+    [mediaViewModel.pagConfig.replaceLayerList addObject:
+         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:[UIImage imageNamed:@"pet_levelUp_image_age2"] layerName:@"image_pet_levelUp_changeable"]
+    ];
     
-    self.mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(60, 100, 250, 250)];
+    
+    
+    
+    
+    self.mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(0, 0, 375, 667)];
     [self.view addSubview:self.mediaView];
     
 

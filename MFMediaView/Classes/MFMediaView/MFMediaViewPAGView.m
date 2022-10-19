@@ -20,6 +20,8 @@
  */
 @property(nonatomic, strong) PAGFile *pagFile;
 
+@property(nonatomic, assign) BOOL isAreaRepeatStart;
+
 @end
 
 @implementation MFMediaViewPAGView {
@@ -42,7 +44,11 @@
             self.pagView = [[PAGView alloc] initWithFrame:self.bounds];
             self.pagView.maxFrameRate = model.pagConfig.maxFrameRate;
             [self.pagView addListener:self];
-            [self.pagView setRepeatCount:(int) model.pagConfig.repeatCount];
+            if (model.pagConfig.repeatCount == -2) {
+                [self.pagView setRepeatCount:1];
+            } else if (model.pagConfig.repeatCount >= 0) {
+                [self.pagView setRepeatCount:(int) model.pagConfig.repeatCount];
+            }
             switch (model.pagConfig.scaleMode) {
                 case MFMediaViewModelPAGConfigStyleScaleModeNone:
                     self.pagView.scaleMode = PAGScaleModeNone;
@@ -143,7 +149,9 @@
         _pagFile = [PAGFile Load:localPath];
     }
     if (_pagFile) {
-        [self.pagView setComposition:self.pagFile];
+        [self.model.pagConfig configModelWithFile:_pagFile];
+        [self.pagFile seTimeStretchMode:PAGTimeStretchModeScale];
+        [self.pagView setComposition:_pagFile];
         if (self.model.pagConfig.isAutoPlay) {
             [self replaceLayerAction];
             [self.pagView play];
@@ -161,7 +169,7 @@
     
     for (int i = 0; i < self.pagFile.numChildren; i++) {
         PAGLayer *layer = [self.pagFile getLayerAt:i];
-        NSLog(@"%d - %d - %@", i, layer.layerType, layer.layerName);
+        NSLog(@"%d - %ld - %@", i, layer.layerType, layer.layerName);
     }
     
     [self.model.pagConfig.replaceLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigReplaceLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -200,9 +208,32 @@
  * Notifies the end of the animation.
  */
 - (void)onAnimationEnd:(PAGView *)pagView {
-    if (self.model.pagConfig.onAnimationEndAction) {
-        self.model.pagConfig.onAnimationEndAction();
+    if (self.model.pagConfig.repeatCount == -2) {
+        if (self.isAreaRepeatStart) {
+            return;
+        }
+        self.isAreaRepeatStart = YES;
+        [self.pagFile seTimeStretchMode:PAGTimeStretchModeScale];
+        PAGComposition *composition = [PAGComposition Make:CGSizeMake(self.pagView.frame.size.width * UIScreen.mainScreen.scale, self.pagView.frame.size.height * UIScreen.mainScreen.scale)];
+        
+        [self.pagFile setStartTime:-@(self.model.pagConfig.repeatStartTime * 1000000).intValue];
+        if (self.model.pagConfig.repeatEndTime <= 0) {
+            [self.pagFile setDuration:self.model.pagConfig.aniamteDuring];
+        } else {
+            [self.pagFile setDuration:@(self.model.pagConfig.repeatEndTime * 1000000).intValue];
+        }
+        
+        [self.pagView setRepeatCount:0];
+        [composition addLayer:self.pagFile];
+        [self.pagView setComposition:composition];
+        [self replaceLayerAction];
+        [self.pagView play];
+    } else if (self.model.pagConfig.repeatCount >= 0) {
+        if (self.model.pagConfig.onAnimationEndAction) {
+            self.model.pagConfig.onAnimationEndAction();
+        }
     }
+    
 }
 
 - (void)onAnimationStart:(PAGView *)pagView {
