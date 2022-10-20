@@ -53,6 +53,9 @@
 		AEFC3DB528FFA759005F9D2C /* pet_levelUp_image_age1 in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3DB128FFA757005F9D2C /* pet_levelUp_image_age1 */; };
 		AEFC3DB628FFA759005F9D2C /* pet_levelUp_animate.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3DB228FFA758005F9D2C /* pet_levelUp_animate.pag */; };
 		AEFC3DB728FFA759005F9D2C /* pet_levelUp_image_age3 in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3DB328FFA759005F9D2C /* pet_levelUp_image_age3 */; };
+		AEFC3DB928FFCD74005F9D2C /* animate016.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3DB828FFCD73005F9D2C /* animate016.pag */; };
+		AEFC3DBB28FFDE62005F9D2C /* 1122.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3DBA28FFDE61005F9D2C /* 1122.pag */; };
+		AEFC3DE228FFEC3B005F9D2C /* animate017.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3DE128FFEC3B005F9D2C /* animate017.pag */; };
 		FFE7F88753A2240486B62319 /* Pods_MFMediaView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 050BB1A6EB6999E33620904C /* Pods_MFMediaView_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +125,9 @@
 		AEFC3DB128FFA757005F9D2C /* pet_levelUp_image_age1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = pet_levelUp_image_age1; sourceTree = "<group>"; };
 		AEFC3DB228FFA758005F9D2C /* pet_levelUp_animate.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = pet_levelUp_animate.pag; sourceTree = "<group>"; };
 		AEFC3DB328FFA759005F9D2C /* pet_levelUp_image_age3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = pet_levelUp_image_age3; sourceTree = "<group>"; };
+		AEFC3DB828FFCD73005F9D2C /* animate016.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate016.pag; sourceTree = "<group>"; };
+		AEFC3DBA28FFDE61005F9D2C /* 1122.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1122.pag; sourceTree = "<group>"; };
+		AEFC3DE128FFEC3B005F9D2C /* animate017.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate017.pag; sourceTree = "<group>"; };
 		C241B6665715F49BA3C84B57 /* Pods-MFMediaView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFMediaView_Example.release.xcconfig"; path = "Target Support Files/Pods-MFMediaView_Example/Pods-MFMediaView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C4B62D8EA1EC966EA25290FE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		CF7EA809D4A915676CA92DD7 /* Pods_MFMediaView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MFMediaView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +228,7 @@
 				AEFC3D8628F80AAE005F9D2C /* text3.pag */,
 				AEFC3D8828F939DF005F9D2C /* 弹窗.pag */,
 				AEFC3D8A28F939E5005F9D2C /* 升级-幼年期-成长期.pag */,
+				AEFC3DBA28FFDE61005F9D2C /* 1122.pag */,
 				AEFC3D9228FE376B005F9D2C /* animate001.pag */,
 				AEFC3D8F28FE376B005F9D2C /* animate002.pag */,
 				AEFC3D9028FE376B005F9D2C /* animate003.pag */,
@@ -241,6 +248,8 @@
 				AEFC3DB128FFA757005F9D2C /* pet_levelUp_image_age1 */,
 				AEFC3DB028FFA756005F9D2C /* pet_levelUp_image_age2 */,
 				AEFC3DB328FFA759005F9D2C /* pet_levelUp_image_age3 */,
+				AEFC3DB828FFCD73005F9D2C /* animate016.pag */,
+				AEFC3DE128FFEC3B005F9D2C /* animate017.pag */,
 			);
 			name = "Example for MFMediaView";
 			path = MFMediaView;
@@ -371,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEFC3DE228FFEC3B005F9D2C /* animate017.pag in Resources */,
 				AEFC3D8928F939DF005F9D2C /* 弹窗.pag in Resources */,
 				AEFC3D6E28F7BF25005F9D2C /* whiteBG.png in Resources */,
 				AEFC3D8328F80379005F9D2C /* test_replace_file.pag in Resources */,
@@ -379,12 +389,14 @@
 				AEFC3D9428FE376C005F9D2C /* animate002.pag in Resources */,
 				AEFC3D9D28FE45A5005F9D2C /* animate008.pag in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				AEFC3DBB28FFDE62005F9D2C /* 1122.pag in Resources */,
 				AEFC3DB628FFA759005F9D2C /* pet_levelUp_animate.pag in Resources */,
 				AEFC3D8528F80535005F9D2C /* 每日任务-仙狐-幼年期.pag in Resources */,
 				AEFC3DA928FF89FE005F9D2C /* animate012.pag in Resources */,
 				AEFC3D7128F7C16E005F9D2C /* pet_rankList_cell_bg.png in Resources */,
 				AEFC3DAB28FF8B58005F9D2C /* animate013.pag in Resources */,
 				AEFC3D9728FE376C005F9D2C /* animate001.pag in Resources */,
+				AEFC3DB928FFCD74005F9D2C /* animate016.pag in Resources */,
 				AEFC3D9528FE376C005F9D2C /* animate003.pag in Resources */,
 				AEFC3D9328FE376C005F9D2C /* animate004.pag in Resources */,
 				AEFC3D8128F7FF92005F9D2C /* test_replace_file2.pag in Resources */,
@@ -426,6 +438,9 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MFMediaView_Tests/Pods-MFMediaView_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/MFFileDownloader/MFFileDownloader.framework",
 				"${BUILT_PRODUCTS_DIR}/Expecta/Expecta.framework",
 				"${BUILT_PRODUCTS_DIR}/Expecta+Snapshots/Expecta_Snapshots.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSnapshotTestCase/FBSnapshotTestCase.framework",
@@ -433,6 +448,9 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MFFileDownloader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expecta.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expecta_Snapshots.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",

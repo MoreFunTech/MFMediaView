@@ -17,5 +17,7 @@ target 'MFMediaView_Example' do
     pod 'Expecta'
     pod 'FBSnapshotTestCase'
     pod 'Expecta+Snapshots'
+    pod 'MFFileDownloader', :git => 'https://github.com/MoreFunTech/MFFileDownloader.git'
+    
   end
 end

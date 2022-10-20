@@ -37,3 +37,9 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelStyle) {
      */
     MFMediaViewModelStylePag = 6,
 };
+
+@protocol MFMediaViewModelAudioProtocol <NSObject>
+
+
+
+@end

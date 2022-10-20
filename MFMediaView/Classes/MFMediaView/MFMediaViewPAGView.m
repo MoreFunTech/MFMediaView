@@ -99,7 +99,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [MFFileDownloaderFMDBManager defaultConfigure];
         __weak typeof(self) weakSelf = self;
-        MFFileDownloaderCommonResultModel *fileDownloadModel = [MFFileDownloader addDownloadFile:model resultBlock:^(MFFileDownloaderDownloadResultModel * _Nonnull resultModel) {
+        [MFFileDownloader addDownloadFile:model resultBlock:^(MFFileDownloaderDownloadResultModel * _Nonnull resultModel) {
             if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloading) {
                 if (weakSelf.model.pagConfig.onFileLoadingAction) {
                     double completeCount = 0;
@@ -120,25 +120,29 @@
                 if (weakSelf.model.pagConfig.onFileLoadFailureAction) {
                     weakSelf.model.pagConfig.onFileLoadFailureAction(resultModel.error);
                 }
+            } else {
+                if (weakSelf.model.pagConfig.onFileLoadFailureAction) {
+                    weakSelf.model.pagConfig.onFileLoadFailureAction(resultModel.error);
+                }
             }
         }];
         
-        if (fileDownloadModel.status == -3) {
-            if ([fileDownloadModel.data isKindOfClass:[MFFileDownloaderFileModel class]]) {
-                if (self.model.pagConfig.onFileLoadSuccessAction) {
-                    self.model.pagConfig.onFileLoadSuccessAction();
-                }
-                if ([fileDownloadModel.data isKindOfClass:[MFFileDownloaderFileModel class]]) {
-                    MFFileDownloaderFileModel *modelL = fileDownloadModel.data;
-                    [self configureViewStartPlayWith:modelL.fullLocalPath];
-                }
-                
-            }
-        } else if (fileDownloadModel.status < 0) {
-            if (self.model.pagConfig.onFileLoadFailureAction) {
-                self.model.pagConfig.onFileLoadFailureAction([NSError errorWithDomain:@"MFFileDownloaderPagError" code:fileDownloadModel.status userInfo:@{NSURLLocalizedLabelKey: fileDownloadModel.msg}]);
-            }
-        }
+//        if (fileDownloadModel.status == -3) {
+//            if ([fileDownloadModel.data isKindOfClass:[MFFileDownloaderFileModel class]]) {
+//                if (self.model.pagConfig.onFileLoadSuccessAction) {
+//                    self.model.pagConfig.onFileLoadSuccessAction();
+//                }
+//                if ([fileDownloadModel.data isKindOfClass:[MFFileDownloaderFileModel class]]) {
+//                    MFFileDownloaderFileModel *modelL = fileDownloadModel.data;
+//                    [self configureViewStartPlayWith:modelL.fullLocalPath];
+//                }
+//
+//            }
+//        } else if (fileDownloadModel.status < 0) {
+//            if (self.model.pagConfig.onFileLoadFailureAction) {
+//                self.model.pagConfig.onFileLoadFailureAction([NSError errorWithDomain:@"MFFileDownloaderPagError" code:fileDownloadModel.status userInfo:@{NSURLLocalizedLabelKey: fileDownloadModel.msg}]);
+//            }
+//        }
         
     });
 }

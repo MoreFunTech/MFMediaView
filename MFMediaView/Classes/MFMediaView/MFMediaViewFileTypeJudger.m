@@ -27,7 +27,7 @@
     
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     if (!data) {
-        NSString *newFilePath = [NSString stringWithFormat:@"file://%@", filePath];
+//        NSString *newFilePath = [NSString stringWithFormat:@"file://%@", filePath];
         data = [NSData dataWithContentsOfFile:filePath];
     }
     if (!data) {
