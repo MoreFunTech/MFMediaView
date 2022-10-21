@@ -198,6 +198,15 @@
     [self impDelegateAudioPlayerPlayAction];
 }
 
+- (void)impDelegateConfigureViewWithCustomModel:(id)customModel {
+    if (!_audioPlayer) {
+        return;
+    }
+    if ([_audioPlayer respondsToSelector:@selector(configureViewWithCustomModel:)]) {
+        [_audioPlayer configureViewWithCustomModel:customModel];
+    }
+}
+
 - (UIView <MFMediaViewModelAudioConfigPlayerContentViewDelegate> * _Nullable)impDelegatePlayerView {
     if (!self.model.audioConfig.playerViewDelegate) {
         return nil;

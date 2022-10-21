@@ -11,6 +11,8 @@
 
 @property (nonatomic, strong) MFMediaViewModel *model;
 
+@property (nonatomic) id customModel;
+
 @property (nonatomic, copy) void(^mediaLoadFinishBlock)(MFMediaViewModel *model);
 
 - (void)startPlayAnimate;

@@ -18,6 +18,8 @@
 
 @property (nonatomic, copy) void(^mediaLoadFinishBlock)(MFMediaViewModel *model);
 
+@property (nonatomic) id customModel;
+
 @property (nonatomic, weak) id<MFMediaViewFileTypeJudgerProtocol>mediaTypeEncoderDelegate;
 
 - (void)startPlayAnimate;

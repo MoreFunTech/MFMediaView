@@ -45,6 +45,9 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelAudioStatus) {
 - (void)configureViewWithPlaying:(double)current during:(double)during;
 - (void)playButtonClickBlock:(void(^)(void))playActionBlock;
 
+@optional
+- (void)configureViewWithCustomModel:(id)customModel;
+
 @end
 
 @protocol MFMediaViewModelAudioConfigPlayerContentDelegate <NSObject>

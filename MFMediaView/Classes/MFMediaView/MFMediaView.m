@@ -116,6 +116,7 @@
     }
     _imageView.frame = self.bounds;
     _imageView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+    _imageView.customModel = self.customModel;
     _imageView.model = model;
 }
 
@@ -127,6 +128,7 @@
     }
     _videoView.frame = self.bounds;
     _videoView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+    _videoView.customModel = self.customModel;
     _videoView.model = model;
 }
 
@@ -138,6 +140,7 @@
     }
     _gifView.frame = self.bounds;
     _gifView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+    _gifView.customModel = self.customModel;
     _gifView.model = model;
 }
 
@@ -149,6 +152,7 @@
     }
     _audioView.frame = self.bounds;
     _audioView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+    _audioView.customModel = self.customModel;
     _audioView.model = model;
 }
 
@@ -160,6 +164,7 @@
     }
     _svgaView.frame = self.bounds;
     _svgaView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+    _svgaView.customModel = self.customModel;
     _svgaView.model = model;
 }
 
@@ -171,6 +176,7 @@
     }
     _pagView.frame = self.bounds;
     _pagView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+    _pagView.customModel = self.customModel;
     _pagView.model = model;
 }
 
@@ -217,6 +223,7 @@
     
     if (_imageView && model.style != MFMediaViewModelStyleImage) {
         [_imageView clear];
+        _imageView.customModel = nil;
         _imageView.model = nil;
         _imageView.mediaLoadFinishBlock = nil;
         [_imageView removeFromSuperview];
@@ -224,6 +231,7 @@
     }
     if (_videoView && model.style != MFMediaViewModelStyleVideo) {
         [_videoView clear];
+        _videoView.customModel = nil;
         _videoView.model = nil;
         _videoView.mediaLoadFinishBlock = nil;
         [_videoView removeFromSuperview];
@@ -231,6 +239,7 @@
     }
     if (_gifView && model.style != MFMediaViewModelStyleGif) {
         [_gifView clear];
+        _gifView.customModel = nil;
         _gifView.model = nil;
         _gifView.mediaLoadFinishBlock = nil;
         [_gifView removeFromSuperview];
@@ -238,6 +247,7 @@
     }
     if (_audioView && model.style != MFMediaViewModelStyleAudio) {
         [_audioView clear];
+        _audioView.customModel = nil;
         _audioView.model = nil;
         _audioView.mediaLoadFinishBlock = nil;
         [_audioView removeFromSuperview];
@@ -245,6 +255,7 @@
     }
     if (_svgaView && model.style != MFMediaViewModelStyleSvga) {
         [_svgaView clear];
+        _svgaView.customModel = nil;
         _svgaView.model = nil;
         _svgaView.mediaLoadFinishBlock = nil;
         [_svgaView removeFromSuperview];
@@ -252,6 +263,7 @@
     }
     if (_pagView && model.style != MFMediaViewModelStylePag) {
         [_pagView clear];
+        _pagView.customModel = nil;
         _pagView.model = nil;
         _pagView.mediaLoadFinishBlock = nil;
         [_pagView removeFromSuperview];
