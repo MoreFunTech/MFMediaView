@@ -36,6 +36,9 @@ PODS:
     - MFFileDownloader
     - SDWebImage (~> 5.0)
     - SVGAPlayer (~> 2.5)
+  - NIMSDK_LITE (9.6.1):
+    - NIMSDK_LITE/NOS (= 9.6.1)
+  - NIMSDK_LITE/NOS (9.6.1)
   - Protobuf (3.21.7)
   - SDWebImage (5.13.4):
     - SDWebImage/Core (= 5.13.4)
@@ -57,6 +60,7 @@ DEPENDENCIES:
   - FBSnapshotTestCase
   - MFFileDownloader (from `https://github.com/MoreFunTech/MFFileDownloader.git`)
   - MFMediaView (from `../`)
+  - NIMSDK_LITE
   - Specta
 
 SPEC REPOS:
@@ -67,6 +71,7 @@ SPEC REPOS:
     - FBSnapshotTestCase
     - FMDB
     - libpag
+    - NIMSDK_LITE
     - Protobuf
     - SDWebImage
     - Specta
@@ -92,13 +97,14 @@ SPEC CHECKSUMS:
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   libpag: c765dd2a0584d7dd8767601d8f0bfc38c16eca2e
   MFFileDownloader: fab7f45361c0da48971d03f73ce4ef5f2960c901
-  MFMediaView: f9a7ddc68c83a8d55253d23319acedf8acbbc508
+  MFMediaView: e2da62e193b07779b81f440a8038e24e0f4297a4
+  NIMSDK_LITE: b020e3dbbc9f53934609bc35ecba7798be503e1a
   Protobuf: f4128517d7a42302e106cc3afe614ee3a7513e94
   SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   SVGAPlayer: 318b85a78b61292d6ae9dfcd651f3f0d1cdadd86
 
-PODFILE CHECKSUM: b5e50e4b391b50c69270308d90bf554e662836a1
+PODFILE CHECKSUM: 5377a179552c176dc3e6511621be70dc73f0569d
 
 COCOAPODS: 1.11.3

@@ -20,6 +20,7 @@
   },
   "source_files": "MFMediaView/Classes/**/*",
   "frameworks": "UIKit",
+  "static_framework": true,
   "dependencies": {
     "SDWebImage": [
       "~> 5.0"

@@ -101,6 +101,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## NIMSDK_LITE
+
+Copyright 2022 Netease 
+
 ## Protobuf
 
 Copyright 2008 Google Inc.  All rights reserved.

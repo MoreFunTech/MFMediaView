@@ -10,6 +10,8 @@
 
 #import <MFMediaView/MFMediaView.h>
 
+#import "MFTestAudioView.h"
+
 @interface MFViewController ()
 
 @property(nonatomic, strong) MFMediaView *mediaView;
@@ -22,13 +24,14 @@
     [super viewDidLoad];
 
     
-    [self configureSvga];
+//    [self configureSvga];
 //    [self configurePag];
 //    [self configureFileHeaderCodePag];
 //    [self configureImage];
     
 //
     
+    [self configureAudio];
 
 }
 
@@ -290,6 +293,12 @@
     
 }
 
+
+- (void)configureAudio {
+    MFTestAudioView *view = [[MFTestAudioView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    [self.view addSubview:view];
+    view.backgroundColor = [UIColor systemPinkColor];
+}
 
 
 + (NSString *)dataBaseDirection {

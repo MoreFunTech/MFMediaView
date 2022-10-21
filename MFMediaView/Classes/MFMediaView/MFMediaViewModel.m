@@ -109,6 +109,15 @@
     return _gifConfig;
 }
 
+- (MFMediaViewModelAudioConfig *)audioConfig {
+    if (!_audioConfig) {
+        _audioConfig = [MFMediaViewModelAudioConfig defaultConfigure];
+    }
+    return _audioConfig;
+}
+
+
+
 - (NSString *)description {
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@" self.style=%ld", (long)self.style];

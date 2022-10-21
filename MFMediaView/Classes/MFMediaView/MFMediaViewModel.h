@@ -8,7 +8,7 @@
 #import "MFMediaViewModelSVGAConfig.h"
 #import "MFMediaViewModelImageConfig.h"
 #import "MFMediaViewModelGifConfig.h"
-#import "MFMediaViewModelGifConfig.h"
+#import "MFMediaViewModelAudioConfig.h"
 #import "MFMediaViewEnum.h"
 
 
@@ -55,6 +55,7 @@
 @property (nonatomic, strong) MFMediaViewModelSVGAConfig *svgaConfig;
 @property (nonatomic, strong) MFMediaViewModelImageConfig *imageConfig;
 @property (nonatomic, strong) MFMediaViewModelGifConfig *gifConfig;
+@property (nonatomic, strong) MFMediaViewModelAudioConfig *audioConfig;
 
 - (NSString *)description;
 

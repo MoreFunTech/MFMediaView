@@ -56,6 +56,7 @@
 		AEFC3DB928FFCD74005F9D2C /* animate016.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3DB828FFCD73005F9D2C /* animate016.pag */; };
 		AEFC3DBB28FFDE62005F9D2C /* 1122.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3DBA28FFDE61005F9D2C /* 1122.pag */; };
 		AEFC3DE228FFEC3B005F9D2C /* animate017.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3DE128FFEC3B005F9D2C /* animate017.pag */; };
+		AEFC3DE529023429005F9D2C /* MFTestAudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFC3DE429023429005F9D2C /* MFTestAudioView.m */; };
 		FFE7F88753A2240486B62319 /* Pods_MFMediaView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 050BB1A6EB6999E33620904C /* Pods_MFMediaView_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +72,7 @@
 
 /* Begin PBXFileReference section */
 		050BB1A6EB6999E33620904C /* Pods_MFMediaView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MFMediaView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		33882E34FD68A076672B7C2C /* 2_0080.pag */ = {isa = PBXFileReference; lastKnownFileType = file.pag; path = 2_0080.pag; sourceTree = "<group>"; };
+		33882E34FD68A076672B7C2C /* 2_0080.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2_0080.pag; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* MFMediaView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFMediaView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -128,6 +129,8 @@
 		AEFC3DB828FFCD73005F9D2C /* animate016.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate016.pag; sourceTree = "<group>"; };
 		AEFC3DBA28FFDE61005F9D2C /* 1122.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1122.pag; sourceTree = "<group>"; };
 		AEFC3DE128FFEC3B005F9D2C /* animate017.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = animate017.pag; sourceTree = "<group>"; };
+		AEFC3DE329023429005F9D2C /* MFTestAudioView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFTestAudioView.h; sourceTree = "<group>"; };
+		AEFC3DE429023429005F9D2C /* MFTestAudioView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFTestAudioView.m; sourceTree = "<group>"; };
 		C241B6665715F49BA3C84B57 /* Pods-MFMediaView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFMediaView_Example.release.xcconfig"; path = "Target Support Files/Pods-MFMediaView_Example/Pods-MFMediaView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C4B62D8EA1EC966EA25290FE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		CF7EA809D4A915676CA92DD7 /* Pods_MFMediaView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MFMediaView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,41 +218,12 @@
 				6003F5A5195388D20070C39A /* MFViewController.h */,
 				6003F5A6195388D20070C39A /* MFViewController.m */,
 				AEFC3D7B28F7E725005F9D2C /* maskPagNotCode */,
+				AEFC3DE329023429005F9D2C /* MFTestAudioView.h */,
+				AEFC3DE429023429005F9D2C /* MFTestAudioView.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
-				AEFC3D6C28F7BF25005F9D2C /* whiteBG.png */,
+				AEFC3DE729023467005F9D2C /* resource */,
 				6003F594195388D20070C39A /* Supporting Files */,
-				33882E34FD68A076672B7C2C /* 2_0080.pag */,
-				AEFC3D7028F7C16E005F9D2C /* pet_rankList_cell_bg.png */,
-				AEFC3D7E28F7FF82005F9D2C /* test_replace_file1.pag */,
-				AEFC3D8028F7FF8F005F9D2C /* test_replace_file2.pag */,
-				AEFC3D8228F80379005F9D2C /* test_replace_file.pag */,
-				AEFC3D8428F80535005F9D2C /* 每日任务-仙狐-幼年期.pag */,
-				AEFC3D8628F80AAE005F9D2C /* text3.pag */,
-				AEFC3D8828F939DF005F9D2C /* 弹窗.pag */,
-				AEFC3D8A28F939E5005F9D2C /* 升级-幼年期-成长期.pag */,
-				AEFC3DBA28FFDE61005F9D2C /* 1122.pag */,
-				AEFC3D9228FE376B005F9D2C /* animate001.pag */,
-				AEFC3D8F28FE376B005F9D2C /* animate002.pag */,
-				AEFC3D9028FE376B005F9D2C /* animate003.pag */,
-				AEFC3D8E28FE376A005F9D2C /* animate004.pag */,
-				AEFC3D9128FE376B005F9D2C /* animate005.pag */,
-				AEFC3D9828FE4299005F9D2C /* animate006.pag */,
-				AEFC3D9A28FE4399005F9D2C /* animate007.pag */,
-				AEFC3D9C28FE45A5005F9D2C /* animate008.pag */,
-				AEFC3D9E28FE466D005F9D2C /* animate009.pag */,
-				AEFC3DA028FE472A005F9D2C /* animate010.pag */,
-				AEFC3DA228FE4DAB005F9D2C /* animate011.pag */,
-				AEFC3DA828FF89FE005F9D2C /* animate012.pag */,
-				AEFC3DAA28FF8B57005F9D2C /* animate013.pag */,
-				AEFC3DAC28FF8C3F005F9D2C /* animate014.pag */,
-				AEFC3DAE28FF8E98005F9D2C /* animate015.pag */,
-				AEFC3DB228FFA758005F9D2C /* pet_levelUp_animate.pag */,
-				AEFC3DB128FFA757005F9D2C /* pet_levelUp_image_age1 */,
-				AEFC3DB028FFA756005F9D2C /* pet_levelUp_image_age2 */,
-				AEFC3DB328FFA759005F9D2C /* pet_levelUp_image_age3 */,
-				AEFC3DB828FFCD73005F9D2C /* animate016.pag */,
-				AEFC3DE128FFEC3B005F9D2C /* animate017.pag */,
 			);
 			name = "Example for MFMediaView";
 			path = MFMediaView;
@@ -293,6 +267,45 @@
 				C4B62D8EA1EC966EA25290FE /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		AEFC3DE729023467005F9D2C /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				AEFC3D6C28F7BF25005F9D2C /* whiteBG.png */,
+				33882E34FD68A076672B7C2C /* 2_0080.pag */,
+				AEFC3D7028F7C16E005F9D2C /* pet_rankList_cell_bg.png */,
+				AEFC3D7E28F7FF82005F9D2C /* test_replace_file1.pag */,
+				AEFC3D8028F7FF8F005F9D2C /* test_replace_file2.pag */,
+				AEFC3D8228F80379005F9D2C /* test_replace_file.pag */,
+				AEFC3D8428F80535005F9D2C /* 每日任务-仙狐-幼年期.pag */,
+				AEFC3D8628F80AAE005F9D2C /* text3.pag */,
+				AEFC3D8828F939DF005F9D2C /* 弹窗.pag */,
+				AEFC3D8A28F939E5005F9D2C /* 升级-幼年期-成长期.pag */,
+				AEFC3DBA28FFDE61005F9D2C /* 1122.pag */,
+				AEFC3D9228FE376B005F9D2C /* animate001.pag */,
+				AEFC3D8F28FE376B005F9D2C /* animate002.pag */,
+				AEFC3D9028FE376B005F9D2C /* animate003.pag */,
+				AEFC3D8E28FE376A005F9D2C /* animate004.pag */,
+				AEFC3D9128FE376B005F9D2C /* animate005.pag */,
+				AEFC3D9828FE4299005F9D2C /* animate006.pag */,
+				AEFC3D9A28FE4399005F9D2C /* animate007.pag */,
+				AEFC3D9C28FE45A5005F9D2C /* animate008.pag */,
+				AEFC3D9E28FE466D005F9D2C /* animate009.pag */,
+				AEFC3DA028FE472A005F9D2C /* animate010.pag */,
+				AEFC3DA228FE4DAB005F9D2C /* animate011.pag */,
+				AEFC3DA828FF89FE005F9D2C /* animate012.pag */,
+				AEFC3DAA28FF8B57005F9D2C /* animate013.pag */,
+				AEFC3DAC28FF8C3F005F9D2C /* animate014.pag */,
+				AEFC3DAE28FF8E98005F9D2C /* animate015.pag */,
+				AEFC3DB228FFA758005F9D2C /* pet_levelUp_animate.pag */,
+				AEFC3DB128FFA757005F9D2C /* pet_levelUp_image_age1 */,
+				AEFC3DB028FFA756005F9D2C /* pet_levelUp_image_age2 */,
+				AEFC3DB328FFA759005F9D2C /* pet_levelUp_image_age3 */,
+				AEFC3DB828FFCD73005F9D2C /* animate016.pag */,
+				AEFC3DE128FFEC3B005F9D2C /* animate017.pag */,
+			);
+			path = resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,9 +451,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MFMediaView_Tests/Pods-MFMediaView_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
-				"${BUILT_PRODUCTS_DIR}/MFFileDownloader/MFFileDownloader.framework",
 				"${BUILT_PRODUCTS_DIR}/Expecta/Expecta.framework",
 				"${BUILT_PRODUCTS_DIR}/Expecta+Snapshots/Expecta_Snapshots.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSnapshotTestCase/FBSnapshotTestCase.framework",
@@ -448,9 +458,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MFFileDownloader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expecta.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expecta_Snapshots.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
@@ -515,7 +522,8 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/MFFileDownloader/MFFileDownloader.framework",
-				"${BUILT_PRODUCTS_DIR}/MFMediaView/MFMediaView.framework",
+				"${PODS_ROOT}/NIMSDK_LITE/NIMSDK/NIMSDK.framework",
+				"${PODS_ROOT}/NIMSDK_LITE/NIMSDK/NIMNOS.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
@@ -527,7 +535,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MFFileDownloader.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MFMediaView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NIMSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NIMNOS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
@@ -546,6 +555,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEFC3DE529023429005F9D2C /* MFTestAudioView.m in Sources */,
 				6003F59E195388D20070C39A /* MFAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* MFViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,

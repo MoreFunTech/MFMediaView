@@ -18,6 +18,7 @@
 #import "MFMediaViewHeader.h"
 #import "MFMediaViewImageView.h"
 #import "MFMediaViewModel.h"
+#import "MFMediaViewModelAudioConfig.h"
 #import "MFMediaViewModelGifConfig.h"
 #import "MFMediaViewModelImageConfig.h"
 #import "MFMediaViewModelPAGConfig.h"
