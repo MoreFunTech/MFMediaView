@@ -195,7 +195,11 @@
     if (!_audioPlayer) {
         return;
     }
-    [self impDelegateAudioPlayerPlayAction];
+    __weak typeof(self) weakSelf = self;
+    [_audioPlayer playButtonClickBlock:^{
+        [weakSelf impDelegateAudioPlayerPlayAction];
+    }];
+    
 }
 
 - (void)impDelegateConfigureViewWithCustomModel:(id)customModel {
