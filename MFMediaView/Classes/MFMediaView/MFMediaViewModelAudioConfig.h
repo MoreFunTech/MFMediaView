@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelAudioStatus) {
 
 - (void)configureViewWithStatus:(MFMediaViewModelAudioStatus)status;
 - (void)configureViewWithPlaying:(double)current during:(double)during;
-
+- (void)playButtonClickBlock:(void(^)(void))playActionBlock;
 
 @end
 
@@ -68,6 +68,8 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelAudioStatus) {
 - (void)audioPlayingBlock:(void(^)(double current, double during))playingBlock;
 
 - (void)audioPlayerStatusChange:(void(^)(MFMediaViewModelAudioStatus status))statusChangeBlock;
+
+- (void)audioPlayerPlayAction;
 
 @end
 

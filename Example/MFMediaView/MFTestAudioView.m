@@ -27,6 +27,10 @@
     NSLog(@"configureViewWithPlaying current: %.01f | during: %.01f", current, during);
 }
 
+- (void)playButtonClickBlock:(void(^)(void))playActionBlock {
+    
+}
+
 @end
 
 
@@ -46,6 +50,7 @@
 
 @property (nonatomic, copy) NSString *localPath;
 @property (nonatomic) BOOL autoPlay;
+@property (nonatomic) MFMediaViewModelAudioStatus playerStatus;
 @property (nonatomic, copy) void(^loadSuccessBlock)(double during);
 @property (nonatomic, copy) void(^playingBlock)(double current, double during);
 @property (nonatomic, copy) void(^statusChangeBlock)(MFMediaViewModelAudioStatus status);
@@ -66,6 +71,10 @@
         if (weakSelf.loadSuccessBlock) {
             weakSelf.loadSuccessBlock(weakSelf.during);
         }
+        if (weakSelf.statusChangeBlock) {
+            weakSelf.statusChangeBlock(MFMediaViewModelAudioStatusReady);
+        }
+        weakSelf.playerStatus = MFMediaViewModelAudioStatusReady;
     }];
     
     [NIMSDK.sharedSDK.mediaManager addDelegate:self];
@@ -83,19 +92,23 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [NIMSDK.sharedSDK.mediaManager play:self.localPath];
     });
+    self.playerStatus = MFMediaViewModelAudioStatusReady;
 }
 
 - (void)pause {
     [NIMSDK.sharedSDK.mediaManager stopPlay];
+    self.playerStatus = MFMediaViewModelAudioStatusStop;
 }
 
 - (void)stop {
     [NIMSDK.sharedSDK.mediaManager stopPlay];
+    self.playerStatus = MFMediaViewModelAudioStatusStop;
 }
 
 - (void)replay {
     [NIMSDK.sharedSDK.mediaManager stopPlay];
     [NIMSDK.sharedSDK.mediaManager play:self.localPath];
+    self.playerStatus = MFMediaViewModelAudioStatusPlaying;
 }
 
 - (void)fileLoadSuccess:(void(^)(double during))loadSuccessBlock {
@@ -108,6 +121,14 @@
 
 - (void)audioPlayerStatusChange:(void(^)(MFMediaViewModelAudioStatus status))statusChangeBlock {
     self.statusChangeBlock = statusChangeBlock;
+}
+
+- (void)audioPlayerPlayAction{
+    if (self.playerStatus == MFMediaViewModelAudioStatusPlaying) {
+        [self pause];
+    } else {
+        [self play];
+    }
 }
 
 - (void)dealloc {
@@ -124,15 +145,24 @@
  *  @param error    错误信息
  */
 - (void)playAudio:(NSString *)filePath didBeganWithError:(nullable NSError *)error {
+    if (![filePath isEqualToString:self.localPath] && self.playerStatus == MFMediaViewModelAudioStatusPlaying) {
+        if (self.statusChangeBlock) {
+            self.statusChangeBlock(MFMediaViewModelAudioStatusStop);
+        }
+        self.playerStatus = MFMediaViewModelAudioStatusStop;
+        return;
+    }
     if (error) {
         if (self.statusChangeBlock) {
             self.statusChangeBlock(MFMediaViewModelAudioStatusLoadFailure);
         }
+        self.playerStatus = MFMediaViewModelAudioStatusLoadFailure;
         return;
     }
     if (self.statusChangeBlock) {
         self.statusChangeBlock(MFMediaViewModelAudioStatusPlaying);
     }
+    self.playerStatus = MFMediaViewModelAudioStatusPlaying;
 }
 
 /**
@@ -142,9 +172,17 @@
  *  @param error    错误信息
  */
 - (void)playAudio:(NSString *)filePath didCompletedWithError:(nullable NSError *)error {
+    if (![filePath isEqualToString:self.localPath] && self.playerStatus == MFMediaViewModelAudioStatusPlaying) {
+        if (self.statusChangeBlock) {
+            self.statusChangeBlock(MFMediaViewModelAudioStatusStop);
+        }
+        self.playerStatus = MFMediaViewModelAudioStatusStop;
+        return;
+    }
     if (self.statusChangeBlock) {
         self.statusChangeBlock(MFMediaViewModelAudioStatusStop);
     }
+    self.playerStatus = MFMediaViewModelAudioStatusStop;
 }
 
 /**
@@ -154,7 +192,13 @@
  *  @param value    播放进度 0.0 - 1.0
  */
 - (void)playAudio:(NSString *)filePath progress:(float)value {
-    
+    if (![filePath isEqualToString:self.localPath] && self.playerStatus == MFMediaViewModelAudioStatusPlaying) {
+        if (self.statusChangeBlock) {
+            self.statusChangeBlock(MFMediaViewModelAudioStatusStop);
+        }
+        self.playerStatus = MFMediaViewModelAudioStatusStop;
+        return;
+    }
     NSLog(@"playAudio  %@ - %f", filePath, value);
     if (self.statusChangeBlock) {
         self.statusChangeBlock(MFMediaViewModelAudioStatusPlaying);
@@ -162,6 +206,7 @@
     if (self.playingBlock) {
         self.playingBlock(self.during * value, self.during);
     }
+    self.playerStatus = MFMediaViewModelAudioStatusPlaying;
 }
 
 /**
@@ -171,9 +216,17 @@
  *  @param error    错误信息
  */
 - (void)stopPlayAudio:(NSString *)filePath didCompletedWithError:(nullable NSError *)error {
+    if (![filePath isEqualToString:self.localPath] && self.playerStatus == MFMediaViewModelAudioStatusPlaying) {
+        if (self.statusChangeBlock) {
+            self.statusChangeBlock(MFMediaViewModelAudioStatusStop);
+        }
+        self.playerStatus = MFMediaViewModelAudioStatusStop;
+        return;
+    }
     if (self.statusChangeBlock) {
         self.statusChangeBlock(MFMediaViewModelAudioStatusStop);
     }
+    self.playerStatus = MFMediaViewModelAudioStatusStop;
 }
 
 @end

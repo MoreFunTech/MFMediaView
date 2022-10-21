@@ -51,6 +51,10 @@
     
     __weak typeof(self) weakSelf = self;
     
+    [self impDelegatePlayButtonClickBlock:^{
+        
+    }];
+    
     [self impDelegateFileLoadSuccess:^(double during) {
         [weakSelf playerFileLoadSuccess:during];
     }];
@@ -187,6 +191,13 @@
     [_audioPlayer configureViewWithPlaying:current during:during];
 }
 
+- (void)impDelegatePlayButtonClickBlock:(void(^)(void))playActionBlock {
+    if (!_audioPlayer) {
+        return;
+    }
+    [self impDelegateAudioPlayerPlayAction];
+}
+
 - (UIView <MFMediaViewModelAudioConfigPlayerContentViewDelegate> * _Nullable)impDelegatePlayerView {
     if (!self.model.audioConfig.playerViewDelegate) {
         return nil;
@@ -287,6 +298,16 @@
         return;
     }
     [self.model.audioConfig.playerDelegate audioPlayerStatusChange:statusChangeBlock];
+}
+
+- (void)impDelegateAudioPlayerPlayAction; {
+    if (!self.model.audioConfig.playerDelegate) {
+        return;
+    }
+    if (![self.model.audioConfig.playerDelegate respondsToSelector:@selector(audioPlayerStatusChange:)]) {
+        return;
+    }
+    [self.model.audioConfig.playerDelegate audioPlayerPlayAction];
 }
 
 #pragma mark - Init
