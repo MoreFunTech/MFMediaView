@@ -156,8 +156,6 @@
         self.mediaView.player.pagPlayer.repeatConfig = [MFMediaViewPlayerPagRepeatConfig configWithRepeatCount:15 repeatStyle:-3 repeatStartTime:1 repeatEndTime:2];
     });
     
-    
-    
 }
 
 - (void)configureFileHeaderCodePag {

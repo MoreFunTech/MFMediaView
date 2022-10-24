@@ -51,21 +51,25 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [self impDelegatePlayButtonClickBlock:^{
-        [weakSelf impDelegateAudioPlayerPlayAction];
-    }];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self impDelegatePlayButtonClickBlock:^{
+            [weakSelf impDelegateAudioPlayerPlayAction];
+        }];
+        
+        [self impDelegateFileLoadSuccess:^(double during) {
+            [weakSelf playerFileLoadSuccess:during];
+        }];
+        
+        [self impDelegateAudioPlayingBlock:^(double current, double during) {
+            [weakSelf playerAudioPlaying:current during:during];
+        }];
+        
+        [self impDelegateAudioPlayerStatusChange:^(MFMediaViewModelAudioStatus status) {
+            [weakSelf playeraStatusChange:status];
+        }];
+    });
     
-    [self impDelegateFileLoadSuccess:^(double during) {
-        [weakSelf playerFileLoadSuccess:during];
-    }];
     
-    [self impDelegateAudioPlayingBlock:^(double current, double during) {
-        [weakSelf playerAudioPlaying:current during:during];
-    }];
-    
-    [self impDelegateAudioPlayerStatusChange:^(MFMediaViewModelAudioStatus status) {
-        [weakSelf playeraStatusChange:status];
-    }];
 }
 
 - (void)configureView:(MFMediaViewModel *)model {
@@ -315,7 +319,7 @@
     if (!self.model.audioConfig.playerDelegate) {
         return;
     }
-    if (![self.model.audioConfig.playerDelegate respondsToSelector:@selector(audioPlayerStatusChange:)]) {
+    if (![self.model.audioConfig.playerDelegate respondsToSelector:@selector(audioPlayerPlayAction)]) {
         return;
     }
     [self.model.audioConfig.playerDelegate audioPlayerPlayAction];
