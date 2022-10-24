@@ -71,9 +71,8 @@
             [weakSelf playeraStatusChange:status];
         }];
         
-        if (self.customModel) {
-            [self impDelegateConfigureViewWithCustomModel:customModel];
-        }
+        [self impDelegateConfigureViewWithCustomModel:self.customModel];
+        
     });
     
     
@@ -186,6 +185,7 @@
 
 - (void)setCustomModel:(id)customModel {
     _customModel = customModel;
+    [self impDelegateConfigureViewWithCustomModel:customModel];
 }
 
 #pragma mark - 触发代理

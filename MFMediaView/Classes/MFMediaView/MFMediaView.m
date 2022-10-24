@@ -193,6 +193,28 @@
     [self resetSubviews];
 }
 
+- (void)setCustomModel:(id)customModel {
+    _customModel = customModel;
+    if (_imageView) {
+        _imageView.customModel = _customModel;
+    }
+    if (_videoView) {
+        _videoView.customModel = _customModel;
+    }
+    if (_gifView) {
+        _gifView.customModel = _customModel;
+    }
+    if (_audioView) {
+        _audioView.customModel = _customModel;
+    }
+    if (_pagView) {
+        _pagView.customModel = _customModel;
+    }
+    if (_svgaView) {
+        _svgaView.customModel = _customModel;
+    }
+}
+
 - (void)resetSubviews {
     if (_imageView) {
         _imageView.frame = self.bounds;
