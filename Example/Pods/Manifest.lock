@@ -31,7 +31,7 @@ PODS:
   - MFFileDownloader (0.2.0):
     - AFNetworking (~> 4.0)
     - FMDB (~> 2.7)
-  - MFMediaView (0.2.0):
+  - MFMediaView (0.2.2):
     - libpag (~> 4.1)
     - MFFileDownloader
     - SDWebImage (~> 5.0)
@@ -97,7 +97,7 @@ SPEC CHECKSUMS:
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   libpag: c765dd2a0584d7dd8767601d8f0bfc38c16eca2e
   MFFileDownloader: fab7f45361c0da48971d03f73ce4ef5f2960c901
-  MFMediaView: e2da62e193b07779b81f440a8038e24e0f4297a4
+  MFMediaView: 738a235b6e772093a0806911d4113d4c0366a737
   NIMSDK_LITE: b020e3dbbc9f53934609bc35ecba7798be503e1a
   Protobuf: f4128517d7a42302e106cc3afe614ee3a7513e94
   SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3

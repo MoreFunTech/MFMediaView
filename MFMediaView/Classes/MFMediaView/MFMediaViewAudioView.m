@@ -52,7 +52,7 @@
     __weak typeof(self) weakSelf = self;
     
     [self impDelegatePlayButtonClickBlock:^{
-        
+        [weakSelf impDelegateAudioPlayerPlayAction];
     }];
     
     [self impDelegateFileLoadSuccess:^(double during) {
@@ -196,9 +196,7 @@
         return;
     }
     __weak typeof(self) weakSelf = self;
-    [_audioPlayer playButtonClickBlock:^{
-        [weakSelf impDelegateAudioPlayerPlayAction];
-    }];
+    [_audioPlayer playButtonClickBlock:playActionBlock];
     
 }
 

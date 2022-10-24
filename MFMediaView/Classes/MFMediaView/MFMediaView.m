@@ -7,6 +7,7 @@
 
 #import "MFMediaView.h"
 
+
 #import "MFMediaViewImageView.h"
 #import "MFMediaViewVideoView.h"
 #import "MFMediaViewGifView.h"
@@ -118,6 +119,7 @@
     _imageView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _imageView.customModel = self.customModel;
     _imageView.model = model;
+//    _player.imagePlayer.imageView = _imageView;
 }
 
 - (void)configureVideoViewWithModel:(MFMediaViewModel *)model {
@@ -130,6 +132,7 @@
     _videoView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _videoView.customModel = self.customModel;
     _videoView.model = model;
+//    _player.videoPlayer.videoView = _videoView;
 }
 
 - (void)configureGifViewWithModel:(MFMediaViewModel *)model {
@@ -142,6 +145,7 @@
     _gifView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _gifView.customModel = self.customModel;
     _gifView.model = model;
+//    _player.giftPlayer.giftView = _gifView;
 }
 
 - (void)configureAudioViewWithModel:(MFMediaViewModel *)model {
@@ -154,6 +158,7 @@
     _audioView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _audioView.customModel = self.customModel;
     _audioView.model = model;
+//    _player.audioPlayer.audioView = _audioView;
 }
 
 - (void)configureSVGAViewWithModel:(MFMediaViewModel *)model {
@@ -166,6 +171,7 @@
     _svgaView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _svgaView.customModel = self.customModel;
     _svgaView.model = model;
+//    _player.svgaPlayer.svgaView = _svgaView;
 }
 
 - (void)configurePAGViewWithModel:(MFMediaViewModel *)model {
@@ -178,6 +184,8 @@
     _pagView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _pagView.customModel = self.customModel;
     _pagView.model = model;
+    [self.player.pagPlayer configurePagView:_pagView];
+    [self.player.pagPlayer configurePagConfig:model.pagConfig];
 }
 
 - (void)setFrame:(CGRect)frame {
@@ -228,6 +236,7 @@
         _imageView.mediaLoadFinishBlock = nil;
         [_imageView removeFromSuperview];
         _imageView = nil;
+        //        _player.imagePlayer.imageView = nil;
     }
     if (_videoView && model.style != MFMediaViewModelStyleVideo) {
         [_videoView clear];
@@ -236,6 +245,7 @@
         _videoView.mediaLoadFinishBlock = nil;
         [_videoView removeFromSuperview];
         _videoView = nil;
+        //        _player.videoPlayer.videoView = nil;
     }
     if (_gifView && model.style != MFMediaViewModelStyleGif) {
         [_gifView clear];
@@ -244,6 +254,7 @@
         _gifView.mediaLoadFinishBlock = nil;
         [_gifView removeFromSuperview];
         _gifView = nil;
+        //        _player.giftPlayer.giftView = nil;
     }
     if (_audioView && model.style != MFMediaViewModelStyleAudio) {
         [_audioView clear];
@@ -252,6 +263,7 @@
         _audioView.mediaLoadFinishBlock = nil;
         [_audioView removeFromSuperview];
         _audioView = nil;
+//                _player.audioPlayer.audioView = nil;
     }
     if (_svgaView && model.style != MFMediaViewModelStyleSvga) {
         [_svgaView clear];
@@ -260,6 +272,7 @@
         _svgaView.mediaLoadFinishBlock = nil;
         [_svgaView removeFromSuperview];
         _svgaView = nil;
+//        _player.svgaPlayer.svgaView = nil;
     }
     if (_pagView && model.style != MFMediaViewModelStylePag) {
         [_pagView clear];
@@ -268,7 +281,15 @@
         _pagView.mediaLoadFinishBlock = nil;
         [_pagView removeFromSuperview];
         _pagView = nil;
+        [_player.pagPlayer configurePagView:nil];
     }
+}
+
+- (MFMediaViewPlayer *)player {
+    if (!_player) {
+        _player = [[MFMediaViewPlayer alloc] init];
+    }
+    return _player;
 }
 
 

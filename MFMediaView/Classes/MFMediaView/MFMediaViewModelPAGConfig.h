@@ -85,10 +85,16 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
 @end
 
 @interface MFMediaViewModelPAGConfig : NSObject
+
 /**
- * Pag循环的次数， 0无限循环， 默认0 ,  -2 首次播放完后之后片段循环 衔接下面的属性
+ * Pag循环的次数， 0无限循环， 默认0
  */
 @property (nonatomic, assign) NSUInteger repeatCount;
+
+/**
+ * 循环模式 0 默认循环（常规循环）  -2 首次播放完后之后片段循环 衔接下面的属性, -3 区间循环模式（相对于-2不会执行第一遍的动画）， -4 卡帧模式（只显示固定帧）
+ */
+@property (nonatomic, assign) NSInteger repeatStyle;
 
 /**
  * 片段循环区间 开始时间 循环次数 -2 时生效 设置 0 从头开始

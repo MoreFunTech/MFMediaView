@@ -16,6 +16,11 @@
  */
 @property (nonatomic, strong) MFMediaViewModel *model;
 
+/**
+ * 操控器
+ */
+@property (nonatomic, strong) MFMediaViewPlayer *player;
+
 @property (nonatomic, copy) void(^mediaLoadFinishBlock)(MFMediaViewModel *model);
 
 @property (nonatomic) id customModel;

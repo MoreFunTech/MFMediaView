@@ -25,13 +25,13 @@
 
     
 //    [self configureSvga];
-//    [self configurePag];
+    [self configurePag];
 //    [self configureFileHeaderCodePag];
 //    [self configureImage];
     
 //
     
-    [self configureAudio];
+//    [self configureAudio];
 
 }
 
@@ -88,15 +88,15 @@
     //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"神仙伴侣内侧用的" ofType:@"svga"];
     
 //    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/40b82ce094db24f0c68dec790264e9a0.pag";
-    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/0ae374225118bdb137f7d7e23206b5cf.pag";
-    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:netUrl];
+//    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/0ae374225118bdb137f7d7e23206b5cf.pag";
+//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:netUrl];
     
-//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"text3.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"pet_levelUp_animate.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"animate017.pag" ofType:@""];
     
-//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
+    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
     
     mediaViewModel.pagConfig.repeatCount = 0;
     mediaViewModel.pagConfig.repeatStartTime = 1;
@@ -150,6 +150,14 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.mediaView.model = mediaViewModel;
     });
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.mediaView.player.pagPlayer.repeatConfig = [MFMediaViewPlayerPagRepeatConfig configWithRepeatCount:15 repeatStyle:-3 repeatStartTime:1 repeatEndTime:2];
+    });
+    
+    
+    
 }
 
 - (void)configureFileHeaderCodePag {

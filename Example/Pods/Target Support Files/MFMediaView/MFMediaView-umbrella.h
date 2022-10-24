@@ -24,6 +24,13 @@
 #import "MFMediaViewModelPAGConfig.h"
 #import "MFMediaViewModelSVGAConfig.h"
 #import "MFMediaViewPAGView.h"
+#import "MFMediaViewPlayer.h"
+#import "MFMediaViewPlayerAudio.h"
+#import "MFMediaViewPlayerGif.h"
+#import "MFMediaViewPlayerImage.h"
+#import "MFMediaViewPlayerPag.h"
+#import "MFMediaViewPlayerSvga.h"
+#import "MFMediaViewPlayerVideo.h"
 #import "MFMediaViewSVGAView.h"
 #import "MFMediaViewVideoView.h"
 

@@ -10,6 +10,7 @@
 
 
 #import "MFMediaViewModel.h"
+#import "MFMediaViewPlayer.h"
 #import "MFMediaViewEnum.h"
 #import "MFMediaViewModelPAGConfig.h"
 #import "MFMediaViewModelSVGAConfig.h"

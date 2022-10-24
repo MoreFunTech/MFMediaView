@@ -6,6 +6,7 @@
 #import <UIKit/UIKit.h>
 
 @class MFMediaViewModel;
+@class MFMediaViewPlayerPag;
 
 @interface MFMediaViewPAGView : UIView
 
@@ -14,6 +15,11 @@
 @property (nonatomic) id customModel;
 
 @property (nonatomic, copy) void(^mediaLoadFinishBlock)(MFMediaViewModel *model);
+
+- (void)updatePagWithRepeatCount:(NSUInteger)repeatCount repeatStyle:(NSInteger)repeatStyle repeatStartTime:(float)repeatStartTime repeatEndTime:(float)repeatEndTime;
+- (void)updatePagWithScaleMode:(NSInteger)scaleMode;
+- (void)updatePagWithReplaceLayerList:(NSArray *)replaceLayerList;
+- (void)updatePagWithMaxFrameRate:(NSUInteger)maxFrameRate;
 
 - (void)startPlayAnimate;
 
