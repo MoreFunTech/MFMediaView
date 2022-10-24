@@ -60,6 +60,7 @@
         
         [self impDelegateFileLoadSuccess:^(double during) {
             [weakSelf playerFileLoadSuccess:during];
+            [weakSelf impDelegateConfigureReadyToPlay:during];
         }];
         
         [self impDelegateAudioPlayingBlock:^(double current, double during) {
@@ -69,6 +70,10 @@
         [self impDelegateAudioPlayerStatusChange:^(MFMediaViewModelAudioStatus status) {
             [weakSelf playeraStatusChange:status];
         }];
+        
+        if (self.customModel) {
+            [self impDelegateConfigureViewWithCustomModel:customModel];
+        }
     });
     
     
@@ -181,12 +186,6 @@
 
 - (void)setCustomModel:(id)customModel {
     _customModel = customModel;
-    if (!customModel) {
-        return;
-    }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self impDelegateConfigureViewWithCustomModel:customModel];
-    });
 }
 
 #pragma mark - 触发代理
@@ -220,6 +219,16 @@
         return;
     }
     [_audioPlayer configureViewWithCustomModel:customModel];
+}
+
+- (void)impDelegateConfigureReadyToPlay:(double)during {
+    if (!_audioPlayer) {
+        return;
+    }
+    if (![_audioPlayer respondsToSelector:@selector(configureReadyToPlay:)]) {
+        return;
+    }
+    [_audioPlayer configureReadyToPlay:during];
 }
 
 - (UIView <MFMediaViewModelAudioConfigPlayerContentViewDelegate> * _Nullable)impDelegatePlayerView {
