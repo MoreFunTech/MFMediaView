@@ -179,7 +179,15 @@
     self.audioPlayer = nil;
 }
 
-
+- (void)setCustomModel:(id)customModel {
+    _customModel = customModel;
+    if (!customModel) {
+        return;
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self impDelegateConfigureViewWithCustomModel:customModel];
+    });
+}
 
 #pragma mark - 触发代理
 
@@ -201,18 +209,17 @@
     if (!_audioPlayer) {
         return;
     }
-    __weak typeof(self) weakSelf = self;
     [_audioPlayer playButtonClickBlock:playActionBlock];
-    
 }
 
 - (void)impDelegateConfigureViewWithCustomModel:(id)customModel {
     if (!_audioPlayer) {
         return;
     }
-    if ([_audioPlayer respondsToSelector:@selector(configureViewWithCustomModel:)]) {
-        [_audioPlayer configureViewWithCustomModel:customModel];
+    if (![_audioPlayer respondsToSelector:@selector(configureViewWithCustomModel:)]) {
+        return;
     }
+    [_audioPlayer configureViewWithCustomModel:customModel];
 }
 
 - (UIView <MFMediaViewModelAudioConfigPlayerContentViewDelegate> * _Nullable)impDelegatePlayerView {
