@@ -19,9 +19,11 @@
 
 
 - (void)startPlayAnimate {
+    [self impDelegatePlay];
 }
 
 - (void)stopPlayAnimate {
+    [self impDelegateStop];
 }
 
 - (void)configureDefaultView:(MFMediaViewModel *)model {

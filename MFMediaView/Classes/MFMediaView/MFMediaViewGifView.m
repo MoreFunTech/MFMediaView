@@ -53,7 +53,6 @@
 
 }
 
-
 - (void)startPlayAnimate {
     [self.imageView startAnimating];
 }
