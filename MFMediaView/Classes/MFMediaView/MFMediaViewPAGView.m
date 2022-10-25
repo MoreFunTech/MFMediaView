@@ -29,7 +29,9 @@
 }
 
 - (void)startPlayAnimate {
-    [self.pagView play];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.pagView play];
+    });
     [self replaceLayerAction];
 }
 
@@ -147,7 +149,9 @@
         [self.pagView setComposition:_pagFile];
         if (self.model.pagConfig.isAutoPlay) {
             [self replaceLayerAction];
-            [self.pagView play];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.pagView play];
+            });
         }
         self.model.imageWidth = self.pagFile.width;
         self.model.imageHeight = self.pagFile.height;
@@ -160,10 +164,6 @@
 
 - (void)replaceLayerAction {
     
-    for (int i = 0; i < self.pagFile.numChildren; i++) {
-        PAGLayer *layer = [self.pagFile getLayerAt:i];
-        NSLog(@"%d - %ld - %@", i, layer.layerType, layer.layerName);
-    }
     
     [self.model.pagConfig.replaceLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigReplaceLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSArray * layerList = [self.pagFile getLayersByName:obj.layerName];
@@ -268,7 +268,9 @@
         [composition addLayer:self.pagFile];
         [self.pagView setComposition:composition];
         [self replaceLayerAction];
-        [self.pagView play];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.pagView play];
+        });
         [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
     } else if (self.model.pagConfig.repeatStyle == -3) {
         if (self.isAreaRepeatStart) {
@@ -289,7 +291,9 @@
         [composition addLayer:self.pagFile];
         [self.pagView setComposition:composition];
         [self replaceLayerAction];
-        [self.pagView play];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.pagView play];
+        });
         [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
     } else if (self.model.pagConfig.repeatStyle == -4) {
         if (self.isAreaRepeatStart) {
@@ -310,7 +314,9 @@
         [composition addLayer:self.pagFile];
         [self.pagView setComposition:composition];
         [self replaceLayerAction];
-        [self.pagView play];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.pagView play];
+        });
         [self.pagView setRepeatCount:1];
     } else if (self.model.pagConfig.repeatCount >= 0) {
         if (self.model.pagConfig.onAnimationEndAction) {

@@ -71,6 +71,8 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.mediaView.model = mediaViewModel;
     });
+    
+    
 }
 
 - (void)playNextPag {
@@ -89,18 +91,21 @@
     
 //    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/40b82ce094db24f0c68dec790264e9a0.pag";
 //    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/0ae374225118bdb137f7d7e23206b5cf.pag";
-//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:netUrl];
+//    NSString *url = @"https://ruiqu-1304540262.woodsdating.com/548bf10fdc3ff189fd2dcab2368b429a.pag";
+    NSString *url = @"https://ruiqu-1304540262.woodsdating.com/ae0236e6a4d4fde8375fa74ea4515b15.pag";
+    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:url];
     
-    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
+//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
+//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"pet_space_reward_bg.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"text3.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"pet_levelUp_animate.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"animate017.pag" ofType:@""];
     
-    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
+//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
     
-    mediaViewModel.pagConfig.repeatCount = 0;
-    mediaViewModel.pagConfig.repeatStartTime = 1;
-    mediaViewModel.pagConfig.repeatEndTime = 0;
+//    mediaViewModel.pagConfig.repeatCount = 0;
+//    mediaViewModel.pagConfig.repeatStartTime = 1;
+//    mediaViewModel.pagConfig.repeatEndTime = 0;
     mediaViewModel.pagConfig.isAutoPlay = YES;
     
     mediaViewModel.pagConfig.scaleMode = MFMediaViewModelPAGConfigStyleScaleModeAspectToFit;
@@ -126,7 +131,7 @@
     
     
     [mediaViewModel.pagConfig.replaceLayerList addObject:
-         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:nil layerName:@"mask_changebale.png"]
+         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:nil layerName:@"mask_changeable.png"]
     ];
     
     [mediaViewModel.pagConfig.replaceLayerList addObject:
@@ -146,16 +151,16 @@
     self.mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(0, 0, 375, 667)];
     [self.view addSubview:self.mediaView];
     
-
+//
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.mediaView.model = mediaViewModel;
     });
-    
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.mediaView.player.pagPlayer.repeatConfig = [MFMediaViewPlayerPagRepeatConfig configWithRepeatCount:15 repeatStyle:-3 repeatStartTime:1 repeatEndTime:2];
-    });
-    
+//
+//
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        self.mediaView.player.pagPlayer.repeatConfig = [MFMediaViewPlayerPagRepeatConfig configWithRepeatCount:15 repeatStyle:-3 repeatStartTime:1 repeatEndTime:2];
+//    });
+//
 }
 
 - (void)configureFileHeaderCodePag {
@@ -260,8 +265,10 @@
 
 - (void)configureImage {
 //    NSString *urlStr = @"https://lmg.jj20.com/up/allimg/4k/s/02/2109242332225H9-0-lp.jpg";
-    NSString *urlStr = @"https://img.zcool.cn/community/0197d259ccc891a8012053f8cb26e3.gif";
-    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStyleGif url:urlStr];
+//    NSString *urlStr = @"https://img.zcool.cn/community/0197d259ccc891a8012053f8cb26e3.gif";
+//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStyleGif url:urlStr];
+    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:(MFMediaViewModelStyleImage) url:@""];
+    mediaViewModel.imageConfig.localImage = [UIImage imageNamed:@"pet_levelUp_image_age1"];
     mediaViewModel.gifConfig.contentMode = UIViewContentModeScaleAspectFill;
     mediaViewModel.gifConfig.repeatCount = 1;
     mediaViewModel.gifConfig.isAutoPlay = NO;
@@ -296,6 +303,14 @@
         [self.mediaView stopPlayAnimate];
     });
     
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
+        NSString *url = @"https://ruiqu-1304540262.woodsdating.com/548bf10fdc3ff189fd2dcab2368b429a.pag";
+//        MFMediaViewModel *mediaViewModel1 = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
+        MFMediaViewModel *mediaViewModel1 = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:url];
+        self.mediaView.model = mediaViewModel1;
+    });
     
 }
 

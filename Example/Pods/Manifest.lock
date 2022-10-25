@@ -31,7 +31,7 @@ PODS:
   - MFFileDownloader (0.2.0):
     - AFNetworking (~> 4.0)
     - FMDB (~> 2.7)
-  - MFMediaView (0.2.2):
+  - MFMediaView (0.2.3):
     - libpag (~> 4.1)
     - MFFileDownloader
     - SDWebImage (~> 5.0)
@@ -39,7 +39,7 @@ PODS:
   - NIMSDK_LITE (9.6.1):
     - NIMSDK_LITE/NOS (= 9.6.1)
   - NIMSDK_LITE/NOS (9.6.1)
-  - Protobuf (3.21.7)
+  - Protobuf (3.21.8)
   - SDWebImage (5.13.4):
     - SDWebImage/Core (= 5.13.4)
   - SDWebImage/Core (5.13.4)
@@ -97,9 +97,9 @@ SPEC CHECKSUMS:
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   libpag: c765dd2a0584d7dd8767601d8f0bfc38c16eca2e
   MFFileDownloader: fab7f45361c0da48971d03f73ce4ef5f2960c901
-  MFMediaView: 738a235b6e772093a0806911d4113d4c0366a737
+  MFMediaView: 0317997e634b007aac94fb35507595addb6997ed
   NIMSDK_LITE: b020e3dbbc9f53934609bc35ecba7798be503e1a
-  Protobuf: f4128517d7a42302e106cc3afe614ee3a7513e94
+  Protobuf: 0a11f3000cd10ffa17611bf96e66a66b25c956e4
   SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
