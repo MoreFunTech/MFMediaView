@@ -117,10 +117,10 @@
                     weakSelf.model.pagConfig.onFileLoadingAction(completeCount / totalCount);
                 }
             } else if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloadFinish) {
+                [weakSelf configureViewStartPlayWith:resultModel.fileModel.fullLocalPath];
                 if (weakSelf.model.pagConfig.onFileLoadSuccessAction) {
                     weakSelf.model.pagConfig.onFileLoadSuccessAction();
                 }
-                [weakSelf configureViewStartPlayWith:resultModel.fileModel.fullLocalPath];
             } else if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloadError) {
                 if (weakSelf.model.pagConfig.onFileLoadFailureAction) {
                     weakSelf.model.pagConfig.onFileLoadFailureAction(resultModel.error);
