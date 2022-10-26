@@ -175,91 +175,78 @@
 }
 
 - (void)configRepeatStyle0Animate {
-    [self.model.pagConfig configModelWithFile:_pagFile];
-    [self.pagFile seTimeStretchMode:PAGTimeStretchModeScale];
-    [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
-    [self.pagView setComposition:_pagFile];
-    
-    if (self.model.pagConfig.isAutoPlay) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.model.pagConfig configModelWithFile:self.pagFile];
+        [self.pagFile seTimeStretchMode:PAGTimeStretchModeNone];
+        [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
+        [self.pagView setComposition:self.pagFile];
+        if (self.model.pagConfig.isAutoPlay) {
             [self.pagView play];
-        });
-    }
+        }
+        [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
+    });
+    
 }
 
 - (void)configRepeatStyleD2Animate {
-    self.isAreaRepeatStart = NO;
-    [self.model.pagConfig configModelWithFile:_pagFile];
-    [self.pagFile seTimeStretchMode:PAGTimeStretchModeScale];
-    [self.pagView setRepeatCount:1];
-    [self.pagView setComposition:_pagFile];
-    
-    if (self.model.pagConfig.isAutoPlay) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.isAreaRepeatStart = NO;
+        [self.model.pagConfig configModelWithFile:self.pagFile];
+        [self.pagFile seTimeStretchMode:PAGTimeStretchModeNone];
+        [self.pagView setRepeatCount:1];
+        [self.pagView setComposition:self.pagFile];
+        if (self.model.pagConfig.isAutoPlay) {
             [self.pagView play];
-        });
-    }
+        }
+        [self.pagView setRepeatCount:1];
+    });
 }
 
 - (void)configRepeatStyleD3Animate {
-    self.isAreaRepeatStart = YES;
-    [self.pagFile seTimeStretchMode:PAGTimeStretchModeScale];
-    PAGComposition *composition = [PAGComposition Make:CGSizeMake(self.pagView.frame.size.width * UIScreen.mainScreen.scale, self.pagView.frame.size.height * UIScreen.mainScreen.scale)];
-    
-    if (self.model.pagConfig.repeatStartTime < 0) {
-        [self.pagFile setStartTime:0];
-    } else {
-        [self.pagFile setStartTime:-@(self.model.pagConfig.repeatStartTime * 1000000).intValue];
-    }
-    if (self.model.pagConfig.repeatEndTime < 0) {
-        [self.pagFile setDuration:self.model.pagConfig.aniamteDuring];
-    } else if (self.model.pagConfig.repeatEndTime < self.model.pagConfig.repeatStartTime) {
-        [self.pagFile setDuration:self.model.pagConfig.aniamteDuring];
-    } else {
-        [self.pagFile setDuration:@(self.model.pagConfig.repeatEndTime * 1000000).intValue];
-    }
-    
-    [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
-    [composition addLayer:self.pagFile];
-    [self.pagView setComposition:composition];
-    [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
-    
-    if (self.model.pagConfig.isAutoPlay) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.isAreaRepeatStart = YES;
+        [self.pagFile seTimeStretchMode:PAGTimeStretchModeNone];
+        PAGComposition *composition = [PAGComposition Make:CGSizeMake([self.pagFile width], [self.pagFile height])];
+        
+        if (self.model.pagConfig.repeatStartTime < 0) {
+            [self.pagFile setStartTime:0];
+        } else {
+            [self.pagFile setStartTime:-@(self.model.pagConfig.repeatStartTime * 1000000).intValue];
+        }
+        if (self.model.pagConfig.repeatEndTime < 0) {
+            [self.pagFile setDuration:self.model.pagConfig.aniamteDuring];
+        } else if (self.model.pagConfig.repeatEndTime < self.model.pagConfig.repeatStartTime) {
+            [self.pagFile setDuration:self.model.pagConfig.aniamteDuring];
+        } else {
+            [self.pagFile setDuration:@(self.model.pagConfig.repeatEndTime * 1000000).intValue];
+        }
+        
+        [composition addLayer:self.pagFile];
+        [self.pagView setComposition:composition];
+        [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
+        if (self.model.pagConfig.isAutoPlay) {
             [self.pagView play];
-        });
-    }
+        }
+        [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
+    });
 }
 
 - (void)configRepeatStyleD4Animate {
-    self.isAreaRepeatStart = YES;
-    [self.pagFile seTimeStretchMode:PAGTimeStretchModeScale];
-    PAGComposition *composition = [PAGComposition Make:CGSizeMake(self.pagView.frame.size.width * UIScreen.mainScreen.scale, self.pagView.frame.size.height * UIScreen.mainScreen.scale)];
     
-    if (self.model.pagConfig.repeatStartTime < 0) {
-        [self.pagFile setStartTime:0];
-    } else {
-        [self.pagFile setStartTime:-@(self.model.pagConfig.repeatStartTime * 1000000).intValue];
-    }
-    if (self.model.pagConfig.repeatEndTime < 0) {
-        [self.pagFile setDuration:self.model.pagConfig.aniamteDuring];
-    } else if (self.model.pagConfig.repeatEndTime < self.model.pagConfig.repeatStartTime) {
-        [self.pagFile setDuration:self.model.pagConfig.aniamteDuring];
-    } else {
-        [self.pagFile setDuration:@(self.model.pagConfig.repeatEndTime * 1000000).intValue];
-    }
-    
-    [self.pagView setRepeatCount:1];
-    [composition addLayer:self.pagFile];
-    [self.pagView setComposition:composition];
-    
-    [self.pagView setRepeatCount:1];
-    
-    if (self.model.pagConfig.isAutoPlay) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.pagView play];
-        });
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.isAreaRepeatStart = YES;
+        [self.pagFile seTimeStretchMode:PAGTimeStretchModeNone];
+        
+        CGFloat progress = self.model.pagConfig.repeatStartTime / (self.model.pagConfig.repeatEndTime + 1);
+        progress = progress < 0 ? 0 : progress;
+        progress = progress > 1 ? 1 : progress;
+        
+        [self.pagView setComposition:self.pagFile];
+        [self.pagView play];
+        [self.pagView setProgress:progress];
+        [self.pagView stop];
+        
+    });
 }
 
 - (void)replaceLayerAction {
@@ -276,7 +263,6 @@
                 
                 PAGImage *pagImage = [PAGImage FromCGImage:obj.image.CGImage];
                 [self.pagFile replaceImage:@(layer.editableIndex).intValue data:pagImage];
-                
             }
             
             if (layer.layerType == PAGLayerTypeText && obj.style == MFMediaViewModelPAGConfigReplaceLayerModelStyleText) {
