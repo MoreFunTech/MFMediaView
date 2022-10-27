@@ -24,15 +24,12 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		AE753DBC2907C0B2009C1386 /* pet_space_reward_bg.pag in Resources */ = {isa = PBXBuildFile; fileRef = AE753DBA2907C0B1009C1386 /* pet_space_reward_bg.pag */; };
-		AE753DBD2907C0B2009C1386 /* pet_space_reward_open.pag in Resources */ = {isa = PBXBuildFile; fileRef = AE753DBB2907C0B2009C1386 /* pet_space_reward_open.pag */; };
 		AEFC3D6E28F7BF25005F9D2C /* whiteBG.png in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D6C28F7BF25005F9D2C /* whiteBG.png */; };
 		AEFC3D7128F7C16E005F9D2C /* pet_rankList_cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D7028F7C16E005F9D2C /* pet_rankList_cell_bg.png */; };
 		AEFC3D7D28F7E725005F9D2C /* maskPagNotCode in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D7B28F7E725005F9D2C /* maskPagNotCode */; };
 		AEFC3D7F28F7FF82005F9D2C /* test_replace_file1.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D7E28F7FF82005F9D2C /* test_replace_file1.pag */; };
 		AEFC3D8128F7FF92005F9D2C /* test_replace_file2.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8028F7FF8F005F9D2C /* test_replace_file2.pag */; };
 		AEFC3D8328F80379005F9D2C /* test_replace_file.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8228F80379005F9D2C /* test_replace_file.pag */; };
-		AEFC3D8528F80535005F9D2C /* 每日任务-仙狐-幼年期.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8428F80535005F9D2C /* 每日任务-仙狐-幼年期.pag */; };
 		AEFC3D8728F80AAE005F9D2C /* text3.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8628F80AAE005F9D2C /* text3.pag */; };
 		AEFC3D8928F939DF005F9D2C /* 弹窗.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8828F939DF005F9D2C /* 弹窗.pag */; };
 		AEFC3D8B28F939E5005F9D2C /* 升级-幼年期-成长期.pag in Resources */ = {isa = PBXBuildFile; fileRef = AEFC3D8A28F939E5005F9D2C /* 升级-幼年期-成长期.pag */; };
@@ -99,15 +96,12 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D088A66A6779D8F84419C92 /* Pods-MFMediaView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFMediaView_Tests.debug.xcconfig"; path = "Target Support Files/Pods-MFMediaView_Tests/Pods-MFMediaView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		AE753DBA2907C0B1009C1386 /* pet_space_reward_bg.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = pet_space_reward_bg.pag; sourceTree = "<group>"; };
-		AE753DBB2907C0B2009C1386 /* pet_space_reward_open.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = pet_space_reward_open.pag; sourceTree = "<group>"; };
 		AEFC3D6C28F7BF25005F9D2C /* whiteBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteBG.png; sourceTree = "<group>"; };
 		AEFC3D7028F7C16E005F9D2C /* pet_rankList_cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pet_rankList_cell_bg.png; sourceTree = "<group>"; };
 		AEFC3D7B28F7E725005F9D2C /* maskPagNotCode */ = {isa = PBXFileReference; lastKnownFileType = file; path = maskPagNotCode; sourceTree = "<group>"; };
 		AEFC3D7E28F7FF82005F9D2C /* test_replace_file1.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_replace_file1.pag; sourceTree = "<group>"; };
 		AEFC3D8028F7FF8F005F9D2C /* test_replace_file2.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_replace_file2.pag; sourceTree = "<group>"; };
 		AEFC3D8228F80379005F9D2C /* test_replace_file.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_replace_file.pag; sourceTree = "<group>"; };
-		AEFC3D8428F80535005F9D2C /* 每日任务-仙狐-幼年期.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = "每日任务-仙狐-幼年期.pag"; sourceTree = "<group>"; };
 		AEFC3D8628F80AAE005F9D2C /* text3.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = text3.pag; sourceTree = "<group>"; };
 		AEFC3D8828F939DF005F9D2C /* 弹窗.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = "弹窗.pag"; sourceTree = "<group>"; };
 		AEFC3D8A28F939E5005F9D2C /* 升级-幼年期-成长期.pag */ = {isa = PBXFileReference; lastKnownFileType = file; path = "升级-幼年期-成长期.pag"; sourceTree = "<group>"; };
@@ -276,15 +270,12 @@
 		AEFC3DE729023467005F9D2C /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				AE753DBA2907C0B1009C1386 /* pet_space_reward_bg.pag */,
-				AE753DBB2907C0B2009C1386 /* pet_space_reward_open.pag */,
 				AEFC3D6C28F7BF25005F9D2C /* whiteBG.png */,
 				33882E34FD68A076672B7C2C /* 2_0080.pag */,
 				AEFC3D7028F7C16E005F9D2C /* pet_rankList_cell_bg.png */,
 				AEFC3D7E28F7FF82005F9D2C /* test_replace_file1.pag */,
 				AEFC3D8028F7FF8F005F9D2C /* test_replace_file2.pag */,
 				AEFC3D8228F80379005F9D2C /* test_replace_file.pag */,
-				AEFC3D8428F80535005F9D2C /* 每日任务-仙狐-幼年期.pag */,
 				AEFC3D8628F80AAE005F9D2C /* text3.pag */,
 				AEFC3D8828F939DF005F9D2C /* 弹窗.pag */,
 				AEFC3D8A28F939E5005F9D2C /* 升级-幼年期-成长期.pag */,
@@ -410,15 +401,12 @@
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				AEFC3DBB28FFDE62005F9D2C /* 1122.pag in Resources */,
 				AEFC3DB628FFA759005F9D2C /* pet_levelUp_animate.pag in Resources */,
-				AEFC3D8528F80535005F9D2C /* 每日任务-仙狐-幼年期.pag in Resources */,
 				AEFC3DA928FF89FE005F9D2C /* animate012.pag in Resources */,
 				AEFC3D7128F7C16E005F9D2C /* pet_rankList_cell_bg.png in Resources */,
 				AEFC3DAB28FF8B58005F9D2C /* animate013.pag in Resources */,
-				AE753DBC2907C0B2009C1386 /* pet_space_reward_bg.pag in Resources */,
 				AEFC3D9728FE376C005F9D2C /* animate001.pag in Resources */,
 				AEFC3DB928FFCD74005F9D2C /* animate016.pag in Resources */,
 				AEFC3D9528FE376C005F9D2C /* animate003.pag in Resources */,
-				AE753DBD2907C0B2009C1386 /* pet_space_reward_open.pag in Resources */,
 				AEFC3D9328FE376C005F9D2C /* animate004.pag in Resources */,
 				AEFC3D8128F7FF92005F9D2C /* test_replace_file2.pag in Resources */,
 				AEFC3DA128FE472A005F9D2C /* animate010.pag in Resources */,

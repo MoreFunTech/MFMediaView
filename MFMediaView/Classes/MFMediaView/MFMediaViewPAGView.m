@@ -312,7 +312,9 @@
  */
 - (void)onAnimationEnd:(PAGView *)pagView {
     if (self.model.pagConfig.repeatStyle == 0) {
-        
+        if (self.model.pagConfig.onAnimationEndAction) {
+            self.model.pagConfig.onAnimationEndAction();
+        }
         return;
     }
     if (self.model.pagConfig.repeatStyle == -2) {

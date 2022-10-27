@@ -92,24 +92,27 @@
 //    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/40b82ce094db24f0c68dec790264e9a0.pag";
 //    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/0ae374225118bdb137f7d7e23206b5cf.pag";
 //    NSString *url = @"https://ruiqu-1304540262.woodsdating.com/548bf10fdc3ff189fd2dcab2368b429a.pag";
-    NSString *url = @"https://ruiqu-1304540262.woodsdating.com/ae0236e6a4d4fde8375fa74ea4515b15.pag";
-    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:url];
+//    NSString *url = @"https://ruiqu-1304540262.woodsdating.com/ae0236e6a4d4fde8375fa74ea4515b15.pag";
+//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:url];
     
-//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"pet_space_reward_bg.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"text3.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"pet_levelUp_animate.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"animate017.pag" ofType:@""];
     
-//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
+    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
     
 //    mediaViewModel.pagConfig.repeatCount = 0;
 //    mediaViewModel.pagConfig.repeatStartTime = 1;
 //    mediaViewModel.pagConfig.repeatEndTime = 0;
     mediaViewModel.pagConfig.isAutoPlay = YES;
     
-    mediaViewModel.pagConfig.scaleMode = MFMediaViewModelPAGConfigStyleScaleModeAspectToFit;
+//    mediaViewModel.pagConfig.scaleMode = MFMediaViewModelPAGConfigStyleScaleModeAspectToFit;
     mediaViewModel.pagConfig.maxFrameRate = 60;
+    mediaViewModel.pagConfig.repeatStyle = 0;
+    mediaViewModel.pagConfig.repeatStartTime = 2;
+    mediaViewModel.pagConfig.repeatEndTime = 4;
     
     [mediaViewModel.pagConfig setOnAnimationStartAction:^{
         NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  动画开始播放\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
@@ -156,10 +159,10 @@
         self.mediaView.model = mediaViewModel;
     });
 //
-//
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        self.mediaView.player.pagPlayer.repeatConfig = [MFMediaViewPlayerPagRepeatConfig configWithRepeatCount:15 repeatStyle:-3 repeatStartTime:1 repeatEndTime:2];
-//    });
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.mediaView.player.pagPlayer.repeatConfig = [MFMediaViewPlayerPagRepeatConfig configWithRepeatCount:15 repeatStyle:-3 repeatStartTime:1 repeatEndTime:2];
+    });
 //
 }
 
