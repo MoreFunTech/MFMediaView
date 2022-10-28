@@ -62,6 +62,10 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelAudioStatus) {
 @protocol MFMediaViewModelAudioConfigPlayerDelegate <NSObject>
 
 - (void)configureLocalPath:(NSString *)localPath;
+
+@optional
+- (void)configureLocalPath:(NSString *)localPath voiceEffect:(NSInteger)voiceEffect;
+
 - (void)configureAutoPlay:(BOOL)autoPlay;
 
 - (void)play;
@@ -88,6 +92,7 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelAudioStatus) {
 
 @property (nonatomic, copy) void(^onAudioStartAction)(void);
 @property (nonatomic, copy) void(^onAudioEndAction)(void);
+@property (nonatomic) NSInteger voiceEffect;
 
 @property (nonatomic, copy) void(^onFileLoadingAction)(CGFloat progress);
 @property (nonatomic, copy) void(^onFileLoadSuccessAction)(void);

@@ -138,7 +138,12 @@
     }
     
     [self impDelegateConfigureViewWithStatus:(MFMediaViewModelAudioStatusReady)];
-    [self impDelegateConfigureLocalPath:localPath];
+    if (self.model.audioConfig.voiceEffect > -1) {
+        [self impDelegateConfigureLocalPath:localPath voiceEffect:self.model.audioConfig.voiceEffect];
+    } else {
+        [self impDelegateConfigureLocalPath:localPath];
+    }
+    
     if (self.model.audioConfig.isAutoPlay) {
         [self impDelegatePlay];
     }
@@ -250,6 +255,16 @@
         return;
     }
     [self.model.audioConfig.playerDelegate configureLocalPath:localPath];
+}
+
+- (void)impDelegateConfigureLocalPath:(NSString *)localPath voiceEffect:(int)voiceEffect {
+    if (!self.model.audioConfig.playerDelegate) {
+        return;
+    }
+    if (![self.model.audioConfig.playerDelegate respondsToSelector:@selector(configureLocalPath:voiceEffect:)]) {
+        return;
+    }
+    [self.model.audioConfig.playerDelegate configureLocalPath:localPath voiceEffect:voiceEffect];
 }
 
 - (void)impDelegateConfigureAutoPlay:(BOOL)autoPlay {
