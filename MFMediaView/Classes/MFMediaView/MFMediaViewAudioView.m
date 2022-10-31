@@ -113,6 +113,7 @@
                 if (weakSelf.model.audioConfig.onFileLoadSuccessAction) {
                     weakSelf.model.audioConfig.onFileLoadSuccessAction();
                 }
+                model.localPath = resultModel.fileModel.fullLocalPath;
                 [weakSelf configureViewStartPlayWith:resultModel.fileModel.fullLocalPath];
             } else if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloadError) {
                 [self impDelegateConfigureViewWithStatus:MFMediaViewModelAudioStatusLoadFailure];
@@ -139,7 +140,7 @@
     
     [self impDelegateConfigureViewWithStatus:(MFMediaViewModelAudioStatusReady)];
     if (self.model.audioConfig.voiceEffect > -1) {
-        [self impDelegateConfigureLocalPath:localPath voiceEffect:self.model.audioConfig.voiceEffect];
+        [self impDelegateConfigureLocalPath:localPath voiceEffect:@(self.model.audioConfig.voiceEffect).intValue];
     } else {
         [self impDelegateConfigureLocalPath:localPath];
     }
@@ -191,6 +192,47 @@
 - (void)setCustomModel:(id)customModel {
     _customModel = customModel;
     [self impDelegateConfigureViewWithCustomModel:customModel];
+}
+
+- (void)updateAudioPlayStatus:(NSInteger)status {
+    if (status <= 0) {
+        [self impDelegateStop];
+        return;
+    }
+    if (status == 1) {
+        [self impDelegatePlay];
+        return;
+    }
+    if (status == 2) {
+        [self impDelegatePause];
+        return;
+    }
+    if (status == 3) {
+        [self impDelegateReplay];
+        return;
+    }
+}
+
+- (void)updateVoiceEffect:(NSInteger)voiceEffect {
+    self.model.audioConfig.voiceEffect = voiceEffect;
+    [self configureView:self.model];
+}
+
+- (void)playLocalFile:(NSString *)localFile voiceEffect:(NSInteger)voiceEffect {
+    [self impDelegateStop];
+    self.model.localPath = localFile;
+    self.model.audioConfig.voiceEffect = voiceEffect;
+    self.model.audioConfig.isAutoPlay = YES;
+    [self configureView:self.model];
+}
+
+- (void)playNetFile:(NSString *)url voiceEffect:(NSInteger)voiceEffect {
+    [self impDelegateStop];
+    self.model.localPath = @"";
+    self.model.url = url;
+    self.model.audioConfig.voiceEffect = voiceEffect;
+    self.model.audioConfig.isAutoPlay = YES;
+    [self configureView:self.model];
 }
 
 #pragma mark - 触发代理

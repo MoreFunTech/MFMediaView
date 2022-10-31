@@ -158,6 +158,7 @@
     _audioView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _audioView.customModel = self.customModel;
     _audioView.model = model;
+    [self.player.audioPlayer configureAudioView:_audioView];
 //    _player.audioPlayer.audioView = _audioView;
 }
 

@@ -19,4 +19,15 @@
 
 - (void)clear;
 
+/**
+ * 0 停止 1 播放 2 暂停
+ */
+- (void)updateAudioPlayStatus:(NSInteger)status;
+
+- (void)updateVoiceEffect:(NSInteger)voiceEffect;
+
+- (void)playLocalFile:(NSString *)localFile voiceEffect:(NSInteger)voiceEffect;
+
+- (void)playNetFile:(NSString *)url voiceEffect:(NSInteger)voiceEffect;
+
 @end
