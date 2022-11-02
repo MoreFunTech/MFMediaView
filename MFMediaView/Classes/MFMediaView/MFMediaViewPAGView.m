@@ -7,6 +7,7 @@
 #import <libpag/PAGView.h>
 #import <libpag/PAGTextLayer.h>
 #import <MFFileDownloader/MFFileDownloader.h>
+#import "MFMediaViewConfig.h"
 
 @interface MFMediaViewPAGView () <PAGViewListener>
 
@@ -45,6 +46,14 @@
             self.pagView = [[PAGView alloc] initWithFrame:self.bounds];
             self.pagView.maxFrameRate = model.pagConfig.maxFrameRate;
             [self.pagView addListener:self];
+            
+            if ([MFMediaViewConfig isCurrentDebugMode]) {
+                self.pagView.userInteractionEnabled = YES;
+                UILongPressGestureRecognizer *longPressGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pagViewLongPressAction:)];
+                longPressGes.minimumPressDuration = 1;
+                [self.pagView addGestureRecognizer:longPressGes];
+            }
+            
             if (model.pagConfig.repeatStyle == -2) {
                 [self.pagView setRepeatCount:1];
             } if (model.pagConfig.repeatStyle == -3) {
@@ -373,6 +382,52 @@
         return NO;
     }
     return YES;
+}
+
+
+
+- (void)pagViewLongPressAction:(UITapGestureRecognizer *)ges {
+    NSURL *fileUrl = [NSURL fileURLWithPath:self.model.localPath];
+    NSArray *activityItem = @[fileUrl];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItem applicationActivities:nil];
+    activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll];
+    [MFMediaViewPAGView.getCurrentViewController.navigationController presentViewController:activityVC animated:YES completion:^{
+            
+    }];
+    activityVC.completionWithItemsHandler = ^(UIActivityType __nullable activityType, BOOL completed, NSArray * __nullable returnedItems, NSError * __nullable activityError) {
+        if (completed) {
+            
+        } else {
+            
+        }
+    };
+}
+
+//获取当前屏幕显示的viewcontroller
++ (UIViewController *)getCurrentViewController {
+    UIViewController *current = nil;
+    UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
+    if (!root) {
+        root = [UIApplication sharedApplication].delegate.window.rootViewController;
+    }
+    do {
+        if ([root isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *navi = (UINavigationController *)root;
+            UIViewController *vc = [navi.viewControllers lastObject];
+            current = vc;
+            root = vc.presentedViewController;
+            continue;
+        } else if([root isKindOfClass:[UITabBarController class]]) {
+            UITabBarController *tab = (UITabBarController *)root;
+            current = tab;
+            root = tab.viewControllers[tab.selectedIndex];
+            continue;
+        } else if([root isKindOfClass:[UIViewController class]]) {
+            current = root;
+            root = nil;
+        }
+    } while (root != nil);
+    return current;
 }
 
 @end

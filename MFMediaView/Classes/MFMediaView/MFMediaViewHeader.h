@@ -17,4 +17,4 @@
 #import "MFMediaViewModelImageConfig.h"
 #import "MFMediaViewModelGifConfig.h"
 #import "MFMediaViewFileTypeJudger.h"
-
+#import "MFMediaViewConfig.h"
