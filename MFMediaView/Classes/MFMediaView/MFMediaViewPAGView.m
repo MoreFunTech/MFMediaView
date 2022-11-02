@@ -127,6 +127,7 @@
                     weakSelf.model.pagConfig.onFileLoadingAction(completeCount / totalCount);
                 }
             } else if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloadFinish) {
+                weakSelf.model.localPath = resultModel.fileModel.fullLocalPath;
                 [weakSelf configureViewStartPlayWith:resultModel.fileModel.fullLocalPath];
                 if (weakSelf.model.pagConfig.onFileLoadSuccessAction) {
                     weakSelf.model.pagConfig.onFileLoadSuccessAction();
