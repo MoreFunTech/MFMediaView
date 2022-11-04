@@ -298,6 +298,7 @@
 
 - (void)resetSubviews {
     self.pagView.frame = self.bounds;
+    self.testButton.frame = CGRectMake(0, 0, 50, 30);
 }
 
 - (void)clear {
