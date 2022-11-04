@@ -56,9 +56,14 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
 @property (nonatomic, strong) UIImage *image;
 
 /**
- * 替换图层
+ * 替换图层名字
  */
 @property (nonatomic, copy) NSString *layerName;
+
+/**
+ * 替换图层序号 -1 不处理
+ */
+@property (nonatomic) int layerIndex;
 
 /**
  * 快速构建 文字替换
@@ -72,6 +77,21 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
                     layerName:(NSString *)layerName;
 
 /**
+ * 快速构建 文字替换
+ *
+ * @param text 替换文字
+ * @param layerName 替换图层名字
+ * @param layerIndex 替换图层排序
+ *
+ * @return 构建模型
+ */
++ (instancetype)modelWithText:(NSString *)text
+                    layerName:(NSString *)layerName
+                   layerIndex:(int)layerIndex;
+
+
+
+/**
  * 快速构建 图片替换
  *
  * @param image 替换图片
@@ -81,6 +101,24 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
  */
 + (instancetype)modelWithImage:(UIImage *)image
                      layerName:(NSString *)layerName;
+
+
+/**
+ * 快速构建 图片替换
+ *
+ * @param image 替换图片
+ * @param layerName 替换图层名字
+ * @param layerIndex 替换图层排序
+ *
+ * @return 构建模型
+ */
++ (instancetype)modelWithImage:(UIImage *)image
+                     layerName:(NSString *)layerName
+                    layerIndex:(int)layerIndex;
+
+
+
+
 
 @end
 

@@ -6,6 +6,7 @@
 #import "MFMediaViewModel.h"
 #import <libpag/PAGView.h>
 #import <libpag/PAGTextLayer.h>
+#import <libpag/PAGImageLayer.h>
 #import <MFFileDownloader/MFFileDownloader.h>
 #import "MFMediaViewConfig.h"
 
@@ -273,27 +274,55 @@
 
 - (void)replaceLayerAction {
     
+    int count = @(self.pagFile.numChildren).intValue;
+    for (int i = 0; i < count; i++) {
+        PAGLayer *layer = [self.pagFile getLayerAt:i];
+        [self.model.pagConfig.replaceLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigReplaceLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([self isStringNotNull:obj.text] && layer.layerType == PAGLayerTypeText) {
+                if ([layer.layerName isEqualToString:obj.layerName]) {
+                    PAGTextLayer *textLayer = (PAGTextLayer *)layer;
+                    textLayer.text = obj.text;
+                } else if (i == obj.layerIndex) {
+                    PAGTextLayer *textLayer = (PAGTextLayer *)layer;
+                    textLayer.text = obj.text;
+                }
+            }
+            if (obj.image && layer.layerType == PAGLayerTypeImage) {
+                if ([layer.layerName isEqualToString:obj.layerName]) {
+                    PAGImageLayer *imageLayer = (PAGImageLayer *)layer;
+                    [imageLayer setImage:[PAGImage FromCGImage:obj.image.CGImage]];
+                } else if (i == obj.layerIndex) {
+                    PAGImageLayer *imageLayer = (PAGImageLayer *)layer;
+                    [imageLayer setImage:[PAGImage FromCGImage:obj.image.CGImage]];
+                }
+            }
+        }];
+    }
     
-    [self.model.pagConfig.replaceLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigReplaceLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSArray * layerList = [self.pagFile getLayersByName:obj.layerName];
-        if (layerList.count > 0) {
-            PAGLayer *layer = layerList[0];
-            
-            if (layer.layerType == PAGLayerTypeImage &&
-                [layer.layerName isEqualToString:obj.layerName] &&
-                obj.style == MFMediaViewModelPAGConfigReplaceLayerModelStyleImage) {
-                
-                PAGImage *pagImage = [PAGImage FromCGImage:obj.image.CGImage];
-                [self.pagFile replaceImage:@(layer.editableIndex).intValue data:pagImage];
-            }
-            
-            if (layer.layerType == PAGLayerTypeText && obj.style == MFMediaViewModelPAGConfigReplaceLayerModelStyleText) {
-                PAGTextLayer *textLayer = (PAGTextLayer *)layer;
-                textLayer.text = obj.text;
-            }
-            
-        }
-    }];
+    
+//    [self.model.pagConfig.replaceLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigReplaceLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        NSArray * layerList = [self.pagFile getLayersByName:obj.layerName];
+//        if (layerList.count > 0) {
+//            PAGLayer *layer = layerList[0];
+//
+//            if (layer.layerType == PAGLayerTypeImage &&
+//                obj.style == MFMediaViewModelPAGConfigReplaceLayerModelStyleImage) {
+//                if ([layer.layerName isEqualToString:obj.layerName]) {
+//
+//                } else if (obj.layerIndex == 0) {
+//
+//                }
+//                PAGImage *pagImage = [PAGImage FromCGImage:obj.image.CGImage];
+//                [self.pagFile replaceImage:@(layer.editableIndex).intValue data:pagImage];
+//            }
+//
+//            if (layer.layerType == PAGLayerTypeText && obj.style == MFMediaViewModelPAGConfigReplaceLayerModelStyleText) {
+//                PAGTextLayer *textLayer = (PAGTextLayer *)layer;
+//                textLayer.text = obj.text;
+//            }
+//
+//        }
+//    }];
 
 }
 
