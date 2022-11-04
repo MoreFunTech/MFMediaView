@@ -96,6 +96,7 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D088A66A6779D8F84419C92 /* Pods-MFMediaView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFMediaView_Tests.debug.xcconfig"; path = "Target Support Files/Pods-MFMediaView_Tests/Pods-MFMediaView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE830FC72912A1E5007F5419 /* pet_normalLevelUp_animate */ = {isa = PBXFileReference; lastKnownFileType = file; path = pet_normalLevelUp_animate; sourceTree = "<group>"; };
 		AEFC3D6C28F7BF25005F9D2C /* whiteBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteBG.png; sourceTree = "<group>"; };
 		AEFC3D7028F7C16E005F9D2C /* pet_rankList_cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pet_rankList_cell_bg.png; sourceTree = "<group>"; };
 		AEFC3D7B28F7E725005F9D2C /* maskPagNotCode */ = {isa = PBXFileReference; lastKnownFileType = file; path = maskPagNotCode; sourceTree = "<group>"; };
@@ -263,6 +264,7 @@
 				E569E0E3C5046794534A457E /* MFMediaView.podspec */,
 				6A451475CDB454894EDC2333 /* README.md */,
 				C4B62D8EA1EC966EA25290FE /* LICENSE */,
+				AE830FC72912A1E5007F5419 /* pet_normalLevelUp_animate */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";

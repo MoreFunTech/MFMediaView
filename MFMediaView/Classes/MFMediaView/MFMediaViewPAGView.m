@@ -23,6 +23,8 @@
 
 @property(nonatomic, assign) BOOL isAreaRepeatStart;
 
+@property(nonatomic, strong) UIButton *testButton;
+
 @end
 
 @implementation MFMediaViewPAGView {
@@ -48,10 +50,16 @@
             [self.pagView addListener:self];
             
             if ([MFMediaViewConfig isCurrentDebugMode]) {
-                self.pagView.userInteractionEnabled = YES;
-                UILongPressGestureRecognizer *longPressGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pagViewLongPressAction:)];
-                longPressGes.minimumPressDuration = 1;
-                [self.pagView addGestureRecognizer:longPressGes];
+//                self.pagView.userInteractionEnabled = YES;
+//                UILongPressGestureRecognizer *longPressGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pagViewLongPressAction:)];
+//                longPressGes.minimumPressDuration = 1;
+//                [self.pagView addGestureRecognizer:longPressGes];
+                self.testButton = [[UIButton alloc] init];
+                self.testButton.backgroundColor = [UIColor colorWithWhite:0 alpha:1];
+                [self.testButton setTitle:@"调试" forState:(UIControlStateNormal)];
+                [self.testButton setTitleColor:[UIColor colorWithWhite:1 alpha:1] forState:(UIControlStateNormal)];
+                [self.testButton addTarget:self action:@selector(testClickAction:) forControlEvents:(UIControlEventTouchUpInside)];
+                [self addSubview:self.testButton];
             }
             
             if (model.pagConfig.repeatStyle == -2) {
@@ -80,6 +88,9 @@
             [self addSubview:self.pagView];
         }
         [self configureView:model];
+        if (self.testButton) {
+            [self bringSubviewToFront:self.testButton];
+        }
     });
     
     
@@ -387,7 +398,7 @@
 
 
 
-- (void)pagViewLongPressAction:(UITapGestureRecognizer *)ges {
+- (void)testClickAction:(UIButton *)button {
     NSURL *fileUrl = [NSURL fileURLWithPath:self.model.localPath];
     NSArray *activityItem = @[fileUrl];
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItem applicationActivities:nil];
