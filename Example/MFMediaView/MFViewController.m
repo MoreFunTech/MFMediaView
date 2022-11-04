@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [MFMediaViewConfig configDebugMode:YES];
     
 //    [self configureSvga];
     [self configurePag];
@@ -157,12 +158,23 @@
 //
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.mediaView.model = mediaViewModel;
+        
+        self.mediaView.frame = self.view.bounds;
     });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{        
+        self.mediaView.frame = self.view.bounds;
+    });
+    
+    
+    
 //
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.mediaView.player.pagPlayer.repeatConfig = [MFMediaViewPlayerPagRepeatConfig configWithRepeatCount:15 repeatStyle:-3 repeatStartTime:1 repeatEndTime:2];
     });
+    
+
 //
 }
 

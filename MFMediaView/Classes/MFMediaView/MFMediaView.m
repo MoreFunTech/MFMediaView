@@ -217,28 +217,29 @@
 }
 
 - (void)resetSubviews {
+    CGRect newFrame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
     if (_imageView) {
-        _imageView.frame = self.bounds;
+        _imageView.frame = newFrame;
         [_imageView resetSubviews];
     }
     if (_videoView) {
-        _videoView.frame = self.bounds;
+        _videoView.frame = newFrame;
         [_videoView resetSubviews];
     }
     if (_gifView) {
-        _gifView.frame = self.bounds;
+        _gifView.frame = newFrame;
         [_gifView resetSubviews];
     }
     if (_audioView) {
-        _audioView.frame = self.bounds;
+        _audioView.frame = newFrame;
         [_audioView resetSubviews];
     }
     if (_pagView) {
-        _pagView.frame = self.bounds;
+        _pagView.frame = newFrame;
         [_pagView resetSubviews];
     }
     if (_svgaView) {
-        _svgaView.frame = self.bounds;
+        _svgaView.frame = newFrame;
         [_svgaView resetSubviews];
     }
 

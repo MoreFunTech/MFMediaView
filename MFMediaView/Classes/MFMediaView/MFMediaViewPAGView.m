@@ -54,8 +54,9 @@
 //                UILongPressGestureRecognizer *longPressGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pagViewLongPressAction:)];
 //                longPressGes.minimumPressDuration = 1;
 //                [self.pagView addGestureRecognizer:longPressGes];
-                self.testButton = [[UIButton alloc] init];
-                self.testButton.backgroundColor = [UIColor colorWithWhite:0 alpha:1];
+                self.testButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - 15, 30, 15)];
+                self.testButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+                self.testButton.titleLabel.font = [UIFont systemFontOfSize:10];
                 [self.testButton setTitle:@"调试" forState:(UIControlStateNormal)];
                 [self.testButton setTitleColor:[UIColor colorWithWhite:1 alpha:1] forState:(UIControlStateNormal)];
                 [self.testButton addTarget:self action:@selector(testClickAction:) forControlEvents:(UIControlEventTouchUpInside)];
@@ -297,8 +298,20 @@
 }
 
 - (void)resetSubviews {
-    self.pagView.frame = self.bounds;
-    self.testButton.frame = CGRectMake(0, 0, 50, 30);
+    CGRect newFrame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+    self.pagView.frame = newFrame;
+    self.testButton.frame = CGRectMake(0, self.bounds.size.height - 15, 30, 15);
+//    self.testButton.frame = self.bounds;
+}
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    if (point.x > self.testButton.frame.origin.x - 30 &&
+        point.x < self.testButton.frame.origin.x + self.testButton.frame.size.width + 30 &&
+        point.y > self.testButton.frame.origin.y - 30 &&
+        point.y < self.testButton.frame.origin.y + self.testButton.frame.size.height + 30) {
+        return self.testButton;
+    }
+    return [super hitTest:point withEvent:event];
 }
 
 - (void)clear {
