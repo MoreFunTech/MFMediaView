@@ -29,6 +29,8 @@
 
 - (void)startPlayAnimate;
 
+- (void)restartPlayAnimate;
+
 - (void)stopPlayAnimate;
 
 - (void)destroyView;

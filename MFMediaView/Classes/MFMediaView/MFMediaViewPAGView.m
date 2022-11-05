@@ -38,6 +38,13 @@
     });
 }
 
+- (void)restartPlayAnimate {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.pagView play];
+        [self.pagView setProgress:0];
+    });
+}
+
 - (void)stopPlayAnimate {
     [self.pagView stop];
 }
@@ -298,7 +305,6 @@
             }
         }];
     }
-    
     
 //    [self.model.pagConfig.replaceLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigReplaceLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 //        NSArray * layerList = [self.pagFile getLayersByName:obj.layerName];

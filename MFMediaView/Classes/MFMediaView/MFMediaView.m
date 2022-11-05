@@ -60,6 +60,20 @@
     
 }
 
+- (void)restartPlayAnimate {
+    if (_gifView) {
+        [_gifView restartPlayAnimate];
+    }
+    
+    if (_svgaView) {
+        [_svgaView restartPlayAnimate];
+    }
+    
+    if (_pagView) {
+        [_pagView restartPlayAnimate];
+    }
+}
+
 - (void)setModel:(MFMediaViewModel *)model {
     _model = model;
     

@@ -27,6 +27,9 @@
     [self.svgaPlayer stopAnimation];
 }
 
+- (void)restartPlayAnimate {
+    [self.svgaPlayer startAnimation];
+}
 
 - (void)configureDefaultView:(MFMediaViewModel *)model {
     if (!_svgaPlayer) {

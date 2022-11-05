@@ -57,6 +57,12 @@
     [self.imageView startAnimating];
 }
 
+- (void)restartPlayAnimate {
+    [self.imageView startAnimating];
+}
+
+
+
 - (void)stopPlayAnimate {
     [self.imageView stopAnimating];
 }
