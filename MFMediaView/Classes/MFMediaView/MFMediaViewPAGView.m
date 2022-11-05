@@ -126,6 +126,9 @@
         [self configureViewStartPlayWith:model.localPath];
     } else if ([self isStringNotNull:fileModel.url]) {
         [self configureViewStartDownload:fileModel];
+    } else {
+        [self.pagView stop];
+        [self.pagFile removeAllLayers];
     }
     
 }
