@@ -306,7 +306,7 @@
                     [imageLayer setImage:[PAGImage FromCGImage:obj.image.CGImage]];
                 }
             }
-            if (obj.image && layer.layerType == PAGLayerTypePreCompose) {
+            if (obj.image && layer.layerType == PAGLayerTypePreCompose && obj.isSpecialBMP) {
                 if ([layer.layerName isEqualToString:obj.layerName]) {
                     [self.pagFile replaceImage:i data:[PAGImage FromCGImage:obj.image.CGImage]];
                 } else if (i == obj.layerIndex) {

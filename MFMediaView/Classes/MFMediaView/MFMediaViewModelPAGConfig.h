@@ -60,7 +60,9 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
  */
 @property (nonatomic, copy) NSString *layerName;
 
-
+/**
+ * 特殊替换图层
+ */
 @property (nonatomic) BOOL isSpecialBMP;
 
 /**
@@ -119,8 +121,20 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
                      layerName:(NSString *)layerName
                     layerIndex:(int)layerIndex;
 
-
-
+/**
+ * 快速构建 图片替换
+ *
+ * @param image 替换图片
+ * @param layerName 替换图层名字
+ * @param layerIndex 替换图层排序
+ * @param isSpecialBMP 特殊替换图层
+ *
+ * @return 构建模型
+ */
++ (instancetype)modelWithImage:(UIImage *)image
+                     layerName:(NSString *)layerName
+                    layerIndex:(int)layerIndex
+                  isSpecialBMP:(BOOL)isSpecialBMP;
 
 
 @end

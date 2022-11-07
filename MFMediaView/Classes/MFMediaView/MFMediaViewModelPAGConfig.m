@@ -44,6 +44,26 @@
     return self;
 }
 
+- (instancetype)initWithStyle:(MFMediaViewModelPAGConfigReplaceLayerModelStyle)style
+                         text:(NSString *)text
+                        image:(UIImage *)image
+                    layerName:(NSString *)layerName
+                   layerIndex:(int)layerIndex
+                 isSpecialBMP:(BOOL)isSpecialBMP {
+    self = [super init];
+    if (self) {
+        self.style = style;
+        self.text = text;
+        self.image = image;
+        self.layerName = layerName;
+        self.layerIndex = layerIndex;
+        self.isSpecialBMP = isSpecialBMP;
+    }
+    return self;
+}
+
+
+
 + (instancetype)modelWithText:(NSString *)text
                     layerName:(NSString *)layerName {
     return [[self alloc] initWithStyle:(MFMediaViewModelPAGConfigReplaceLayerModelStyleText) text:text image:nil layerName:layerName layerIndex:-1];
@@ -64,6 +84,13 @@
                      layerName:(NSString *)layerName
                     layerIndex:(int)layerIndex {
     return [[self alloc] initWithStyle:(MFMediaViewModelPAGConfigReplaceLayerModelStyleImage) text:@"" image:image layerName:layerName layerIndex:layerIndex];
+}
+
++ (instancetype)modelWithImage:(UIImage *)image
+                     layerName:(NSString *)layerName
+                    layerIndex:(int)layerIndex
+                  isSpecialBMP:(BOOL)isSpecialBMP {
+    return [[self alloc] initWithStyle:(MFMediaViewModelPAGConfigReplaceLayerModelStyleImage) text:@"" image:image layerName:layerName layerIndex:layerIndex isSpecialBMP:isSpecialBMP];
 }
 
 @end
