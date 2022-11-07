@@ -306,6 +306,13 @@
                     [imageLayer setImage:[PAGImage FromCGImage:obj.image.CGImage]];
                 }
             }
+            if (obj.image && layer.layerType == PAGLayerTypePreCompose) {
+                if ([layer.layerName isEqualToString:obj.layerName]) {
+                    [self.pagFile replaceImage:i data:[PAGImage FromCGImage:obj.image.CGImage]];
+                } else if (i == obj.layerIndex) {
+                    [self.pagFile replaceImage:i data:[PAGImage FromCGImage:obj.image.CGImage]];
+                }
+            }
         }];
     }
     
