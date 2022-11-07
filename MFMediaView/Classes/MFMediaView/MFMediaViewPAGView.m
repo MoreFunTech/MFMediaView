@@ -387,6 +387,10 @@
     self.pagView.maxFrameRate = maxFrameRate;
 }
 
+- (void)seekToProgress:(CGFloat)progress {
+    [self.pagView setProgress:progress];
+}
+
 /**
  * Notifies the end of the animation.
  */

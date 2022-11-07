@@ -77,6 +77,9 @@
     _replaceLayerList = replaceLayerList;
     [self.pagView updatePagWithReplaceLayerList:replaceLayerList];
 }
+- (void)seekToProgress:(CGFloat)progress {
+    [self.pagView seekToProgress:progress];
+}
 
 - (NSMutableArray<MFMediaViewModelPAGConfigReplaceLayerModel *> *)replaceLayerList {
     if (!_replaceLayerList) {

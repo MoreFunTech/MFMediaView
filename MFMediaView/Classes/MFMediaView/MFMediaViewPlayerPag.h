@@ -69,4 +69,6 @@
 
 - (void)configurePagConfig:(MFMediaViewModelPAGConfig * _Nullable)pagConfig;
 
+- (void)seekToProgress:(CGFloat)progress;
+
 @end

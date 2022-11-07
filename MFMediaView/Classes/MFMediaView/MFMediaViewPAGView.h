@@ -21,6 +21,8 @@
 - (void)updatePagWithReplaceLayerList:(NSArray *)replaceLayerList;
 - (void)updatePagWithMaxFrameRate:(NSUInteger)maxFrameRate;
 
+- (void)seekToProgress:(CGFloat)progress;
+
 - (void)startPlayAnimate;
 
 - (void)restartPlayAnimate;
