@@ -215,6 +215,9 @@
         [self.pagView setComposition:self.pagFile];
         if (self.model.pagConfig.isAutoPlay) {
             [self.pagView play];
+            if (self.model.pagConfig.startProgress > 0) {
+                [self.pagView setProgress:self.model.pagConfig.startProgress];
+            }
         }
         [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
     });

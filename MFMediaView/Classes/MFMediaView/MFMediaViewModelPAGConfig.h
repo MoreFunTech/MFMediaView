@@ -167,6 +167,11 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
 @property (nonatomic, readonly) float aniamteDuring;
 
 /**
+ * 开始进度
+ */
+@property (nonatomic) CGFloat startProgress;
+
+/**
  * pag加载完毕后自动调用这个，请勿使用
  * file PAGFile
  */
