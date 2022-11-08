@@ -9,6 +9,51 @@
 
 @end
 
+@implementation MFMediaViewModelPAGConfigTransformLayerModel {}
+
+- (instancetype)initWithTransform:(CGAffineTransform)transform
+                       layerIndex:(int)layerIndex
+                        layerName:(NSString *)layerName
+                     isSpecialBMP:(BOOL)isSpecialBMP {
+    self = [super init];
+    if (self) {
+        self.matrix = transform;
+        self.layerIndex = layerIndex;
+        self.layerName = layerName;
+        self.isSpecialBMP = isSpecialBMP;
+    }
+    return self;
+}
+
++ (instancetype)modelWithTransform:(CGAffineTransform)transform
+                         layerName:(NSString *)layerName {
+    return [[self alloc] initWithTransform:transform
+                                layerIndex:-1
+                                 layerName:layerName
+                              isSpecialBMP:NO];
+}
+
++ (instancetype)modelWithTransform:(CGAffineTransform)transform
+                        layerIndex:(int)layerIndex
+                         layerName:(NSString *)layerName {
+    return [[self alloc] initWithTransform:transform
+                                layerIndex:layerIndex
+                                 layerName:layerName
+                              isSpecialBMP:NO];
+}
+
++ (instancetype)modelWithTransform:(CGAffineTransform)transform
+                        layerIndex:(int)layerIndex
+                         layerName:(NSString *)layerName
+                      isSpecialBMP:(BOOL)isSpecialBMP {
+    return [[self alloc] initWithTransform:transform
+                                layerIndex:layerIndex
+                                 layerName:layerName
+                              isSpecialBMP:isSpecialBMP];
+}
+
+@end
+
 @implementation MFMediaViewModelPAGConfigReplaceLayerModel {}
 
 - (void)setImage:(UIImage *)image {
@@ -144,6 +189,13 @@
         _replaceLayerList = [NSMutableArray array];
     }
     return _replaceLayerList;
+}
+
+- (NSMutableArray<MFMediaViewModelPAGConfigTransformLayerModel *> *)transformLayerList {
+    if (!_transformLayerList) {
+        _transformLayerList = [NSMutableArray array];
+    }
+    return _transformLayerList;
 }
 
 @end

@@ -38,17 +38,6 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
     MFMediaViewModelPAGConfigReplaceLayerModelStyleText = 1,
 };
 
-typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigHandleLayerStyle) {
-    /**
-     * 替换
-     */
-    MFMediaViewModelPAGConfigHandleLayerStyleReplace = 1,
-    /**
-     * 移动、缩放、选择
-     */
-    MFMediaViewModelPAGConfigHandleLayerStyleMatrix = 2,
-};
-
 @interface MFMediaViewModelPAGConfigReplaceLayerModel : NSObject
 
 /**
@@ -70,16 +59,6 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigHandleLayerStyle) {
  * 替换图层名字
  */
 @property (nonatomic, copy) NSString *layerName;
-
-/**
- * 层级操作
- */
-@property (nonatomic, assign) MFMediaViewModelPAGConfigHandleLayerStyle handleTyle;
-
-/**
- * 矩阵对象 （包含改变层缩放、旋转和平移的值）
- */
-@property (nonatomic) CGAffineTransform matrix;
 
 /**
  * 特殊替换图层
@@ -160,6 +139,45 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigHandleLayerStyle) {
 
 @end
 
+
+@interface MFMediaViewModelPAGConfigTransformLayerModel : NSObject
+
+/**
+ * 变换图层名字
+ */
+@property (nonatomic, copy) NSString *layerName;
+
+/**
+ * 特殊变换图层
+ */
+@property (nonatomic) BOOL isSpecialBMP;
+
+/**
+ * 变换图层序号 -1 不处理
+ */
+@property (nonatomic) int layerIndex;
+
+/**
+ * 矩阵对象 （包含改变层缩放、旋转和平移的值）
+ */
+@property (nonatomic) CGAffineTransform matrix;
+
++ (instancetype)modelWithTransform:(CGAffineTransform)transform
+                         layerName:(NSString *)layerName;
+
++ (instancetype)modelWithTransform:(CGAffineTransform)transform
+                        layerIndex:(int)layerIndex
+                         layerName:(NSString *)layerName;
+
+
+
++ (instancetype)modelWithTransform:(CGAffineTransform)transform
+                        layerIndex:(int)layerIndex
+                         layerName:(NSString *)layerName
+                      isSpecialBMP:(BOOL)isSpecialBMP;
+
+@end
+
 @interface MFMediaViewModelPAGConfig : NSObject
 
 /**
@@ -209,6 +227,7 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigHandleLayerStyle) {
 @property (nonatomic) BOOL isAutoPlay;
 
 @property (nonatomic, strong) NSMutableArray <MFMediaViewModelPAGConfigReplaceLayerModel *>*replaceLayerList;
+@property (nonatomic, strong) NSMutableArray <MFMediaViewModelPAGConfigTransformLayerModel *>*transformLayerList;
 
 /**
  * 最大渲染的帧率，默认60帧
@@ -223,6 +242,8 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigHandleLayerStyle) {
 @property (nonatomic, copy) void(^onFileLoadingAction)(CGFloat progress);
 @property (nonatomic, copy) void(^onFileLoadSuccessAction)(void);
 @property (nonatomic, copy) void(^onFileLoadFailureAction)(NSError *error);
+
+@property (nonatomic, copy) void(^onPagFileLoadSuccess)(void);
 
 
 + (instancetype)defaultConfigure;

@@ -96,9 +96,9 @@
 //    NSString *url = @"https://ruiqu-1304540262.woodsdating.com/ae0236e6a4d4fde8375fa74ea4515b15.pag";
 //    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:url];
     
-    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
+//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"pet_space_reward_bg.pag" ofType:@""];
-//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"text3.pag" ofType:@""];
+    NSString *localPath = [NSBundle.mainBundle pathForResource:@"text3.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"pet_levelUp_animate.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"animate017.pag" ofType:@""];
     
@@ -117,10 +117,15 @@
     
     [mediaViewModel.pagConfig setOnAnimationStartAction:^{
         NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  动画开始播放\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+//        NSLog(@"\n %@", weakSelf.mediaView.player.pagPlayer.layerUnitList);
     }];
     [mediaViewModel.pagConfig setOnAnimationEndAction:^{
         NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  动画结束播放\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
 //        [weakSelf playNextPag];
+    }];
+    
+    [mediaViewModel.pagConfig setOnPagFileLoadSuccess:^{
+        NSLog(@"\n %@", weakSelf.mediaView.player.pagPlayer.layerUnitList);
     }];
     
     [mediaViewModel.pagConfig setOnFileLoadingAction:^(CGFloat progress) {
@@ -151,7 +156,6 @@
          [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:[UIImage imageNamed:@"pet_levelUp_image_age2"] layerName:@"image_pet_levelUp_changeable"]
     ];
     
-    
     self.mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(0, 0, 375, 667)];
     [self.view addSubview:self.mediaView];
     
@@ -159,21 +163,25 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.mediaView.model = mediaViewModel;
         
-        self.mediaView.frame = self.view.bounds;
+//        self.mediaView.frame = self.view.bounds;
     });
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{        
-        self.mediaView.frame = self.view.bounds;
+//
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        self.mediaView.frame = self.view.bounds;
+        
+//        self.mediaView.player.pagPlayer.layerUnitList;
     });
+//
+//
     
     
     
 //
-
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.mediaView.player.pagPlayer.repeatConfig = [MFMediaViewPlayerPagRepeatConfig configWithRepeatCount:15 repeatStyle:-3 repeatStartTime:1 repeatEndTime:2];
-    });
-    
+//
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        self.mediaView.player.pagPlayer.repeatConfig = [MFMediaViewPlayerPagRepeatConfig configWithRepeatCount:15 repeatStyle:-3 repeatStartTime:1 repeatEndTime:2];
+//    });
+//
 
 //
 }

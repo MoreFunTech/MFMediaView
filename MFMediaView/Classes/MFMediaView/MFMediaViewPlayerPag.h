@@ -6,10 +6,44 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import "MFMediaViewModelPAGConfig.h"
+#import <libpag/PAGTextLayer.h>
+#import <libpag/PAGImageLayer.h>
 
 @class MFMediaViewPAGView;
+@class PAGLayer;
+
+typedef NS_ENUM(NSInteger, MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyle) {
+    MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleUnknown = 0,
+    MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleNull = 1,
+    MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleSolid = 2,
+    MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleText = 3,
+    MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleShape = 4,
+    MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleImage = 5,
+    MFMediaViewPlayerPagRepeatConfigPagLayerUnitStylePreCompose = 6,
+};
+
+@interface MFMediaViewPlayerPagRepeatConfigPagLayerUnit: NSObject
+
+@property (nonatomic) MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyle style;
+
+- (UIColor * _Nonnull)textFillColor;
+
+- (NSString * _Nonnull)textFontFamily;
+
+- (NSString * _Nonnull)textFontStyle;
+
+- (UIColor * _Nonnull)textStrokeColor;
+
+- (NSString * _Nonnull)textString;
+
+- (int64_t)imageContentDuration;
+
+- (NSData * _Nonnull)imageBytes;
+
++ (instancetype _Nonnull)processLayerWithLayer:(PAGLayer *_Nonnull)layer;
+
+@end
 
 
 @interface MFMediaViewPlayerPagRepeatConfig : NSObject
@@ -53,6 +87,10 @@
 @property (nonatomic) BOOL isAutoPlay;
 
 @property (nonatomic, weak) NSMutableArray <MFMediaViewModelPAGConfigReplaceLayerModel *>* _Nullable replaceLayerList;
+
+@property (nonatomic, weak) NSMutableArray <MFMediaViewModelPAGConfigTransformLayerModel *>* _Nullable transformLayerList;
+
+@property (nonatomic, strong) NSMutableArray <MFMediaViewPlayerPagRepeatConfigPagLayerUnit *> *_Nullable layerUnitList;
 
 /**
  * 最大渲染的帧率，默认60帧

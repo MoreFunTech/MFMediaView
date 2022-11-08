@@ -7,6 +7,8 @@
 
 @class MFMediaViewModel;
 @class MFMediaViewPlayerPag;
+@class PAGFile;
+@class PAGComposition;
 
 @interface MFMediaViewPAGView : UIView
 
@@ -15,10 +17,13 @@
 @property (nonatomic) id customModel;
 
 @property (nonatomic, copy) void(^mediaLoadFinishBlock)(MFMediaViewModel *model);
+@property (nonatomic, copy) void(^pagFileDidLoadSuccess)(PAGFile *file);
+@property (nonatomic, copy) void(^pagCompositionDidLoadSuccess)(PAGComposition *file);
 
 - (void)updatePagWithRepeatCount:(NSUInteger)repeatCount repeatStyle:(NSInteger)repeatStyle repeatStartTime:(float)repeatStartTime repeatEndTime:(float)repeatEndTime;
 - (void)updatePagWithScaleMode:(NSInteger)scaleMode;
 - (void)updatePagWithReplaceLayerList:(NSArray *)replaceLayerList;
+- (void)updatePagWithTransformLayerList:(NSArray *)transformLayerList;
 - (void)updatePagWithMaxFrameRate:(NSUInteger)maxFrameRate;
 
 - (void)seekToProgress:(CGFloat)progress;

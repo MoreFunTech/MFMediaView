@@ -22,6 +22,8 @@
  */
 @property(nonatomic, strong) PAGFile *pagFile;
 
+@property(nonatomic, strong) PAGComposition *pagComposition;
+
 @property(nonatomic, assign) BOOL isAreaRepeatStart;
 
 @property(nonatomic, strong) UIButton *testButton;
@@ -186,6 +188,7 @@
     }
     
     [self replaceLayerAction];
+    [self transformLayerAction];
     
     self.model.imageWidth = self.pagFile.width;
     self.model.imageHeight = self.pagFile.height;
@@ -209,6 +212,7 @@
 
 - (void)configRepeatStyle0Animate {
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.pagComposition = nil;
         [self.model.pagConfig configModelWithFile:self.pagFile];
         [self.pagFile seTimeStretchMode:PAGTimeStretchModeNone];
         [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
@@ -220,12 +224,16 @@
             }
         }
         [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
+        if (self.pagFileDidLoadSuccess) {
+            self.pagFileDidLoadSuccess(self.pagFile);
+        }
     });
     
 }
 
 - (void)configRepeatStyleD2Animate {
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.pagComposition = nil;
         self.isAreaRepeatStart = NO;
         [self.model.pagConfig configModelWithFile:self.pagFile];
         [self.pagFile seTimeStretchMode:PAGTimeStretchModeNone];
@@ -235,6 +243,9 @@
             [self.pagView play];
         }
         [self.pagView setRepeatCount:1];
+        if (self.pagFileDidLoadSuccess) {
+            self.pagFileDidLoadSuccess(self.pagFile);
+        }
     });
 }
 
@@ -242,8 +253,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         self.isAreaRepeatStart = YES;
         [self.pagFile seTimeStretchMode:PAGTimeStretchModeNone];
-        PAGComposition *composition = [PAGComposition Make:CGSizeMake([self.pagFile width], [self.pagFile height])];
-        
+        self.pagComposition = [PAGComposition Make:CGSizeMake([self.pagFile width], [self.pagFile height])];
         if (self.model.pagConfig.repeatStartTime < 0) {
             [self.pagFile setStartTime:0];
         } else {
@@ -257,13 +267,17 @@
             [self.pagFile setDuration:@(self.model.pagConfig.repeatEndTime * 1000000).intValue];
         }
         
-        [composition addLayer:self.pagFile];
-        [self.pagView setComposition:composition];
+        [self.pagComposition addLayer:self.pagFile];
+        [self.pagView setComposition:self.pagComposition];
         [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
         if (self.model.pagConfig.isAutoPlay) {
             [self.pagView play];
         }
         [self.pagView setRepeatCount:@(self.model.pagConfig.repeatCount).intValue];
+        
+        if (self.pagCompositionDidLoadSuccess) {
+            self.pagCompositionDidLoadSuccess(self.pagComposition);
+        }
     });
 }
 
@@ -282,14 +296,24 @@
         [self.pagView setProgress:progress];
         [self.pagView stop];
         
+        if (self.pagFileDidLoadSuccess) {
+            self.pagFileDidLoadSuccess(self.pagFile);
+        }
+        
     });
 }
 
 - (void)replaceLayerAction {
     
     int count = @(self.pagFile.numChildren).intValue;
+    if (self.pagComposition) {
+        count = @(self.pagComposition.numChildren).intValue;
+    }
     for (int i = 0; i < count; i++) {
         PAGLayer *layer = [self.pagFile getLayerAt:i];
+        if (self.pagComposition) {
+            layer = [self.pagComposition getLayerAt:i];
+        }
         [self.model.pagConfig.replaceLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigReplaceLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([self isStringNotNull:obj.text] && layer.layerType == PAGLayerTypeText) {
                 if ([layer.layerName isEqualToString:obj.layerName]) {
@@ -310,14 +334,6 @@
                 }
             }
             
-            if (obj.handleTyle == MFMediaViewModelPAGConfigHandleLayerStyleMatrix) {
-                if ([layer.layerName isEqualToString:obj.layerName]) {
-                    [layer setMatrix:obj.matrix];
-                } else if (i == obj.layerIndex) {
-                    [layer setMatrix:obj.matrix];
-                }
-            }
-            
             if (obj.image && layer.layerType == PAGLayerTypePreCompose && obj.isSpecialBMP) {
                 if ([layer.layerName isEqualToString:obj.layerName]) {
                     [self.pagFile replaceImage:i data:[PAGImage FromCGImage:obj.image.CGImage]];
@@ -327,31 +343,26 @@
             }
         }];
     }
-    
-//    [self.model.pagConfig.replaceLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigReplaceLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        NSArray * layerList = [self.pagFile getLayersByName:obj.layerName];
-//        if (layerList.count > 0) {
-//            PAGLayer *layer = layerList[0];
-//
-//            if (layer.layerType == PAGLayerTypeImage &&
-//                obj.style == MFMediaViewModelPAGConfigReplaceLayerModelStyleImage) {
-//                if ([layer.layerName isEqualToString:obj.layerName]) {
-//
-//                } else if (obj.layerIndex == 0) {
-//
-//                }
-//                PAGImage *pagImage = [PAGImage FromCGImage:obj.image.CGImage];
-//                [self.pagFile replaceImage:@(layer.editableIndex).intValue data:pagImage];
-//            }
-//
-//            if (layer.layerType == PAGLayerTypeText && obj.style == MFMediaViewModelPAGConfigReplaceLayerModelStyleText) {
-//                PAGTextLayer *textLayer = (PAGTextLayer *)layer;
-//                textLayer.text = obj.text;
-//            }
-//
-//        }
-//    }];
+}
 
+- (void)transformLayerAction {
+    int count = @(self.pagFile.numChildren).intValue;
+    if (self.pagComposition) {
+        count = @(self.pagComposition.numChildren).intValue;
+    }
+    for (int i = 0; i < count; i++) {
+        PAGLayer *layer = [self.pagFile getLayerAt:i];
+        if (self.pagComposition) {
+            layer = [self.pagComposition getLayerAt:i];
+        }
+        [self.model.pagConfig.transformLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigTransformLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([layer.layerName isEqualToString:obj.layerName]) {
+                [layer setMatrix:obj.matrix];
+            } else if (i == obj.layerIndex) {
+                [layer setMatrix:obj.matrix];
+            }
+        }];
+    }
 }
 
 - (void)resetSubviews {
@@ -392,7 +403,12 @@
 
 - (void)updatePagWithReplaceLayerList:(NSArray *)replaceLayerList {
     self.model.pagConfig.replaceLayerList = replaceLayerList.mutableCopy;
-    [self configureView:self.model];
+    [self replaceLayerAction];
+}
+
+- (void)updatePagWithTransformLayerList:(NSArray *)transformLayerList {
+    self.model.pagConfig.transformLayerList = transformLayerList.mutableCopy;
+    [self transformLayerAction];
 }
 
 - (void)updatePagWithMaxFrameRate:(NSUInteger)maxFrameRate {
@@ -470,8 +486,6 @@
     }
     return YES;
 }
-
-
 
 - (void)testClickAction:(UIButton *)button {
     NSURL *fileUrl = [NSURL fileURLWithPath:self.model.localPath];

@@ -15,6 +15,8 @@
 #import "MFMediaViewSVGAView.h"
 #import "MFMediaViewPAGView.h"
 
+#import <libpag/PAGView.h>
+
 @interface MFMediaView ()
 
 @property(nonatomic, strong) MFMediaViewImageView *imageView;
@@ -195,13 +197,52 @@
         _pagView = [[MFMediaViewPAGView alloc] initWithFrame:self.bounds];
         [self addSubview:_pagView];
     }
+    __weak typeof(self) weakSelf = self;
     _pagView.frame = self.bounds;
     _pagView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
     _pagView.customModel = self.customModel;
     _pagView.model = model;
+    _pagView.pagFileDidLoadSuccess = ^(PAGFile *file) {
+        [weakSelf configurePAGViewDidLoadPAGFileSuccess:file];
+    };
+    _pagView.pagCompositionDidLoadSuccess = ^(PAGComposition *composition) {
+        [weakSelf configurePAGViewDidLoadCompositionSuccess:composition];
+    };
+    
     [self.player.pagPlayer configurePagView:_pagView];
     [self.player.pagPlayer configurePagConfig:model.pagConfig];
 }
+
+- (void)configurePAGViewDidLoadPAGFileSuccess:(PAGFile *)file {
+
+    int count = @(file.numChildren).intValue;
+    NSMutableArray *list = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        PAGLayer *layer = [file getLayerAt:i];
+        MFMediaViewPlayerPagRepeatConfigPagLayerUnit *unit = [MFMediaViewPlayerPagRepeatConfigPagLayerUnit processLayerWithLayer:layer];
+        [list addObject:unit];
+    }
+    self.player.pagPlayer.layerUnitList = list;
+    if (self.model.pagConfig.onPagFileLoadSuccess) {
+        self.model.pagConfig.onPagFileLoadSuccess();
+    }
+}
+
+- (void)configurePAGViewDidLoadCompositionSuccess:(PAGComposition *)composition {
+    int count = @(composition.numChildren).intValue;
+    NSMutableArray *list = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        PAGLayer *layer = [composition getLayerAt:i];
+        MFMediaViewPlayerPagRepeatConfigPagLayerUnit *unit = [MFMediaViewPlayerPagRepeatConfigPagLayerUnit processLayerWithLayer:layer];
+        [list addObject:unit];
+    }
+    self.player.pagPlayer.layerUnitList = list;
+    if (self.model.pagConfig.onPagFileLoadSuccess) {
+        self.model.pagConfig.onPagFileLoadSuccess();
+    }
+}
+
+
 
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
