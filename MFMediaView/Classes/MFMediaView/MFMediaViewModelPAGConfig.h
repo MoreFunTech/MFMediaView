@@ -38,6 +38,17 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
     MFMediaViewModelPAGConfigReplaceLayerModelStyleText = 1,
 };
 
+typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigHandleLayerStyle) {
+    /**
+     * 替换
+     */
+    MFMediaViewModelPAGConfigHandleLayerStyleReplace = 1,
+    /**
+     * 移动、缩放、选择
+     */
+    MFMediaViewModelPAGConfigHandleLayerStyleMatrix = 2,
+};
+
 @interface MFMediaViewModelPAGConfigReplaceLayerModel : NSObject
 
 /**
@@ -59,6 +70,16 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
  * 替换图层名字
  */
 @property (nonatomic, copy) NSString *layerName;
+
+/**
+ * 层级操作
+ */
+@property (nonatomic, assign) MFMediaViewModelPAGConfigHandleLayerStyle handleTyle;
+
+/**
+ * 矩阵对象 （包含改变层缩放、旋转和平移的值）
+ */
+@property (nonatomic) CGAffineTransform matrix;
 
 /**
  * 特殊替换图层

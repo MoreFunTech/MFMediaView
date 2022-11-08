@@ -309,6 +309,15 @@
                     [imageLayer setImage:[PAGImage FromCGImage:obj.image.CGImage]];
                 }
             }
+            
+            if (obj.handleTyle == MFMediaViewModelPAGConfigHandleLayerStyleMatrix) {
+                if ([layer.layerName isEqualToString:obj.layerName]) {
+                    [layer setMatrix:obj.matrix];
+                } else if (i == obj.layerIndex) {
+                    [layer setMatrix:obj.matrix];
+                }
+            }
+            
             if (obj.image && layer.layerType == PAGLayerTypePreCompose && obj.isSpecialBMP) {
                 if ([layer.layerName isEqualToString:obj.layerName]) {
                     [self.pagFile replaceImage:i data:[PAGImage FromCGImage:obj.image.CGImage]];
