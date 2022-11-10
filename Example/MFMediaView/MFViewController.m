@@ -127,6 +127,12 @@
     [mediaViewModel.pagConfig setOnPagFileLoadSuccess:^{
         NSLog(@"\n %@", weakSelf.mediaView.player.pagPlayer.layerUnitList);
     }];
+//
+//    NSMutableArray *list = self.mediaView.player.pagPlayer.transformLayerList.mutableCopy;
+//    MFMediaViewModelPAGConfigTransformLayerModel *layerModel = list[0];
+//    layerModel.matrix = CGAffineTransformMakeScale(1.2, 1.2);
+//    list[0] = layerModel;
+//    self.mediaView.player.pagPlayer.transformLayerList = list;
     
     [mediaViewModel.pagConfig setOnFileLoadingAction:^(CGFloat progress) {
         NSLog(@"\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n  文件下载中: %f\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n", progress);

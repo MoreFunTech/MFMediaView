@@ -121,12 +121,12 @@
 }
 
 - (void)configureNoneViewWithModel:(MFMediaViewModel *)model {
-    [self clearViewWithout:model];
+    [self clearViewWithout:model inMainQueue:YES];
 
 }
 
 - (void)configureImageViewWithModel:(MFMediaViewModel *)model {
-    [self clearViewWithout:model];
+    [self clearViewWithout:model inMainQueue:YES];
     if (!_imageView) {
         _imageView = [[MFMediaViewImageView alloc] initWithFrame:self.bounds];
         [self addSubview:_imageView];
@@ -139,7 +139,7 @@
 }
 
 - (void)configureVideoViewWithModel:(MFMediaViewModel *)model {
-    [self clearViewWithout:model];
+    [self clearViewWithout:model inMainQueue:YES];
     if (!_videoView) {
         _videoView = [[MFMediaViewVideoView alloc] initWithFrame:self.bounds];
         [self addSubview:_videoView];
@@ -152,7 +152,7 @@
 }
 
 - (void)configureGifViewWithModel:(MFMediaViewModel *)model {
-    [self clearViewWithout:model];
+    [self clearViewWithout:model inMainQueue:YES];
     if (!_gifView) {
         _gifView = [[MFMediaViewGifView alloc] initWithFrame:self.bounds];
         [self addSubview:_gifView];
@@ -165,7 +165,7 @@
 }
 
 - (void)configureAudioViewWithModel:(MFMediaViewModel *)model {
-    [self clearViewWithout:model];
+    [self clearViewWithout:model inMainQueue:YES];
     if (!_audioView) {
         _audioView = [[MFMediaViewAudioView alloc] initWithFrame:self.bounds];
         [self addSubview:_audioView];
@@ -179,7 +179,7 @@
 }
 
 - (void)configureSVGAViewWithModel:(MFMediaViewModel *)model {
-    [self clearViewWithout:model];
+    [self clearViewWithout:model inMainQueue:YES];
     if (!_svgaView) {
         _svgaView = [[MFMediaViewSVGAView alloc] initWithFrame:self.bounds];
         [self addSubview:_svgaView];
@@ -192,7 +192,7 @@
 }
 
 - (void)configurePAGViewWithModel:(MFMediaViewModel *)model {
-    [self clearViewWithout:model];
+    [self clearViewWithout:model inMainQueue:YES];
     if (!_pagView) {
         _pagView = [[MFMediaViewPAGView alloc] initWithFrame:self.bounds];
         [self addSubview:_pagView];
@@ -305,6 +305,16 @@
     [self clearViewWithout:nil];
 }
 
+
+- (void)clearViewWithout:(MFMediaViewModel *)model inMainQueue:(BOOL)inMainQueue {
+    if (inMainQueue) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self clearViewWithout:model];
+        });
+    } else {
+        [self clearViewWithout:model];
+    }
+}
 
 - (void)clearViewWithout:(MFMediaViewModel *)model {
     
