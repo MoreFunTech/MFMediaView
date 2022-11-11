@@ -33,46 +33,46 @@
 
 - (void)startPlayAnimate {
     
-    if (_gifView) {
-        [_gifView startPlayAnimate];
+    if (self.gifView) {
+        [self.gifView startPlayAnimate];
     }
     
-    if (_svgaView) {
-        [_svgaView startPlayAnimate];
+    if (self.svgaView) {
+        [self.svgaView startPlayAnimate];
     }
     
-    if (_pagView) {
-        [_pagView startPlayAnimate];
+    if (self.pagView) {
+        [self.pagView startPlayAnimate];
     }
     
 }
 
 - (void)stopPlayAnimate {
-    if (_gifView) {
-        [_gifView stopPlayAnimate];
+    if (self.gifView) {
+        [self.gifView stopPlayAnimate];
     }
     
-    if (_svgaView) {
-        [_svgaView stopPlayAnimate];
+    if (self.svgaView) {
+        [self.svgaView stopPlayAnimate];
     }
     
-    if (_pagView) {
-        [_pagView stopPlayAnimate];
+    if (self.pagView) {
+        [self.pagView stopPlayAnimate];
     }
     
 }
 
 - (void)restartPlayAnimate {
-    if (_gifView) {
-        [_gifView restartPlayAnimate];
+    if (self.gifView) {
+        [self.gifView restartPlayAnimate];
     }
     
-    if (_svgaView) {
-        [_svgaView restartPlayAnimate];
+    if (self.svgaView) {
+        [self.svgaView restartPlayAnimate];
     }
     
-    if (_pagView) {
-        [_pagView restartPlayAnimate];
+    if (self.pagView) {
+        [self.pagView restartPlayAnimate];
     }
 }
 
@@ -130,90 +130,114 @@
 
 - (void)configureImageViewWithModel:(MFMediaViewModel *)model {
     [self clearViewWithout:model];
-    if (!_imageView) {
-        _imageView = [[MFMediaViewImageView alloc] initWithFrame:self.bounds];
-        [self addSubview:_imageView];
-    }
-    _imageView.frame = self.bounds;
-    _imageView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
-    _imageView.customModel = self.customModel;
-    _imageView.model = model;
-//    _player.imagePlayer.imageView = _imageView;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (!self.imageView) {
+            self.imageView = [[MFMediaViewImageView alloc] initWithFrame:self.bounds];
+            [self addSubview:self.imageView];
+        }
+        self.imageView.frame = self.bounds;
+        self.imageView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+        self.imageView.customModel = self.customModel;
+        self.imageView.model = model;
+    //    _player.imagePlayer.imageView = self.imageView;
+    });
+    
 }
 
 - (void)configureVideoViewWithModel:(MFMediaViewModel *)model {
     [self clearViewWithout:model];
-    if (!_videoView) {
-        _videoView = [[MFMediaViewVideoView alloc] initWithFrame:self.bounds];
-        [self addSubview:_videoView];
-    }
-    _videoView.frame = self.bounds;
-    _videoView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
-    _videoView.customModel = self.customModel;
-    _videoView.model = model;
-//    _player.videoPlayer.videoView = _videoView;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (!self.videoView) {
+            self.videoView = [[MFMediaViewVideoView alloc] initWithFrame:self.bounds];
+            [self addSubview:self.videoView];
+        }
+        self.videoView.frame = self.bounds;
+        self.videoView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+        self.videoView.customModel = self.customModel;
+        self.videoView.model = model;
+    //    _player.videoPlayer.videoView = self.videoView;
+    });
+    
 }
 
 - (void)configureGifViewWithModel:(MFMediaViewModel *)model {
     [self clearViewWithout:model];
-    if (!_gifView) {
-        _gifView = [[MFMediaViewGifView alloc] initWithFrame:self.bounds];
-        [self addSubview:_gifView];
-    }
-    _gifView.frame = self.bounds;
-    _gifView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
-    _gifView.customModel = self.customModel;
-    _gifView.model = model;
-//    _player.giftPlayer.giftView = _gifView;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (!self.gifView) {
+            self.gifView = [[MFMediaViewGifView alloc] initWithFrame:self.bounds];
+            [self addSubview:self.gifView];
+        }
+        self.gifView.frame = self.bounds;
+        self.gifView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+        self.gifView.customModel = self.customModel;
+        self.gifView.model = model;
+    //    _player.giftPlayer.giftView = self.gifView;
+    });
+    
 }
 
 - (void)configureAudioViewWithModel:(MFMediaViewModel *)model {
     [self clearViewWithout:model];
-    if (!_audioView) {
-        _audioView = [[MFMediaViewAudioView alloc] initWithFrame:self.bounds];
-        [self addSubview:_audioView];
-    }
-    _audioView.frame = self.bounds;
-    _audioView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
-    _audioView.customModel = self.customModel;
-    _audioView.model = model;
-    [self.player.audioPlayer configureAudioView:_audioView];
-//    _player.audioPlayer.audioView = _audioView;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (!self.audioView) {
+            self.audioView = [[MFMediaViewAudioView alloc] initWithFrame:self.bounds];
+            [self addSubview:self.audioView];
+        }
+        self.audioView.frame = self.bounds;
+        self.audioView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+        self.audioView.customModel = self.customModel;
+        self.audioView.model = model;
+        [self.player.audioPlayer configureAudioView:self.audioView];
+    });
+    
+//    _player.audioPlayer.audioView = self.audioView;
 }
 
 - (void)configureSVGAViewWithModel:(MFMediaViewModel *)model {
     [self clearViewWithout:model];
-    if (!_svgaView) {
-        _svgaView = [[MFMediaViewSVGAView alloc] initWithFrame:self.bounds];
-        [self addSubview:_svgaView];
-    }
-    _svgaView.frame = self.bounds;
-    _svgaView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
-    _svgaView.customModel = self.customModel;
-    _svgaView.model = model;
-//    _player.svgaPlayer.svgaView = _svgaView;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (!self.svgaView) {
+            self.svgaView = [[MFMediaViewSVGAView alloc] initWithFrame:self.bounds];
+            [self addSubview:self.svgaView];
+        }
+        self.svgaView.frame = self.bounds;
+        self.svgaView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+        self.svgaView.customModel = self.customModel;
+        self.svgaView.model = model;
+    //    _player.svgaPlayer.svgaView = self.svgaView;
+    });
+    
 }
 
 - (void)configurePAGViewWithModel:(MFMediaViewModel *)model {
     [self clearViewWithout:model];
-    if (!_pagView) {
-        _pagView = [[MFMediaViewPAGView alloc] initWithFrame:self.bounds];
-        [self addSubview:_pagView];
-    }
-    __weak typeof(self) weakSelf = self;
-    _pagView.frame = self.bounds;
-    _pagView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
-    _pagView.customModel = self.customModel;
-    _pagView.model = model;
-    _pagView.pagFileDidLoadSuccess = ^(PAGFile *file) {
-        [weakSelf configurePAGViewDidLoadPAGFileSuccess:file];
-    };
-    _pagView.pagCompositionDidLoadSuccess = ^(PAGComposition *composition) {
-        [weakSelf configurePAGViewDidLoadCompositionSuccess:composition];
-    };
     
-    [self.player.pagPlayer configurePagView:_pagView];
-    [self.player.pagPlayer configurePagConfig:model.pagConfig];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (!self.pagView) {
+            self.pagView = [[MFMediaViewPAGView alloc] initWithFrame:self.bounds];
+            [self addSubview:self.pagView];
+        }
+        __weak typeof(self) weakSelf = self;
+        self.pagView.frame = self.bounds;
+        self.pagView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+        self.pagView.customModel = self.customModel;
+        self.pagView.model = model;
+        self.pagView.pagFileDidLoadSuccess = ^(PAGFile *file) {
+            [weakSelf configurePAGViewDidLoadPAGFileSuccess:file];
+        };
+        self.pagView.pagCompositionDidLoadSuccess = ^(PAGComposition *composition) {
+            [weakSelf configurePAGViewDidLoadCompositionSuccess:composition];
+        };
+        
+        [self.player.pagPlayer configurePagView:self.pagView];
+        [self.player.pagPlayer configurePagConfig:model.pagConfig];
+    });
+    
 }
 
 - (void)configurePAGViewDidLoadPAGFileSuccess:(PAGFile *)file {
@@ -254,53 +278,55 @@
 
 - (void)setCustomModel:(id)customModel {
     _customModel = customModel;
-    if (_imageView) {
-        _imageView.customModel = _customModel;
+    if (self.imageView) {
+        self.imageView.customModel = _customModel;
     }
-    if (_videoView) {
-        _videoView.customModel = _customModel;
+    if (self.videoView) {
+        self.videoView.customModel = _customModel;
     }
-    if (_gifView) {
-        _gifView.customModel = _customModel;
+    if (self.gifView) {
+        self.gifView.customModel = _customModel;
     }
-    if (_audioView) {
-        _audioView.customModel = _customModel;
+    if (self.audioView) {
+        self.audioView.customModel = _customModel;
     }
-    if (_pagView) {
-        _pagView.customModel = _customModel;
+    if (self.pagView) {
+        self.pagView.customModel = _customModel;
     }
-    if (_svgaView) {
-        _svgaView.customModel = _customModel;
+    if (self.svgaView) {
+        self.svgaView.customModel = _customModel;
     }
 }
 
 - (void)resetSubviews {
-    CGRect newFrame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-    if (_imageView) {
-        _imageView.frame = newFrame;
-        [_imageView resetSubviews];
-    }
-    if (_videoView) {
-        _videoView.frame = newFrame;
-        [_videoView resetSubviews];
-    }
-    if (_gifView) {
-        _gifView.frame = newFrame;
-        [_gifView resetSubviews];
-    }
-    if (_audioView) {
-        _audioView.frame = newFrame;
-        [_audioView resetSubviews];
-    }
-    if (_pagView) {
-        _pagView.frame = newFrame;
-        [_pagView resetSubviews];
-    }
-    if (_svgaView) {
-        _svgaView.frame = newFrame;
-        [_svgaView resetSubviews];
-    }
-
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CGRect newFrame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+        if (self.imageView) {
+            self.imageView.frame = newFrame;
+            [self.imageView resetSubviews];
+        }
+        if (self.videoView) {
+            self.videoView.frame = newFrame;
+            [self.videoView resetSubviews];
+        }
+        if (self.gifView) {
+            self.gifView.frame = newFrame;
+            [self.gifView resetSubviews];
+        }
+        if (self.audioView) {
+            self.audioView.frame = newFrame;
+            [self.audioView resetSubviews];
+        }
+        if (self.pagView) {
+            self.pagView.frame = newFrame;
+            [self.pagView resetSubviews];
+        }
+        if (self.svgaView) {
+            self.svgaView.frame = newFrame;
+            [self.svgaView resetSubviews];
+        }
+    });
+    
 }
 
 - (void)destroyView {
@@ -310,60 +336,62 @@
 
 - (void)clearViewWithout:(MFMediaViewModel *)model {
     
-    if (_imageView && model.style != MFMediaViewModelStyleImage) {
-        [_imageView clear];
-        _imageView.customModel = nil;
-        _imageView.model = nil;
-        _imageView.mediaLoadFinishBlock = nil;
-        [_imageView removeFromSuperview];
-        _imageView = nil;
-        //        _player.imagePlayer.imageView = nil;
-    }
-    if (_videoView && model.style != MFMediaViewModelStyleVideo) {
-        [_videoView clear];
-        _videoView.customModel = nil;
-        _videoView.model = nil;
-        _videoView.mediaLoadFinishBlock = nil;
-        [_videoView removeFromSuperview];
-        _videoView = nil;
-        //        _player.videoPlayer.videoView = nil;
-    }
-    if (_gifView && model.style != MFMediaViewModelStyleGif) {
-        [_gifView clear];
-        _gifView.customModel = nil;
-        _gifView.model = nil;
-        _gifView.mediaLoadFinishBlock = nil;
-        [_gifView removeFromSuperview];
-        _gifView = nil;
-        //        _player.giftPlayer.giftView = nil;
-    }
-    if (_audioView && model.style != MFMediaViewModelStyleAudio) {
-        [_audioView clear];
-        _audioView.customModel = nil;
-        _audioView.model = nil;
-        _audioView.mediaLoadFinishBlock = nil;
-        [_audioView removeFromSuperview];
-        _audioView = nil;
-//                _player.audioPlayer.audioView = nil;
-    }
-    if (_svgaView && model.style != MFMediaViewModelStyleSvga) {
-        [_svgaView clear];
-        _svgaView.customModel = nil;
-        _svgaView.model = nil;
-        _svgaView.mediaLoadFinishBlock = nil;
-        [_svgaView removeFromSuperview];
-        _svgaView = nil;
-//        _player.svgaPlayer.svgaView = nil;
-    }
-    if (_pagView && model.style != MFMediaViewModelStylePag) {
-        [_pagView clear];
-        _pagView.customModel = nil;
-        _pagView.model = nil;
-        _pagView.mediaLoadFinishBlock = nil;
-        [_pagView removeFromSuperview];
-        _pagView = nil;
-        [_player.pagPlayer configurePagView:nil];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.imageView && model.style != MFMediaViewModelStyleImage) {
+            [self.imageView clear];
+            self.imageView.customModel = nil;
+            self.imageView.model = nil;
+            self.imageView.mediaLoadFinishBlock = nil;
+            [self.imageView removeFromSuperview];
+            self.imageView = nil;
+            //        _player.imagePlayer.imageView = nil;
+        }
+        if (self.videoView && model.style != MFMediaViewModelStyleVideo) {
+            [self.videoView clear];
+            self.videoView.customModel = nil;
+            self.videoView.model = nil;
+            self.videoView.mediaLoadFinishBlock = nil;
+            [self.videoView removeFromSuperview];
+            self.videoView = nil;
+            //        _player.videoPlayer.videoView = nil;
+        }
+        if (self.gifView && model.style != MFMediaViewModelStyleGif) {
+            [self.gifView clear];
+            self.gifView.customModel = nil;
+            self.gifView.model = nil;
+            self.gifView.mediaLoadFinishBlock = nil;
+            [self.gifView removeFromSuperview];
+            self.gifView = nil;
+            //        _player.giftPlayer.giftView = nil;
+        }
+        if (self.audioView && model.style != MFMediaViewModelStyleAudio) {
+            [self.audioView clear];
+            self.audioView.customModel = nil;
+            self.audioView.model = nil;
+            self.audioView.mediaLoadFinishBlock = nil;
+            [self.audioView removeFromSuperview];
+            self.audioView = nil;
+    //                _player.audioPlayer.audioView = nil;
+        }
+        if (self.svgaView && model.style != MFMediaViewModelStyleSvga) {
+            [self.svgaView clear];
+            self.svgaView.customModel = nil;
+            self.svgaView.model = nil;
+            self.svgaView.mediaLoadFinishBlock = nil;
+            [self.svgaView removeFromSuperview];
+            self.svgaView = nil;
+    //        _player.svgaPlayer.svgaView = nil;
+        }
+        if (self.pagView && model.style != MFMediaViewModelStylePag) {
+            [self.pagView clear];
+            self.pagView.customModel = nil;
+            self.pagView.model = nil;
+            self.pagView.mediaLoadFinishBlock = nil;
+            [self.pagView removeFromSuperview];
+            self.pagView = nil;
+            [self.player.pagPlayer configurePagView:nil];
+        }
+    });
 }
 
 - (MFMediaViewPlayer *)player {
