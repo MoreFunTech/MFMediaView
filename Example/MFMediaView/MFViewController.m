@@ -26,7 +26,7 @@
     [MFMediaViewConfig configDebugMode:YES];
     
 //    [self configureSvga];
-//    [self configurePag];
+    [self configurePag];
 //    [self configureFileHeaderCodePag];
 //    [self configureImage];
     
@@ -34,7 +34,7 @@
     
 //    [self configureAudio];
     
-    [self baseConfig];
+//    [self baseConfig];
 
 }
 
@@ -107,17 +107,17 @@
     
 //    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/40b82ce094db24f0c68dec790264e9a0.pag";
 //    NSString *netUrl = @"https://ruiqu-1304540262.sutanapp.com/0ae374225118bdb137f7d7e23206b5cf.pag";
-//    NSString *url = @"https://ruiqu-1304540262.woodsdating.com/548bf10fdc3ff189fd2dcab2368b429a.pag";
+    NSString *url = @"https://ruiqu-1304540262.woodsdating.com/548bf10fdc3ff189fd2dcab2368b429a.pag";
 //    NSString *url = @"https://ruiqu-1304540262.woodsdating.com/ae0236e6a4d4fde8375fa74ea4515b15.pag";
-//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:url];
+    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag url:url];
     
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"2_0080.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"pet_space_reward_bg.pag" ofType:@""];
-    NSString *localPath = [NSBundle.mainBundle pathForResource:@"text3.pag" ofType:@""];
+//    NSString *localPath = [NSBundle.mainBundle pathForResource:@"text3.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"pet_levelUp_animate.pag" ofType:@""];
 //    NSString *localPath = [NSBundle.mainBundle pathForResource:@"animate017.pag" ofType:@""];
     
-    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
+//    MFMediaViewModel *mediaViewModel = [MFMediaViewModel modelWithStyle:MFMediaViewModelStylePag localPath:localPath];
     
 //    mediaViewModel.pagConfig.repeatCount = 0;
 //    mediaViewModel.pagConfig.repeatStartTime = 1;
@@ -160,28 +160,28 @@
     }];
     
     
-    [mediaViewModel.pagConfig.replaceLayerList addObject:
-         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:nil layerName:@"mask_changeable.png"]
-    ];
-    
-    [mediaViewModel.pagConfig.replaceLayerList addObject:
-         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithText:@"芜湖的" layerName:@"测试"]
-    ];
-    [mediaViewModel.pagConfig.replaceLayerList addObject:
-         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithText:@"323123123" layerName:@"text_pet_levelUp_changeable"]
-    ];
-    [mediaViewModel.pagConfig.replaceLayerList addObject:
-         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:[UIImage imageNamed:@"pet_levelUp_image_age1"] layerName:@"image_pet_origin_changeable"]
-    ];
-    [mediaViewModel.pagConfig.replaceLayerList addObject:
-         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:[UIImage imageNamed:@"pet_levelUp_image_age2"] layerName:@"image_pet_levelUp_changeable"]
-    ];
+//    [mediaViewModel.pagConfig.replaceLayerList addObject:
+//         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:nil layerName:@"mask_changeable.png"]
+//    ];
+//
+//    [mediaViewModel.pagConfig.replaceLayerList addObject:
+//         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithText:@"芜湖的" layerName:@"测试"]
+//    ];
+//    [mediaViewModel.pagConfig.replaceLayerList addObject:
+//         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithText:@"323123123" layerName:@"text_pet_levelUp_changeable"]
+//    ];
+//    [mediaViewModel.pagConfig.replaceLayerList addObject:
+//         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:[UIImage imageNamed:@"pet_levelUp_image_age1"] layerName:@"image_pet_origin_changeable"]
+//    ];
+//    [mediaViewModel.pagConfig.replaceLayerList addObject:
+//         [MFMediaViewModelPAGConfigReplaceLayerModel modelWithImage:[UIImage imageNamed:@"pet_levelUp_image_age2"] layerName:@"image_pet_levelUp_changeable"]
+//    ];
     
     self.mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(0, 0, 375, 667)];
     [self.view addSubview:self.mediaView];
     
 //
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.mediaView.model = mediaViewModel;
         
 //        self.mediaView.frame = self.view.bounds;

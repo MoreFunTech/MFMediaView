@@ -223,22 +223,22 @@
             [self addSubview:self.pagView];
         }
         
+        __weak typeof(self) weakSelf = self;
+        self.pagView.frame = self.bounds;
+        self.pagView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+        self.pagView.customModel = self.customModel;
+        self.pagView.model = model;
+        self.pagView.pagFileDidLoadSuccess = ^(PAGFile *file) {
+            [weakSelf configurePAGViewDidLoadPAGFileSuccess:file];
+        };
+        self.pagView.pagCompositionDidLoadSuccess = ^(PAGComposition *composition) {
+            [weakSelf configurePAGViewDidLoadCompositionSuccess:composition];
+        };
+        
+        [self.player.pagPlayer configurePagView:self.pagView];
+        [self.player.pagPlayer configurePagConfig:model.pagConfig];
     });
 
-    __weak typeof(self) weakSelf = self;
-    self.pagView.frame = self.bounds;
-    self.pagView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
-    self.pagView.customModel = self.customModel;
-    self.pagView.model = model;
-    self.pagView.pagFileDidLoadSuccess = ^(PAGFile *file) {
-        [weakSelf configurePAGViewDidLoadPAGFileSuccess:file];
-    };
-    self.pagView.pagCompositionDidLoadSuccess = ^(PAGComposition *composition) {
-        [weakSelf configurePAGViewDidLoadCompositionSuccess:composition];
-    };
-    
-    [self.player.pagPlayer configurePagView:self.pagView];
-    [self.player.pagPlayer configurePagConfig:model.pagConfig];
     
 }
 
