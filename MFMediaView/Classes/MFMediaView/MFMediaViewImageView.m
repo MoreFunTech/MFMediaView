@@ -33,15 +33,6 @@
     self.imageView.frame = self.bounds;
 }
 
-- (void)configureDefaultView:(MFMediaViewModel *)model {
-    if (!_imageView) {
-        _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        _imageView.contentMode = model.imageConfig.contentMode;
-        [self addSubview:_imageView];
-    }
-    [self configureView:model];
-}
-
 - (void)setModel:(MFMediaViewModel *)model {
     _model = model;
     if (!model) {
@@ -49,6 +40,15 @@
     } else {
         [self configureDefaultView:model];
     }
+}
+
+- (void)configureDefaultView:(MFMediaViewModel *)model {
+    if (!_imageView) {
+        _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        _imageView.contentMode = model.imageConfig.contentMode;
+        [self addSubview:_imageView];
+    }
+    [self configureView:model];
 }
 
 - (void)configureView:(MFMediaViewModel *)model {

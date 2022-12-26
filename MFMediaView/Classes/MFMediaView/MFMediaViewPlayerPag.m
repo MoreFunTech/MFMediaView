@@ -54,6 +54,39 @@
     return unit;
 }
 
+- (instancetype _Nonnull)initWithLayer:(PAGLayer *_Nonnull)layer {
+    self = [super init];
+    if (self) {
+        if ([layer isKindOfClass:[PAGLayer class]]) {
+            if (layer.layerType == PAGLayerTypeUnknown) {
+                self.style = MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleUnknown;
+            } else if (layer.layerType == PAGLayerTypeNull) {
+                self.style = MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleNull;
+            } else if (layer.layerType == PAGLayerTypeSolid) {
+                self.style = MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleSolid;
+            } else if (layer.layerType == PAGLayerTypeText) {
+                self.style = MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleText;
+                PAGTextLayer *textLayer = (PAGTextLayer *)layer;
+                self.textFillColor = textLayer.fillColor;
+                self.textStrokeColor = textLayer.strokeColor;
+                self.textString = textLayer.text;
+                self.textFontFamily = textLayer.font.fontFamily;
+                self.textFontStyle = textLayer.font.fontStyle;
+            } else if (layer.layerType == PAGLayerTypeShape) {
+                self.style = MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleShape;
+            } else if (layer.layerType == PAGLayerTypeImage) {
+                self.style = MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleImage;
+                PAGImageLayer *imageLayer = (PAGImageLayer *)layer;
+                self.imageContentDuration = imageLayer.contentDuration;
+                self.imageBytes = imageLayer.imageBytes;
+            } else if (layer.layerType == PAGLayerTypePreCompose) {
+                self.style = MFMediaViewPlayerPagRepeatConfigPagLayerUnitStylePreCompose;
+            }
+        }
+    }
+    return self;
+}
+
 + (BOOL)isStringNotNull:(NSString *)string {
     if ([string isKindOfClass:[NSNull class]]) {
         return NO;

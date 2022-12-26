@@ -31,6 +31,11 @@
     [self.svgaPlayer startAnimation];
 }
 
+- (void)setModel:(MFMediaViewModel *)model {
+    _model = model;
+    [self configureDefaultView:model];
+}
+
 - (void)configureDefaultView:(MFMediaViewModel *)model {
     if (!_svgaPlayer) {
         _svgaPlayer = [[SVGAPlayer alloc] initWithFrame:self.bounds];
@@ -41,15 +46,6 @@
         [self addSubview:_svgaPlayer];
     }
     [self configureView:model];
-}
-
-- (void)setModel:(MFMediaViewModel *)model {
-    _model = model;
-//    if (!model) {
-//        [self configureView:model];
-//    } else {
-    [self configureDefaultView:model];
-//    }
 }
 
 - (void)configureView:(MFMediaViewModel *)model {
@@ -98,22 +94,6 @@
                 }
             }
         }];
-//
-//        if (fileDownloadModel.status == -3) {
-//            if ([fileDownloadModel.data isKindOfClass:[MFFileDownloaderFileModel class]]) {
-//                if (self.model.pagConfig.onFileLoadSuccessAction) {
-//                    self.model.pagConfig.onFileLoadSuccessAction();
-//                }
-//                if ([fileDownloadModel.data isKindOfClass:[MFFileDownloaderFileModel class]]) {
-//                    MFFileDownloaderFileModel *modelL = fileDownloadModel.data;
-//                    [self configureViewStartPlayWith:modelL.fullLocalPath];
-//                }
-//            }
-//        } else if (fileDownloadModel.status < 0) {
-//            if (self.model.pagConfig.onFileLoadFailureAction) {
-//                self.model.pagConfig.onFileLoadFailureAction([NSError errorWithDomain:@"MFFileDownloaderPagError" code:fileDownloadModel.status userInfo:@{NSURLLocalizedLabelKey: fileDownloadModel.msg}]);
-//            }
-//        }
         
     });
 }

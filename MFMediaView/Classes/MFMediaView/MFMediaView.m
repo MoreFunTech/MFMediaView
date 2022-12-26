@@ -222,21 +222,23 @@
             self.pagView = [[MFMediaViewPAGView alloc] initWithFrame:self.bounds];
             [self addSubview:self.pagView];
         }
-        __weak typeof(self) weakSelf = self;
-        self.pagView.frame = self.bounds;
-        self.pagView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
-        self.pagView.customModel = self.customModel;
-        self.pagView.model = model;
-        self.pagView.pagFileDidLoadSuccess = ^(PAGFile *file) {
-            [weakSelf configurePAGViewDidLoadPAGFileSuccess:file];
-        };
-        self.pagView.pagCompositionDidLoadSuccess = ^(PAGComposition *composition) {
-            [weakSelf configurePAGViewDidLoadCompositionSuccess:composition];
-        };
         
-        [self.player.pagPlayer configurePagView:self.pagView];
-        [self.player.pagPlayer configurePagConfig:model.pagConfig];
     });
+
+    __weak typeof(self) weakSelf = self;
+    self.pagView.frame = self.bounds;
+    self.pagView.mediaLoadFinishBlock = self.mediaLoadFinishBlock;
+    self.pagView.customModel = self.customModel;
+    self.pagView.model = model;
+    self.pagView.pagFileDidLoadSuccess = ^(PAGFile *file) {
+        [weakSelf configurePAGViewDidLoadPAGFileSuccess:file];
+    };
+    self.pagView.pagCompositionDidLoadSuccess = ^(PAGComposition *composition) {
+        [weakSelf configurePAGViewDidLoadCompositionSuccess:composition];
+    };
+    
+    [self.player.pagPlayer configurePagView:self.pagView];
+    [self.player.pagPlayer configurePagConfig:model.pagConfig];
     
 }
 
@@ -246,7 +248,7 @@
     NSMutableArray *list = [NSMutableArray array];
     for (int i = 0; i < count; i++) {
         PAGLayer *layer = [file getLayerAt:i];
-        MFMediaViewPlayerPagRepeatConfigPagLayerUnit *unit = [MFMediaViewPlayerPagRepeatConfigPagLayerUnit processLayerWithLayer:layer];
+        MFMediaViewPlayerPagRepeatConfigPagLayerUnit *unit = [[MFMediaViewPlayerPagRepeatConfigPagLayerUnit alloc] initWithLayer:layer];
         [list addObject:unit];
     }
     self.player.pagPlayer.layerUnitList = list;
@@ -260,7 +262,7 @@
     NSMutableArray *list = [NSMutableArray array];
     for (int i = 0; i < count; i++) {
         PAGLayer *layer = [composition getLayerAt:i];
-        MFMediaViewPlayerPagRepeatConfigPagLayerUnit *unit = [MFMediaViewPlayerPagRepeatConfigPagLayerUnit processLayerWithLayer:layer];
+        MFMediaViewPlayerPagRepeatConfigPagLayerUnit *unit = [[MFMediaViewPlayerPagRepeatConfigPagLayerUnit alloc] initWithLayer:layer];
         [list addObject:unit];
     }
     self.player.pagPlayer.layerUnitList = list;
@@ -380,6 +382,7 @@
             self.svgaView.mediaLoadFinishBlock = nil;
             [self.svgaView removeFromSuperview];
             self.svgaView = nil;
+            [self.player.svgaPlayer configureSvgaView:nil];
     //        _player.svgaPlayer.svgaView = nil;
         }
         if (self.pagView && model.style != MFMediaViewModelStylePag) {

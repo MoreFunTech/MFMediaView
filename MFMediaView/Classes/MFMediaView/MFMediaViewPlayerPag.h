@@ -41,6 +41,8 @@ typedef NS_ENUM(NSInteger, MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyle) {
 
 - (NSData * _Nonnull)imageBytes;
 
+
+- (instancetype _Nonnull)initWithLayer:(PAGLayer *_Nonnull)layer;
 + (instancetype _Nonnull)processLayerWithLayer:(PAGLayer *_Nonnull)layer;
 
 @end
@@ -68,7 +70,10 @@ typedef NS_ENUM(NSInteger, MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyle) {
  */
 @property (nonatomic, assign) float repeatEndTime;
 
-+ (instancetype _Nonnull )configWithRepeatCount:(NSUInteger)repeatCount repeatStyle:(NSInteger)repeatStyle repeatStartTime:(float)repeatStartTime repeatEndTime:(float)repeatEndTime;
++ (instancetype _Nonnull )configWithRepeatCount:(NSUInteger)repeatCount
+                                    repeatStyle:(NSInteger)repeatStyle
+                                repeatStartTime:(float)repeatStartTime
+                                  repeatEndTime:(float)repeatEndTime;
 
 @end
 

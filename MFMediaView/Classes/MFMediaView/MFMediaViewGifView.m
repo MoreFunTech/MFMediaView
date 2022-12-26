@@ -102,6 +102,15 @@
     };
 }
 
+- (void)setModel:(MFMediaViewModel *)model {
+    _model = model;
+    if (!model) {
+        [self configureView:model];
+    } else {
+        [self configureDefaultView:model];
+    }
+}
+
 - (void)configureDefaultView:(MFMediaViewModel *)model {
     if (!_imageView) {
         _imageView = [[MFMediaViewAnimateView alloc] initWithFrame:self.bounds];
@@ -110,15 +119,6 @@
         [self addImageViewObserve];
     }
     [self configureView:model];
-}
-
-- (void)setModel:(MFMediaViewModel *)model {
-    _model = model;
-    if (!model) {
-        [self configureView:model];
-    } else {
-        [self configureDefaultView:model];
-    }
 }
 
 - (void)configureView:(MFMediaViewModel *)model {

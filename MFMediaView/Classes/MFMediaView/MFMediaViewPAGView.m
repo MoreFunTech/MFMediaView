@@ -60,10 +60,6 @@
             [self.pagView addListener:self];
             
             if ([MFMediaViewConfig isCurrentDebugMode]) {
-//                self.pagView.userInteractionEnabled = YES;
-//                UILongPressGestureRecognizer *longPressGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pagViewLongPressAction:)];
-//                longPressGes.minimumPressDuration = 1;
-//                [self.pagView addGestureRecognizer:longPressGes];
                 self.testButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - 15, 30, 15)];
                 self.testButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
                 self.testButton.titleLabel.font = [UIFont systemFontOfSize:10];
@@ -73,29 +69,6 @@
                 [self addSubview:self.testButton];
             }
             
-            if (model.pagConfig.repeatStyle == -2) {
-                [self.pagView setRepeatCount:1];
-            } if (model.pagConfig.repeatStyle == -3) {
-                [self.pagView setRepeatCount:1];
-            } if (model.pagConfig.repeatStyle == -4) {
-                [self.pagView setRepeatCount:1];
-            } else if (model.pagConfig.repeatCount >= 0) {
-                [self.pagView setRepeatCount:(int) model.pagConfig.repeatCount];
-            }
-            switch (model.pagConfig.scaleMode) {
-                case MFMediaViewModelPAGConfigStyleScaleModeNone:
-                    self.pagView.scaleMode = PAGScaleModeNone;
-                    break;
-                case MFMediaViewModelPAGConfigStyleScaleModeFill:
-                    self.pagView.scaleMode = PAGScaleModeStretch;
-                    break;
-                case MFMediaViewModelPAGConfigStyleScaleModeAspectToFit:
-                    self.pagView.scaleMode = PAGScaleModeLetterBox;
-                    break;
-                case MFMediaViewModelPAGConfigStyleScaleModeAspectToFill:
-                    self.pagView.scaleMode = PAGScaleModeZoom;
-                    break;
-            }
             [self addSubview:self.pagView];
         }
         [self configureView:model];
@@ -103,7 +76,6 @@
             [self bringSubviewToFront:self.testButton];
         }
     });
-    
     
 }
 
@@ -118,6 +90,30 @@
 }
 
 - (void)configureView:(MFMediaViewModel *)model {
+    
+    if (model.pagConfig.repeatStyle == -2) {
+        [self.pagView setRepeatCount:1];
+    } if (model.pagConfig.repeatStyle == -3) {
+        [self.pagView setRepeatCount:1];
+    } if (model.pagConfig.repeatStyle == -4) {
+        [self.pagView setRepeatCount:1];
+    } else if (model.pagConfig.repeatCount >= 0) {
+        [self.pagView setRepeatCount:(int) model.pagConfig.repeatCount];
+    }
+    switch (model.pagConfig.scaleMode) {
+        case MFMediaViewModelPAGConfigStyleScaleModeNone:
+            self.pagView.scaleMode = PAGScaleModeNone;
+            break;
+        case MFMediaViewModelPAGConfigStyleScaleModeFill:
+            self.pagView.scaleMode = PAGScaleModeStretch;
+            break;
+        case MFMediaViewModelPAGConfigStyleScaleModeAspectToFit:
+            self.pagView.scaleMode = PAGScaleModeLetterBox;
+            break;
+        case MFMediaViewModelPAGConfigStyleScaleModeAspectToFill:
+            self.pagView.scaleMode = PAGScaleModeZoom;
+            break;
+    }
     
     MFFileDownloaderFileModel *fileModel = [[MFFileDownloaderFileModel alloc] init];
     fileModel.mediaType = 6;
@@ -154,9 +150,6 @@
             } else if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloadFinish) {
                 weakSelf.model.localPath = resultModel.fileModel.fullLocalPath;
                 [weakSelf configureViewStartPlayWith:resultModel.fileModel.fullLocalPath];
-                if (weakSelf.model.pagConfig.onFileLoadSuccessAction) {
-                    weakSelf.model.pagConfig.onFileLoadSuccessAction();
-                }
             } else if (resultModel.downloadStatus == MFFileDownloaderDownloadStatusDownloadError) {
                 if (weakSelf.model.pagConfig.onFileLoadFailureAction) {
                     weakSelf.model.pagConfig.onFileLoadFailureAction(resultModel.error);
@@ -167,7 +160,6 @@
                 }
             }
         }];
-    
         
     });
 }
@@ -185,6 +177,10 @@
             self.model.pagConfig.onFileLoadFailureAction([NSError errorWithDomain:@"com.MediaView.error" code:-1 userInfo:@{NSLocalizedDescriptionKey: @"pag文件无法加载"}]);
         }
         return;
+    }
+    
+    if (self.model.pagConfig.onFileLoadSuccessAction) {
+        self.model.pagConfig.onFileLoadSuccessAction();
     }
     
     [self replaceLayerAction];
@@ -211,6 +207,7 @@
 }
 
 - (void)configRepeatStyle0Animate {
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         self.pagComposition = nil;
         [self.model.pagConfig configModelWithFile:self.pagFile];

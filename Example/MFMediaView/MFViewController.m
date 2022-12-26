@@ -26,14 +26,29 @@
     [MFMediaViewConfig configDebugMode:YES];
     
 //    [self configureSvga];
-    [self configurePag];
+//    [self configurePag];
 //    [self configureFileHeaderCodePag];
 //    [self configureImage];
     
 //
     
 //    [self configureAudio];
+    
+    [self baseConfig];
 
+}
+
+- (void)baseConfig {
+    
+    // 1 初始化播放器
+    MFMediaView *mediaView = [[MFMediaView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    [self.view addSubview:mediaView];
+    
+    // 2 配置模型
+    MFMediaViewModel *model = [MFMediaViewModel modelWithStyle:(MFMediaViewModelStyleImage) url:@"https://lmg.jj20.com/up/allimg/4k/s/02/2109242332225H9-0-lp.jpg"];
+    
+    // 3 播放器赋值模型
+    mediaView.model = model;
 }
 
 - (void)configureSvga {
