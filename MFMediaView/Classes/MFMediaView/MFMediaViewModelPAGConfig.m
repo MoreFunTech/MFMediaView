@@ -59,13 +59,23 @@
 - (void)setImage:(UIImage *)image {
     if (!image) {
         
+        //        CGRect rect = CGRectMake(0.0f, 0.0f, 100, 100);
+        //        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+        //        CGContextRef context = UIGraphicsGetCurrentContext();
+        //        CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
+        //        CGContextFillRect(context, rect);
+        //        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        //        UIGraphicsEndImageContext();
         CGRect rect = CGRectMake(0.0f, 0.0f, 100, 100);
-        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
-        CGContextFillRect(context, rect);
-        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+        
+        UIGraphicsImageRendererFormat *format = [[UIGraphicsImageRendererFormat alloc] init];
+        format.opaque = NO;
+        
+        UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc] initWithSize:rect.size format:format];
+        UIImage *image = [renderer imageWithActions:^(UIGraphicsImageRendererContext * _Nonnull rendererContext) {
+            [UIColor.clearColor setFill];
+            UIRectFill(rect);
+        }];
         _image = image;
     } else {
         CGImageRef cgImag = image.CGImage;
@@ -153,20 +163,20 @@
 
 + (instancetype)defaultConfigure {
     MFMediaViewModelPAGConfig *configure = [[MFMediaViewModelPAGConfig alloc] init];
-//    @property (nonatomic, assign) NSUInteger repeatCount;
-//    @property (nonatomic, assign) MFMediaViewModelPAGConfigStyleScaleMode scaleMode;
-/**
- * 最大渲染的帧率，默认60帧
- * 若该帧数低于文件帧数，会丢失部分画面，
- * 若该帧数高于文件帧数，无影响
- */
-//    @property (nonatomic, assign) NSUInteger maxFrameRate;
-
+    //    @property (nonatomic, assign) NSUInteger repeatCount;
+    //    @property (nonatomic, assign) MFMediaViewModelPAGConfigStyleScaleMode scaleMode;
+    /**
+     * 最大渲染的帧率，默认60帧
+     * 若该帧数低于文件帧数，会丢失部分画面，
+     * 若该帧数高于文件帧数，无影响
+     */
+    //    @property (nonatomic, assign) NSUInteger maxFrameRate;
+    
     configure.repeatCount = 0;
     configure.scaleMode = MFMediaViewModelPAGConfigStyleScaleModeAspectToFit;
     configure.maxFrameRate = 60;
     configure.isAutoPlay = YES;
-
+    
     return configure;
 }
 
