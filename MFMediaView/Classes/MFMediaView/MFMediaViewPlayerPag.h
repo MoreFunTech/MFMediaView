@@ -39,8 +39,6 @@ typedef NS_ENUM(NSInteger, MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyle) {
 
 - (int64_t)imageContentDuration;
 
-- (NSData * _Nonnull)imageBytes;
-
 
 - (instancetype _Nonnull)initWithLayer:(PAGLayer *_Nonnull)layer;
 + (instancetype _Nonnull)processLayerWithLayer:(PAGLayer *_Nonnull)layer;

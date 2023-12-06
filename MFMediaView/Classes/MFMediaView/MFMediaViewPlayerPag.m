@@ -17,7 +17,6 @@
 @property (nonatomic, strong) UIColor *textStrokeColor;
 @property (nonatomic, copy) NSString *textString;
 @property (nonatomic) int64_t imageContentDuration;
-@property (nonatomic, strong) NSData *imageBytes;
 
 @end
 
@@ -46,7 +45,6 @@
         unit.style = MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleImage;
         PAGImageLayer *imageLayer = (PAGImageLayer *)layer;
         unit.imageContentDuration = imageLayer.contentDuration;
-        unit.imageBytes = imageLayer.imageBytes;
     } else if (layer.layerType == PAGLayerTypePreCompose) {
         unit.style = MFMediaViewPlayerPagRepeatConfigPagLayerUnitStylePreCompose;
     }
@@ -78,7 +76,6 @@
                 self.style = MFMediaViewPlayerPagRepeatConfigPagLayerUnitStyleImage;
                 PAGImageLayer *imageLayer = (PAGImageLayer *)layer;
                 self.imageContentDuration = imageLayer.contentDuration;
-                self.imageBytes = imageLayer.imageBytes;
             } else if (layer.layerType == PAGLayerTypePreCompose) {
                 self.style = MFMediaViewPlayerPagRepeatConfigPagLayerUnitStylePreCompose;
             }
