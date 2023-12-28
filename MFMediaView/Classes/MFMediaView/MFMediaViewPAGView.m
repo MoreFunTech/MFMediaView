@@ -183,9 +183,6 @@
         self.model.pagConfig.onFileLoadSuccessAction();
     }
     
-    [self replaceLayerAction];
-    [self transformLayerAction];
-    
     self.model.imageWidth = self.pagFile.width;
     self.model.imageHeight = self.pagFile.height;
     self.model.during = self.pagFile.duration;
@@ -300,68 +297,6 @@
     });
 }
 
-- (void)replaceLayerAction {
-    
-    int count = @(self.pagFile.numChildren).intValue;
-    if (self.pagComposition) {
-        count = @(self.pagComposition.numChildren).intValue;
-    }
-    for (int i = 0; i < count; i++) {
-        PAGLayer *layer = [self.pagFile getLayerAt:i];
-        if (self.pagComposition) {
-            layer = [self.pagComposition getLayerAt:i];
-        }
-        [self.model.pagConfig.replaceLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigReplaceLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([self isStringNotNull:obj.text] && layer.layerType == PAGLayerTypeText) {
-                if ([layer.layerName isEqualToString:obj.layerName]) {
-                    PAGTextLayer *textLayer = (PAGTextLayer *)layer;
-                    textLayer.text = obj.text;
-                } else if (i == obj.layerIndex) {
-                    PAGTextLayer *textLayer = (PAGTextLayer *)layer;
-                    textLayer.text = obj.text;
-                }
-            }
-            if (obj.image && layer.layerType == PAGLayerTypeImage) {
-                if ([layer.layerName isEqualToString:obj.layerName]) {
-                    PAGImageLayer *imageLayer = (PAGImageLayer *)layer;
-                    [imageLayer setImage:[PAGImage FromCGImage:obj.image.CGImage]];
-                } else if (i == obj.layerIndex) {
-                    PAGImageLayer *imageLayer = (PAGImageLayer *)layer;
-                    [imageLayer setImage:[PAGImage FromCGImage:obj.image.CGImage]];
-                }
-            }
-            
-            if (obj.image && layer.layerType == PAGLayerTypePreCompose && obj.isSpecialBMP) {
-                if ([layer.layerName isEqualToString:obj.layerName]) {
-                    [self.pagFile replaceImage:i data:[PAGImage FromCGImage:obj.image.CGImage]];
-                } else if (i == obj.layerIndex) {
-                    [self.pagFile replaceImage:i data:[PAGImage FromCGImage:obj.image.CGImage]];
-                }
-            }
-        }];
-    }
-}
-
-- (void)transformLayerAction {
-    int count = @(self.pagFile.numChildren).intValue;
-    if (self.pagComposition) {
-        count = @(self.pagComposition.numChildren).intValue;
-    }
-    for (int i = 0; i < count; i++) {
-        PAGLayer *layer = [self.pagFile getLayerAt:i];
-        if (self.pagComposition) {
-            layer = [self.pagComposition getLayerAt:i];
-        }
-        [self.model.pagConfig.transformLayerList enumerateObjectsUsingBlock:^(MFMediaViewModelPAGConfigTransformLayerModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([layer.layerName isEqualToString:obj.layerName]) {
-                [layer setMatrix:obj.matrix];
-            } else if (i == obj.layerIndex) {
-                [layer setMatrix:obj.matrix];
-            }
-        }];
-    }
-}
-
 - (void)resetSubviews {
     CGRect newFrame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
     self.pagView.frame = newFrame;
@@ -396,16 +331,6 @@
 
 - (void)updatePagWithScaleMode:(NSInteger)scaleMode {
     self.pagView.scaleMode = (PAGScaleMode)scaleMode;
-}
-
-- (void)updatePagWithReplaceLayerList:(NSArray *)replaceLayerList {
-    self.model.pagConfig.replaceLayerList = replaceLayerList.mutableCopy;
-    [self replaceLayerAction];
-}
-
-- (void)updatePagWithTransformLayerList:(NSArray *)transformLayerList {
-    self.model.pagConfig.transformLayerList = transformLayerList.mutableCopy;
-    [self transformLayerAction];
 }
 
 - (void)updatePagWithMaxFrameRate:(NSUInteger)maxFrameRate {

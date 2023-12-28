@@ -22,8 +22,6 @@
 
 - (void)updatePagWithRepeatCount:(NSUInteger)repeatCount repeatStyle:(NSInteger)repeatStyle repeatStartTime:(float)repeatStartTime repeatEndTime:(float)repeatEndTime;
 - (void)updatePagWithScaleMode:(NSInteger)scaleMode;
-- (void)updatePagWithReplaceLayerList:(NSArray *)replaceLayerList;
-- (void)updatePagWithTransformLayerList:(NSArray *)transformLayerList;
 - (void)updatePagWithMaxFrameRate:(NSUInteger)maxFrameRate;
 
 - (void)seekToProgress:(CGFloat)progress;

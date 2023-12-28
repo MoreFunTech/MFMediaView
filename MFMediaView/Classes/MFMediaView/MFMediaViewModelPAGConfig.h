@@ -27,157 +27,6 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigStyleScaleMode) {
 
 };
 
-typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
-    /**
-     * 替换类型 - 图片
-     */
-    MFMediaViewModelPAGConfigReplaceLayerModelStyleImage = 0,
-    /**
-     * 替换类型 - 文字
-     */
-    MFMediaViewModelPAGConfigReplaceLayerModelStyleText = 1,
-};
-
-@interface MFMediaViewModelPAGConfigReplaceLayerModel : NSObject
-
-/**
- * 替换类型
- */
-@property (nonatomic, assign) MFMediaViewModelPAGConfigReplaceLayerModelStyle style;
-
-/**
- * 替换文字
- */
-@property (nonatomic, copy) NSString *text;
-
-/**
- * 替换图片
- */
-@property (nonatomic, strong) UIImage *image;
-
-/**
- * 替换图层名字
- */
-@property (nonatomic, copy) NSString *layerName;
-
-/**
- * 特殊替换图层
- */
-@property (nonatomic) BOOL isSpecialBMP;
-
-/**
- * 替换图层序号 -1 不处理
- */
-@property (nonatomic) int layerIndex;
-
-/**
- * 快速构建 文字替换
- *
- * @param text 替换文字
- * @param layerName 替换图层名字
- *
- * @return 构建模型
- */
-+ (instancetype)modelWithText:(NSString *)text
-                    layerName:(NSString *)layerName;
-
-/**
- * 快速构建 文字替换
- *
- * @param text 替换文字
- * @param layerName 替换图层名字
- * @param layerIndex 替换图层排序
- *
- * @return 构建模型
- */
-+ (instancetype)modelWithText:(NSString *)text
-                    layerName:(NSString *)layerName
-                   layerIndex:(int)layerIndex;
-
-
-
-/**
- * 快速构建 图片替换
- *
- * @param image 替换图片
- * @param layerName 替换图层名字
- *
- * @return 构建模型
- */
-+ (instancetype)modelWithImage:(UIImage *)image
-                     layerName:(NSString *)layerName;
-
-
-/**
- * 快速构建 图片替换
- *
- * @param image 替换图片
- * @param layerName 替换图层名字
- * @param layerIndex 替换图层排序
- *
- * @return 构建模型
- */
-+ (instancetype)modelWithImage:(UIImage *)image
-                     layerName:(NSString *)layerName
-                    layerIndex:(int)layerIndex;
-
-/**
- * 快速构建 图片替换
- *
- * @param image 替换图片
- * @param layerName 替换图层名字
- * @param layerIndex 替换图层排序
- * @param isSpecialBMP 特殊替换图层
- *
- * @return 构建模型
- */
-+ (instancetype)modelWithImage:(UIImage *)image
-                     layerName:(NSString *)layerName
-                    layerIndex:(int)layerIndex
-                  isSpecialBMP:(BOOL)isSpecialBMP;
-
-
-@end
-
-
-@interface MFMediaViewModelPAGConfigTransformLayerModel : NSObject
-
-/**
- * 变换图层名字
- */
-@property (nonatomic, copy) NSString *layerName;
-
-/**
- * 特殊变换图层
- */
-@property (nonatomic) BOOL isSpecialBMP;
-
-/**
- * 变换图层序号 -1 不处理
- */
-@property (nonatomic) int layerIndex;
-
-/**
- * 矩阵对象 （包含改变层缩放、旋转和平移的值）
- */
-@property (nonatomic) CGAffineTransform matrix;
-
-+ (instancetype)modelWithTransform:(CGAffineTransform)transform
-                         layerName:(NSString *)layerName;
-
-+ (instancetype)modelWithTransform:(CGAffineTransform)transform
-                        layerIndex:(int)layerIndex
-                         layerName:(NSString *)layerName;
-
-
-
-+ (instancetype)modelWithTransform:(CGAffineTransform)transform
-                        layerIndex:(int)layerIndex
-                         layerName:(NSString *)layerName
-                      isSpecialBMP:(BOOL)isSpecialBMP;
-
-@end
-
 @interface MFMediaViewModelPAGConfig : NSObject
 
 /**
@@ -226,9 +75,6 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
  */
 @property (nonatomic) BOOL isAutoPlay;
 
-@property (nonatomic, strong) NSMutableArray <MFMediaViewModelPAGConfigReplaceLayerModel *>*replaceLayerList;
-@property (nonatomic, strong) NSMutableArray <MFMediaViewModelPAGConfigTransformLayerModel *>*transformLayerList;
-
 /**
  * 最大渲染的帧率，默认60帧
  * 若该帧数低于文件帧数，会丢失部分画面，
@@ -242,9 +88,6 @@ typedef NS_ENUM(NSInteger, MFMediaViewModelPAGConfigReplaceLayerModelStyle) {
 @property (nonatomic, copy) void(^onFileLoadingAction)(CGFloat progress);
 @property (nonatomic, copy) void(^onFileLoadSuccessAction)(void);
 @property (nonatomic, copy) void(^onFileLoadFailureAction)(NSError *error);
-
-@property (nonatomic, copy) void(^onPagFileLoadSuccess)(void);
-
 
 + (instancetype)defaultConfigure;
 
