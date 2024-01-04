@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MFMediaView'
-  s.version          = '0.2.8'
+  s.version          = '0.4'
   s.summary          = 'A Common Display View For Media'
 
 # This description is used to generate tags and improve search results.

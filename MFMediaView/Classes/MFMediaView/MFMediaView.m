@@ -243,29 +243,12 @@
 }
 
 - (void)configurePAGViewDidLoadPAGFileSuccess:(PAGFile *)file {
-
-    int count = @(file.numChildren).intValue;
-    NSMutableArray *list = [NSMutableArray array];
-    for (int i = 0; i < count; i++) {
-        PAGLayer *layer = [file getLayerAt:i];
-        MFMediaViewPlayerPagRepeatConfigPagLayerUnit *unit = [[MFMediaViewPlayerPagRepeatConfigPagLayerUnit alloc] initWithLayer:layer];
-        [list addObject:unit];
-    }
-    self.player.pagPlayer.layerUnitList = list;
     if (self.model.pagConfig.onPagFileLoadSuccess) {
         self.model.pagConfig.onPagFileLoadSuccess();
     }
 }
 
 - (void)configurePAGViewDidLoadCompositionSuccess:(PAGComposition *)composition {
-    int count = @(composition.numChildren).intValue;
-    NSMutableArray *list = [NSMutableArray array];
-    for (int i = 0; i < count; i++) {
-        PAGLayer *layer = [composition getLayerAt:i];
-        MFMediaViewPlayerPagRepeatConfigPagLayerUnit *unit = [[MFMediaViewPlayerPagRepeatConfigPagLayerUnit alloc] initWithLayer:layer];
-        [list addObject:unit];
-    }
-    self.player.pagPlayer.layerUnitList = list;
     if (self.model.pagConfig.onPagFileLoadSuccess) {
         self.model.pagConfig.onPagFileLoadSuccess();
     }
