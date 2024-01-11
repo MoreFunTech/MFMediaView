@@ -40,7 +40,6 @@
 
 @synthesize replaceLayerList = _replaceLayerList;
 @synthesize transformLayerList = _transformLayerList;
-@synthesize layerUnitList = _layerUnitList;
 @synthesize repeatConfig = _repeatConfig;
 
 - (void)configurePagView:(MFMediaViewPAGView *)pagView {
